@@ -157,6 +157,24 @@ small, .text-sm {
   padding: var(--space-lg) var(--space-lg);
 }
 
+/* --- Botanical Overlay --- */
+.botanical-overlay {
+  position: fixed;
+  top: -2%;
+  right: -4%;
+  width: 52vw;
+  max-width: 580px;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.10;
+  user-select: none;
+}
+
+[data-theme="study"] .botanical-overlay {
+  opacity: 0.04;
+}
+
 /* --- Theme Toggle --- */
 .theme-toggle {
   position: fixed;
