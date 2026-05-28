@@ -1,10 +1,10 @@
 {
-  "updated": "2026-05-28 11:15 UTC",
+  "updated": "2026-05-28 11:42 UTC",
   "counts": {
-    "upcoming": 2,
+    "upcoming": 1,
     "pending_tbd": 45,
     "effective": 11,
-    "dropped": 3
+    "dropped": 4
   },
   "records": [
     {
@@ -22,7 +22,7 @@
       "sent_at": "2026-05-28T11:15:27.741691+00:00",
       "sent_date": "2026-05-28",
       "current_price": 0.297,
-      "price_asof": "2026-05-28T11:15:33.409161+00:00",
+      "price_asof": "2026-05-28T11:42:40.402766+00:00",
       "status": "pending_tbd",
       "post_split": "$5.94",
       "price_str": "$0.30"
@@ -42,7 +42,7 @@
       "sent_at": "2026-05-28T11:15:27.662548+00:00",
       "sent_date": "2026-05-28",
       "current_price": 10.98,
-      "price_asof": "2026-05-28T11:15:33.487486+00:00",
+      "price_asof": "2026-05-28T11:42:40.503470+00:00",
       "status": "pending_tbd",
       "post_split": "$439.20",
       "price_str": "$10.98"
@@ -62,7 +62,7 @@
       "sent_at": "2026-05-28T11:15:27.582600+00:00",
       "sent_date": "2026-05-28",
       "current_price": 0.4999,
-      "price_asof": "2026-05-28T11:15:33.560685+00:00",
+      "price_asof": "2026-05-28T11:42:40.579126+00:00",
       "status": "pending_tbd",
       "post_split": "$149.97",
       "price_str": "$0.50"
@@ -82,7 +82,7 @@
       "sent_at": "2026-05-28T11:15:27.504556+00:00",
       "sent_date": "2026-05-28",
       "current_price": 2.87,
-      "price_asof": "2026-05-28T11:15:33.639480+00:00",
+      "price_asof": "2026-05-28T11:42:40.667231+00:00",
       "status": "pending_tbd",
       "post_split": "$57.40",
       "price_str": "$2.87"
@@ -102,7 +102,7 @@
       "sent_at": "2026-05-28T11:15:27.426159+00:00",
       "sent_date": "2026-05-28",
       "current_price": 0.701,
-      "price_asof": "2026-05-28T11:15:33.717267+00:00",
+      "price_asof": "2026-05-28T11:42:40.746204+00:00",
       "status": "pending_tbd",
       "post_split": "$5.61",
       "price_str": "$0.70"
@@ -122,7 +122,7 @@
       "sent_at": "2026-05-28T11:15:27.347531+00:00",
       "sent_date": "2026-05-28",
       "current_price": 10.256,
-      "price_asof": "2026-05-28T11:15:33.800838+00:00",
+      "price_asof": "2026-05-28T11:42:40.826661+00:00",
       "status": "pending_tbd",
       "post_split": "$410.24",
       "price_str": "$10.26"
@@ -142,7 +142,7 @@
       "sent_at": "2026-05-28T11:15:27.267884+00:00",
       "sent_date": "2026-05-28",
       "current_price": 0.62,
-      "price_asof": "2026-05-28T11:15:34.010966+00:00",
+      "price_asof": "2026-05-28T11:42:41.022669+00:00",
       "status": "pending_tbd",
       "post_split": "$6.20",
       "price_str": "$0.62"
@@ -162,7 +162,7 @@
       "sent_at": "2026-05-28T11:15:27.189363+00:00",
       "sent_date": "2026-05-28",
       "current_price": 1.17,
-      "price_asof": "2026-05-28T11:15:34.090780+00:00",
+      "price_asof": "2026-05-28T11:42:41.108170+00:00",
       "status": "pending_tbd",
       "post_split": "$11.70",
       "price_str": "$1.17"
@@ -182,7 +182,7 @@
       "sent_at": "2026-05-28T11:15:27.110452+00:00",
       "sent_date": "2026-05-28",
       "current_price": 4.89,
-      "price_asof": "2026-05-28T11:15:34.172172+00:00",
+      "price_asof": "2026-05-28T11:42:41.189751+00:00",
       "status": "pending_tbd",
       "post_split": "$48.90",
       "price_str": "$4.89"
@@ -202,7 +202,7 @@
       "sent_at": "2026-05-28T11:15:27.033853+00:00",
       "sent_date": "2026-05-28",
       "current_price": 16.75,
-      "price_asof": "2026-05-28T11:15:34.254626+00:00",
+      "price_asof": "2026-05-28T11:42:41.268480+00:00",
       "status": "pending_tbd",
       "post_split": "$1340.00",
       "price_str": "$16.75"
@@ -222,7 +222,7 @@
       "sent_at": "2026-05-28T11:15:26.956463+00:00",
       "sent_date": "2026-05-28",
       "current_price": 3.35,
-      "price_asof": "2026-05-28T11:15:34.420193+00:00",
+      "price_asof": "2026-05-28T11:42:41.346886+00:00",
       "status": "pending_tbd",
       "post_split": "$134.00",
       "price_str": "$3.35"
@@ -242,7 +242,7 @@
       "sent_at": "2026-05-28T11:15:26.877066+00:00",
       "sent_date": "2026-05-28",
       "current_price": 3.84,
-      "price_asof": "2026-05-28T11:15:34.494307+00:00",
+      "price_asof": "2026-05-28T11:42:41.425206+00:00",
       "status": "pending_tbd",
       "post_split": "$30.72",
       "price_str": "$3.84"
@@ -262,7 +262,7 @@
       "sent_at": "2026-05-28T11:15:26.799106+00:00",
       "sent_date": "2026-05-28",
       "current_price": 1.14,
-      "price_asof": "2026-05-28T11:15:34.570893+00:00",
+      "price_asof": "2026-05-28T11:42:41.504762+00:00",
       "status": "pending_tbd",
       "post_split": "$22.80",
       "price_str": "$1.14"
@@ -282,7 +282,7 @@
       "sent_at": "2026-05-28T11:15:26.720187+00:00",
       "sent_date": "2026-05-28",
       "current_price": 0.989,
-      "price_asof": "2026-05-28T11:15:34.645257+00:00",
+      "price_asof": "2026-05-28T11:42:41.580515+00:00",
       "status": "pending_tbd",
       "post_split": "$126.59",
       "price_str": "$0.99"
@@ -302,7 +302,7 @@
       "sent_at": "2026-05-28T11:15:26.640946+00:00",
       "sent_date": "2026-05-28",
       "current_price": 11.14,
-      "price_asof": "2026-05-28T11:15:34.822679+00:00",
+      "price_asof": "2026-05-28T11:42:41.658073+00:00",
       "status": "pending_tbd",
       "post_split": "$278.50",
       "price_str": "$11.14"
@@ -322,7 +322,7 @@
       "sent_at": "2026-05-28T11:15:26.562247+00:00",
       "sent_date": "2026-05-28",
       "current_price": 4.55,
-      "price_asof": "2026-05-28T11:15:34.905041+00:00",
+      "price_asof": "2026-05-28T11:42:41.735062+00:00",
       "status": "pending_tbd",
       "post_split": "$45.50",
       "price_str": "$4.55"
@@ -342,7 +342,7 @@
       "sent_at": "2026-05-27T11:07:45.363814+00:00",
       "sent_date": "2026-05-27",
       "current_price": 0.398,
-      "price_asof": "2026-05-28T11:15:34.984085+00:00",
+      "price_asof": "2026-05-28T11:42:41.815358+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
       "price_str": "$0.40"
@@ -362,7 +362,7 @@
       "sent_at": "2026-05-27T01:19:44.755192+00:00",
       "sent_date": "2026-05-27",
       "current_price": 0.517,
-      "price_asof": "2026-05-28T11:15:35.068046+00:00",
+      "price_asof": "2026-05-28T11:42:41.894280+00:00",
       "status": "pending_tbd",
       "post_split": "$1.55\u2013129.25",
       "price_str": "$0.52"
@@ -382,7 +382,7 @@
       "sent_at": "2026-05-27T01:19:44.681950+00:00",
       "sent_date": "2026-05-27",
       "current_price": 0.361,
-      "price_asof": "2026-05-28T11:15:35.144598+00:00",
+      "price_asof": "2026-05-28T11:42:41.970770+00:00",
       "status": "pending_tbd",
       "post_split": "$0.72\u201321.66",
       "price_str": "$0.36"
@@ -402,7 +402,7 @@
       "sent_at": "2026-05-27T01:19:44.608381+00:00",
       "sent_date": "2026-05-27",
       "current_price": 0.8,
-      "price_asof": "2026-05-28T11:15:35.223252+00:00",
+      "price_asof": "2026-05-28T11:42:42.051586+00:00",
       "status": "pending_tbd",
       "post_split": "$4.00\u201380.00",
       "price_str": "$0.80"
@@ -422,7 +422,7 @@
       "sent_at": "2026-05-27T01:19:44.533739+00:00",
       "sent_date": "2026-05-27",
       "current_price": 0.219,
-      "price_asof": "2026-05-28T11:15:35.308475+00:00",
+      "price_asof": "2026-05-28T11:42:42.131657+00:00",
       "status": "pending_tbd",
       "post_split": "$2.19\u20136.57",
       "price_str": "$0.22"
@@ -482,7 +482,7 @@
       "sent_at": "2026-05-27T01:19:30.328953+00:00",
       "sent_date": "2026-05-27",
       "current_price": 0.82,
-      "price_asof": "2026-05-28T11:15:35.394237+00:00",
+      "price_asof": "2026-05-28T11:42:42.301159+00:00",
       "status": "upcoming",
       "post_split": "$4.10",
       "price_str": "$0.82"
@@ -502,7 +502,7 @@
       "sent_at": "2026-05-22T11:10:30.847572+00:00",
       "sent_date": "2026-05-22",
       "current_price": 0.5,
-      "price_asof": "2026-05-28T11:15:35.492317+00:00",
+      "price_asof": "2026-05-28T11:42:42.384767+00:00",
       "status": "pending_tbd",
       "post_split": "$1.00\u201315.00",
       "price_str": "$0.50"
@@ -522,7 +522,7 @@
       "sent_at": "2026-05-22T11:10:30.694846+00:00",
       "sent_date": "2026-05-22",
       "current_price": 0.291,
-      "price_asof": "2026-05-28T11:15:35.567743+00:00",
+      "price_asof": "2026-05-28T11:42:42.460643+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
       "price_str": "$0.29"
@@ -570,12 +570,12 @@
     {
       "accession": "0001213900-26-060128",
       "ticker": "WETO",
-      "score": "HIGH",
+      "score": "LOW",
       "ratio_raw": "1-for-10",
       "ratio": "1:10",
-      "effective_date": "2026-06-02",
-      "eff_iso": "2026-06-02",
-      "days_to_eff": 5,
+      "effective_date": "CANCELLED 2026-05-26",
+      "eff_iso": "",
+      "days_to_eff": null,
       "treatment": "round_up",
       "transfer_agent": "",
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1941158/000121390026060128/",
@@ -583,7 +583,7 @@
       "sent_date": "2026-05-22",
       "current_price": 1.02,
       "price_asof": "2026-05-28T11:15:35.648300+00:00",
-      "status": "upcoming",
+      "status": "dropped",
       "post_split": "$10.20",
       "price_str": "$1.02"
     },
@@ -602,7 +602,7 @@
       "sent_at": "2026-05-21T11:12:28.241602+00:00",
       "sent_date": "2026-05-21",
       "current_price": 0.59,
-      "price_asof": "2026-05-28T11:15:35.725796+00:00",
+      "price_asof": "2026-05-28T11:42:42.540492+00:00",
       "status": "pending_tbd",
       "post_split": "$1.18\u201329.50",
       "price_str": "$0.59"
@@ -622,7 +622,7 @@
       "sent_at": "2026-05-21T11:12:28.168721+00:00",
       "sent_date": "2026-05-21",
       "current_price": 0.574,
-      "price_asof": "2026-05-28T11:15:35.809421+00:00",
+      "price_asof": "2026-05-28T11:42:42.621305+00:00",
       "status": "pending_tbd",
       "post_split": "$1.15\u201314.35",
       "price_str": "$0.57"
@@ -722,7 +722,7 @@
       "sent_at": "2026-05-18T11:10:13.484259+00:00",
       "sent_date": "2026-05-18",
       "current_price": 0.006,
-      "price_asof": "2026-05-28T11:15:35.894599+00:00",
+      "price_asof": "2026-05-28T11:42:42.710248+00:00",
       "status": "pending_tbd",
       "post_split": "$0.01\u20131.20",
       "price_str": "$0.01"
@@ -742,7 +742,7 @@
       "sent_at": "2026-05-18T11:10:13.338337+00:00",
       "sent_date": "2026-05-18",
       "current_price": 0.726,
-      "price_asof": "2026-05-28T11:15:35.979429+00:00",
+      "price_asof": "2026-05-28T11:42:42.794293+00:00",
       "status": "pending_tbd",
       "post_split": "$4.36",
       "price_str": "$0.73"
@@ -762,7 +762,7 @@
       "sent_at": "2026-05-15T11:10:22.518430+00:00",
       "sent_date": "2026-05-15",
       "current_price": 2.46,
-      "price_asof": "2026-05-28T11:15:36.056838+00:00",
+      "price_asof": "2026-05-28T11:42:42.872925+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
       "price_str": "$2.46"
@@ -782,7 +782,7 @@
       "sent_at": "2026-05-15T11:10:22.444937+00:00",
       "sent_date": "2026-05-15",
       "current_price": 0.482,
-      "price_asof": "2026-05-28T11:15:36.142922+00:00",
+      "price_asof": "2026-05-28T11:42:42.954786+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
       "price_str": "$0.48"
@@ -802,7 +802,7 @@
       "sent_at": "2026-05-15T11:10:22.371013+00:00",
       "sent_date": "2026-05-15",
       "current_price": 1.17,
-      "price_asof": "2026-05-28T11:15:36.246714+00:00",
+      "price_asof": "2026-05-28T11:42:43.041565+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
       "price_str": "$1.17"
@@ -822,7 +822,7 @@
       "sent_at": "2026-05-15T11:10:22.298492+00:00",
       "sent_date": "2026-05-15",
       "current_price": 2.215,
-      "price_asof": "2026-05-28T11:15:36.329125+00:00",
+      "price_asof": "2026-05-28T11:42:43.127105+00:00",
       "status": "pending_tbd",
       "post_split": "$17.72",
       "price_str": "$2.21"
@@ -842,7 +842,7 @@
       "sent_at": "2026-05-15T11:10:22.225525+00:00",
       "sent_date": "2026-05-15",
       "current_price": 4.67,
-      "price_asof": "2026-05-28T11:15:36.424245+00:00",
+      "price_asof": "2026-05-28T11:42:43.207531+00:00",
       "status": "pending_tbd",
       "post_split": "$140.10",
       "price_str": "$4.67"
@@ -862,7 +862,7 @@
       "sent_at": "2026-05-15T11:10:22.151072+00:00",
       "sent_date": "2026-05-15",
       "current_price": 0.188,
-      "price_asof": "2026-05-28T11:15:36.579873+00:00",
+      "price_asof": "2026-05-28T11:42:43.298166+00:00",
       "status": "pending_tbd",
       "post_split": "$3.01",
       "price_str": "$0.19"
@@ -962,7 +962,7 @@
       "sent_at": "2026-05-13T11:11:27.527784+00:00",
       "sent_date": "2026-05-13",
       "current_price": 1.815,
-      "price_asof": "2026-05-28T11:15:36.658533+00:00",
+      "price_asof": "2026-05-28T11:42:43.376833+00:00",
       "status": "pending_tbd",
       "post_split": "$3.63\u20137260.00",
       "price_str": "$1.81"
@@ -982,7 +982,7 @@
       "sent_at": "2026-05-12T11:09:37.203791+00:00",
       "sent_date": "2026-05-12",
       "current_price": 3.1,
-      "price_asof": "2026-05-28T11:15:36.736112+00:00",
+      "price_asof": "2026-05-28T11:42:43.467387+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
       "price_str": "$3.10"
@@ -1002,7 +1002,7 @@
       "sent_at": "2026-05-12T11:09:35.039705+00:00",
       "sent_date": "2026-05-12",
       "current_price": 0.95,
-      "price_asof": "2026-05-28T11:15:36.826241+00:00",
+      "price_asof": "2026-05-28T11:42:43.548097+00:00",
       "status": "pending_tbd",
       "post_split": "$1.90\u201319.00",
       "price_str": "$0.95"
@@ -1022,7 +1022,7 @@
       "sent_at": "2026-05-08T11:11:17.336117+00:00",
       "sent_date": "2026-05-08",
       "current_price": 1.73,
-      "price_asof": "2026-05-28T11:15:36.912715+00:00",
+      "price_asof": "2026-05-28T11:42:43.632017+00:00",
       "status": "pending_tbd",
       "post_split": "$3.46\u20136920.00",
       "price_str": "$1.73"
@@ -1042,7 +1042,7 @@
       "sent_at": "2026-05-08T11:11:17.264447+00:00",
       "sent_date": "2026-05-08",
       "current_price": 0.199,
-      "price_asof": "2026-05-28T11:15:36.993557+00:00",
+      "price_asof": "2026-05-28T11:42:43.720070+00:00",
       "status": "pending_tbd",
       "post_split": "$1.00\u201319.90",
       "price_str": "$0.20"
@@ -1062,7 +1062,7 @@
       "sent_at": "2026-05-08T11:11:17.190618+00:00",
       "sent_date": "2026-05-08",
       "current_price": 9.46,
-      "price_asof": "2026-05-28T11:15:37.075373+00:00",
+      "price_asof": "2026-05-28T11:42:43.798404+00:00",
       "status": "pending_tbd",
       "post_split": "$28.38\u20133784.00",
       "price_str": "$9.46"
@@ -1082,7 +1082,7 @@
       "sent_at": "2026-05-08T11:11:17.116466+00:00",
       "sent_date": "2026-05-08",
       "current_price": 1.13,
-      "price_asof": "2026-05-28T11:15:37.154527+00:00",
+      "price_asof": "2026-05-28T11:42:43.897004+00:00",
       "status": "pending_tbd",
       "post_split": "$5.65",
       "price_str": "$1.13"
@@ -1122,7 +1122,7 @@
       "sent_at": "2026-05-06T11:10:59.184875+00:00",
       "sent_date": "2026-05-06",
       "current_price": 4.01,
-      "price_asof": "2026-05-28T11:15:37.234652+00:00",
+      "price_asof": "2026-05-28T11:42:43.986562+00:00",
       "status": "pending_tbd",
       "post_split": "$8.02\u2013401.00",
       "price_str": "$4.01"
@@ -1142,7 +1142,7 @@
       "sent_at": "2026-05-06T11:10:55.122829+00:00",
       "sent_date": "2026-05-06",
       "current_price": 0.46,
-      "price_asof": "2026-05-28T11:15:37.313779+00:00",
+      "price_asof": "2026-05-28T11:42:44.066977+00:00",
       "status": "pending_tbd",
       "post_split": "$4.60",
       "price_str": "$0.46"
@@ -1162,7 +1162,7 @@
       "sent_at": "2026-05-06T11:10:51.072026+00:00",
       "sent_date": "2026-05-06",
       "current_price": 0.43,
-      "price_asof": "2026-05-28T11:15:37.390387+00:00",
+      "price_asof": "2026-05-28T11:42:44.144640+00:00",
       "status": "pending_tbd",
       "post_split": "$0.86\u20138.60",
       "price_str": "$0.43"
@@ -1182,7 +1182,7 @@
       "sent_at": "2026-05-06T11:10:46.276659+00:00",
       "sent_date": "2026-05-06",
       "current_price": 0.263,
-      "price_asof": "2026-05-28T11:15:37.470181+00:00",
+      "price_asof": "2026-05-28T11:42:44.222175+00:00",
       "status": "pending_tbd",
       "post_split": "$6.58\u201332.88",
       "price_str": "$0.26"
@@ -1222,7 +1222,7 @@
       "sent_at": "2026-05-04T11:09:02.461592+00:00",
       "sent_date": "2026-05-04",
       "current_price": 1.94,
-      "price_asof": "2026-05-28T11:15:37.548029+00:00",
+      "price_asof": "2026-05-28T11:42:44.305763+00:00",
       "status": "pending_tbd",
       "post_split": "$3.88\u2013388.00",
       "price_str": "$1.94"
