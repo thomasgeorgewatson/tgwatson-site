@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Tracker &mdash; Thomas Watson</title>
+  <meta name="description" content="Private tracker.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="tracker.css">
+  <script src="/js/site.js" defer></script>
+  <script src="tracker.js" defer></script>
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Toggle theme">The Study</button>
+  <nav class="page-nav">
+    <a href="/">&larr; Home</a>
+  </nav>
+  <main class="container tracker">
+    <header class="page-header reveal">
+      <h1>Reverse-Split Tracker</h1>
+      <p class="tracker-meta text-muted" id="tracker-meta">Loading&hellip;</p>
+      <div class="rule"></div>
+    </header>
+
+    <section class="tracker-controls reveal" aria-label="Filters">
+      <div class="control-group">
+        <span class="control-label">Score</span>
+        <label class="check"><input type="checkbox" class="f-score" value="HIGH" checked> High</label>
+        <label class="check"><input type="checkbox" class="f-score" value="MED" checked> Med</label>
+        <label class="check"><input type="checkbox" class="f-score" value="PREBUY" checked> Prebuy</label>
+        <label class="check"><input type="checkbox" class="f-score" value="LOW"> Low</label>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="f-treatment">Treatment</label>
+        <select id="f-treatment">
+          <option value="">All</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="f-search">Ticker</label>
+        <input type="search" id="f-search" placeholder="search&hellip;" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="control-group">
+        <label class="check"><input type="checkbox" id="f-dropped"> Show dropped</label>
+      </div>
+    </section>
+
+    <div id="tracker-sections"></div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,293 @@
+/* ============================================
+   Reverse-Split Tracker — scoped styles.
+   Builds on /css/style.css design tokens.
+   ============================================ */
+
+/* --- Score badge palette (theme-aware) --- */
+:root {
+  --badge-high-fg: #2e7d52;
+  --badge-high-bg: rgba(46, 125, 82, 0.12);
+  --badge-high-bd: rgba(46, 125, 82, 0.32);
+
+  --badge-med-fg: var(--color-accent);
+  --badge-med-bg: rgba(139, 105, 20, 0.12);
+  --badge-med-bd: rgba(139, 105, 20, 0.32);
+
+  --badge-prebuy-fg: #2f6f9f;
+  --badge-prebuy-bg: rgba(47, 111, 159, 0.12);
+  --badge-prebuy-bd: rgba(47, 111, 159, 0.32);
+
+  --badge-low-fg: var(--color-muted);
+  --badge-low-bg: rgba(122, 114, 103, 0.10);
+  --badge-low-bd: rgba(122, 114, 103, 0.28);
+}
+
+[data-theme="study"] {
+  --badge-high-fg: #7cc79b;
+  --badge-high-bg: rgba(124, 199, 155, 0.14);
+  --badge-high-bd: rgba(124, 199, 155, 0.30);
+
+  --badge-prebuy-fg: #84bce8;
+  --badge-prebuy-bg: rgba(132, 188, 232, 0.14);
+  --badge-prebuy-bd: rgba(132, 188, 232, 0.30);
+}
+
+/* --- Header meta --- */
+.tracker .page-header {
+  margin-bottom: var(--space-lg);
+}
+
+.tracker-meta {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  margin-top: var(--space-sm);
+}
+
+.tracker-meta .dot {
+  color: var(--color-border);
+  margin: 0 0.4em;
+  user-select: none;
+}
+
+/* --- Wider measure: the table needs room --- */
+.tracker.container {
+  max-width: 980px;
+}
+
+/* --- Controls --- */
+.tracker-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md) var(--space-lg);
+  padding: var(--space-md) 0 var(--space-lg);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px dotted var(--color-border);
+  font-family: var(--font-sans);
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.control-label {
+  font-variant: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: var(--color-muted);
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tracker-controls input[type="checkbox"] {
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.tracker-controls select,
+.tracker-controls input[type="search"] {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 4px 8px;
+  transition: border-color 200ms ease;
+}
+
+.tracker-controls select:focus,
+.tracker-controls input[type="search"]:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.tracker-controls option {
+  color: #2C2C2C;
+}
+
+/* --- Section --- */
+.tracker-section {
+  margin-bottom: var(--space-xl);
+}
+
+.tracker-section > h2 {
+  font-size: 1.333rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-xs);
+}
+
+.tracker-section .section-count {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-variant: all-small-caps;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* --- Table --- */
+.tracker-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+}
+
+.tracker-table thead th {
+  text-align: left;
+  font-weight: 500;
+  font-variant: all-small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  padding: 0 var(--space-md) var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.tracker-table tbody td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px dotted var(--color-border);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.tracker-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@media (hover: hover) {
+  .tracker-table tbody tr {
+    transition: background-color 200ms ease;
+  }
+  .tracker-table tbody tr:hover {
+    background-color: var(--color-selection);
+  }
+}
+
+.tracker-table .col-ticker {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tracker-table .col-num {
+  font-variant-numeric: tabular-nums;
+}
+
+.tracker-table .muted {
+  color: var(--color-muted);
+}
+
+.tracker-table .edgar-link {
+  font-size: 0.75rem;
+  background-image: none;
+}
+
+.tracker-table .edgar-link:hover {
+  color: var(--color-accent);
+}
+
+/* --- Score badge --- */
+.badge {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+
+.badge-HIGH   { color: var(--badge-high-fg);   background: var(--badge-high-bg);   border-color: var(--badge-high-bd); }
+.badge-MED    { color: var(--badge-med-fg);    background: var(--badge-med-bg);    border-color: var(--badge-med-bd); }
+.badge-PREBUY { color: var(--badge-prebuy-fg); background: var(--badge-prebuy-bg); border-color: var(--badge-prebuy-bd); }
+.badge-LOW    { color: var(--badge-low-fg);    background: var(--badge-low-bg);    border-color: var(--badge-low-bd); }
+
+/* --- Dropped section: quieter --- */
+.tracker-section.dropped .tracker-table tbody td {
+  color: var(--color-muted);
+}
+
+/* --- Empty / error states --- */
+.tracker-empty {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.tracker-error {
+  color: var(--color-muted);
+  font-style: italic;
+  padding: var(--space-lg) 0;
+}
+
+/* --- Responsive: stacked cards on mobile --- */
+@media (max-width: 720px) {
+  .tracker.container {
+    max-width: var(--measure);
+  }
+
+  .tracker-table thead {
+    display: none;
+  }
+
+  .tracker-table,
+  .tracker-table tbody,
+  .tracker-table tr,
+  .tracker-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .tracker-table tr {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .tracker-table tbody td {
+    border: none;
+    border-bottom: 1px dotted var(--color-border);
+    padding: 6px 0;
+    white-space: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-md);
+    text-align: right;
+  }
+
+  .tracker-table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  .tracker-table tbody td::before {
+    content: attr(data-label);
+    font-variant: all-small-caps;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    text-align: left;
+    flex: 0 0 auto;
+  }
+
+  .tracker-table .col-ticker {
+    font-size: 1.1rem;
+  }
+}
