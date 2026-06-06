@@ -149,6 +149,44 @@
     }
     card.appendChild(foot);
 
+    var code = d.upc || d.storeSku;
+    if (code) {
+      var barBtn = document.createElement('button');
+      barBtn.className = 'penny-barcode-btn';
+      barBtn.type = 'button';
+      barBtn.textContent = 'Show barcode';
+
+      var barBox = document.createElement('div');
+      barBox.className = 'penny-barcode';
+      barBox.style.display = 'none';
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      barBox.appendChild(svg);
+      var num = document.createElement('div');
+      num.className = 'penny-barcode-num';
+      num.textContent = (d.upc ? 'UPC ' : 'SKU ') + code;
+      barBox.appendChild(num);
+
+      var rendered = false;
+      barBtn.addEventListener('click', function () {
+        var show = barBox.style.display === 'none';
+        barBox.style.display = show ? 'block' : 'none';
+        barBtn.textContent = show ? 'Hide barcode' : 'Show barcode';
+        if (show && !rendered) {
+          if (window.JsBarcode) {
+            try {
+              window.JsBarcode(svg, code, {
+                format: d.upc ? 'UPC' : 'CODE128',
+                width: 2, height: 64, fontSize: 13, margin: 6, background: '#ffffff'
+              });
+            } catch (e) { /* invalid UPC — the number line still shows */ }
+          }
+          rendered = true;
+        }
+      });
+      card.appendChild(barBtn);
+      card.appendChild(barBox);
+    }
+
     return card;
   }
 

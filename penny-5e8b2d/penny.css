@@ -120,6 +120,26 @@
 }
 .penny-hd-link:hover { color: var(--color-text); }
 
+.penny-barcode-btn {
+  margin-top: var(--space-sm); font-family: var(--font-sans);
+  font-size: 0.68rem; font-variant: all-small-caps; letter-spacing: 0.08em;
+  color: var(--color-accent); background: transparent;
+  border: 1px solid var(--color-border); border-radius: 3px;
+  padding: 3px 10px; cursor: pointer;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+.penny-barcode-btn:hover { border-color: var(--color-accent); color: var(--color-text); }
+.penny-barcode {
+  margin-top: var(--space-sm); background: #fff;
+  border: 1px solid var(--color-border); border-radius: 4px;
+  padding: var(--space-sm); text-align: center;
+}
+.penny-barcode svg { max-width: 100%; height: auto; }
+.penny-barcode-num {
+  font-family: var(--font-sans); font-size: 0.66rem; color: #555;
+  font-variant: all-small-caps; letter-spacing: 0.08em; margin-top: 2px;
+}
+
 .penny-empty, .penny-error { color: var(--color-muted); font-style: italic; padding: var(--space-lg) 0; }
 
 @media (max-width: 720px) {

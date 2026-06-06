@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-06 10:41",
+  "updated": "2026-06-06 11:57",
   "stores": [
     "Bruce B Downs",
     "Zephyrhills",
@@ -8,7 +8,7 @@
     "East Port Richey"
   ],
   "counts": {
-    "deals": 30,
+    "deals": 29,
     "clearance": 0,
     "checked": 48
   },
@@ -17,6 +17,8 @@
       "itemId": "320324795",
       "name": "Milwaukee Packout 19 5 in W x 14 7 in H x 14 5 in D Cabinet in Red 1 Piece 48 22",
       "image": "https://images.thdstatic.com/productImages/f0d25805-e412-496f-b536-2990e1a18548/svn/red-milwaukee-modular-tool-storage-systems-48-22-8445-64_300.jpg",
+      "upc": "045242617593",
+      "storeSku": "1007712596",
       "any_clearance": false,
       "stores": [
         {
@@ -70,6 +72,8 @@
       "itemId": "323830662",
       "name": "item 323830662",
       "image": "https://images.thdstatic.com/productImages/f24427fc-4d8d-469c-a031-a52455ad11be/svn/ryobi-stick-vacuums-pblsv716b-64_300.jpg",
+      "upc": "033287212446",
+      "storeSku": "1009074829",
       "any_clearance": false,
       "stores": [
         {
@@ -123,6 +127,8 @@
       "itemId": "315781986",
       "name": "Leviton Decora Smart Wi Fi Dimmer 2nd Gen No Hub Required Works with Google Alex",
       "image": "https://images.thdstatic.com/productImages/94742023-7c33-489d-9df4-e6c33e567a32/svn/white-leviton-dimmers-r02-d26hd-1rw-64_300.jpg",
+      "upc": "078477363225",
+      "storeSku": "1006037305",
       "any_clearance": false,
       "stores": [
         {
@@ -176,6 +182,8 @@
       "itemId": "202935842",
       "name": "Iron Out 76 oz Rust and Stain Remover IO65N",
       "image": "https://images.thdstatic.com/productImages/84cff428-6f11-4d9b-ba0e-973f066c7220/svn/iron-out-calcium-lime-rust-cleaners-io65n-64_300.jpg",
+      "upc": "076168000022",
+      "storeSku": "182056",
       "any_clearance": false,
       "stores": [
         {
@@ -229,6 +237,8 @@
       "itemId": "310949458",
       "name": "BEHR PREMIUM PLUS 1 qt PPU11 13 Frosted Jade Flat Exterior Paint Primer 405004",
       "image": "https://images.thdstatic.com/productImages/cd9a89dd-4d1c-428d-9251-f93f8e42cac2/svn/frosted-jade-behr-premium-plus-paint-colors-405004-64_300.jpg",
+      "upc": "400836047826",
+      "storeSku": "154113",
       "any_clearance": false,
       "stores": [
         {
@@ -282,6 +292,8 @@
       "itemId": "314718823",
       "name": "DIABLO 2 in Starlock Bi Metal Oscillating Blade for Drywall DOS200RBD",
       "image": "https://images.thdstatic.com/productImages/a5c69e79-f976-4d27-a5f8-470622cb7a81/svn/diablo-oscillating-tool-attachments-dos200rbd-64_300.jpg",
+      "upc": "008925155393",
+      "storeSku": "1005776207",
       "any_clearance": false,
       "stores": [
         {
@@ -335,6 +347,8 @@
       "itemId": "315782019",
       "name": "Leviton Decora Smart 15 Amp Wi Fi Smart Rocker Light Switch with Alexa Google an",
       "image": "https://images.thdstatic.com/productImages/5bb2c72f-8833-42f9-af64-977c0b427a58/svn/white-leviton-light-switches-r02-d215s-1rw-64_300.jpg",
+      "upc": "078477363232",
+      "storeSku": "1006037306",
       "any_clearance": false,
       "stores": [
         {
@@ -388,12 +402,14 @@
       "itemId": "323305533",
       "name": "FastenMaster Collated Cortex Hidden Fastening System for Veranda Trim 2 inch Cor",
       "image": "https://images.thdstatic.com/productImages/bf985b9f-860c-478e-808b-5a999a41a250/svn/fastenmaster-composite-deck-screws-fmctxtcl-v250sm-64_300.jpg",
+      "upc": "608309447047",
+      "storeSku": "1008791241",
       "any_clearance": false,
       "stores": [
         {
           "store": "Bruce B Downs",
-          "aisle": "25",
-          "bay": "015",
+          "aisle": null,
+          "bay": null,
           "qty": 2,
           "price": 165.0,
           "on_clearance": false,
@@ -441,6 +457,8 @@
       "itemId": "312425781",
       "name": "Ram Board 34 in x 19 In Stair Armor Stair Protectors 6 Per Box 5018350",
       "image": "https://images.thdstatic.com/productImages/8d07edcd-bd2b-438e-973f-3d56aeac01bb/svn/ram-board-drop-cloths-5018350-64_300.jpg",
+      "upc": "853453003384",
+      "storeSku": "1010835994",
       "any_clearance": false,
       "stores": [
         {
@@ -494,6 +512,8 @@
       "itemId": "204592556",
       "name": "Gibraltar Building Products 6 in Adjustable Pitch Galvanized Steel Pipe Flashing",
       "image": "https://images.thdstatic.com/productImages/50bcd2dc-39aa-44a3-8a0c-04ad2198eb60/svn/gibraltar-building-products-vent-pipe-flashing-jack6blk-64_300.jpg",
+      "upc": "099137002803",
+      "storeSku": "1000041158",
       "any_clearance": false,
       "stores": [
         {
@@ -547,6 +567,8 @@
       "itemId": "337318726",
       "name": "item 337318726",
       "image": "https://images.thdstatic.com/productImages/4c12fa3c-d47d-42b2-999a-137cbcc859ef/svn/universal-security-instruments-smoke-and-carbon-monoxide-detectors-usi-smco-10yr-v-2-64_300.jpg",
+      "upc": "017801703238",
+      "storeSku": "1014413124",
       "any_clearance": false,
       "stores": [
         {
@@ -588,9 +610,57 @@
       ]
     },
     {
+      "itemId": "310827986",
+      "name": "Milwaukee Diamond Premium 9 in Segmented Blade 1 Pack 49 93 7025",
+      "image": "https://images.thdstatic.com/productImages/d00cd62c-adc4-4d8f-b327-ac3646950997/svn/milwaukee-diamond-blades-49-93-7025-64_300.jpg",
+      "upc": "045242216925",
+      "storeSku": "1004823445",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "13",
+          "bay": "002",
+          "qty": null,
+          "price": 69.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "12",
+          "bay": "003",
+          "qty": null,
+          "price": 69.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "12",
+          "bay": "004",
+          "qty": null,
+          "price": 69.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "12",
+          "bay": "001",
+          "qty": null,
+          "price": 69.97,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
       "itemId": "301901056",
       "name": "DEWALT 20V MAX Compact Lithium Ion 3 0Ah Battery Pack 2 Pack DCB230 2",
       "image": "https://images.thdstatic.com/productImages/c7e04ea0-b3e4-4519-ada6-67d13193a5ec/svn/dewalt-power-tool-batteries-dcb230-2-64_300.jpg",
+      "upc": "885911482356",
+      "storeSku": "1003002304",
       "any_clearance": false,
       "stores": [
         {
@@ -626,6 +696,8 @@
       "itemId": "315713931",
       "name": "Oatey 1 1 2 in PVC P Trap with Insta Plumb Technology HDC9680",
       "image": "https://images.thdstatic.com/productImages/fdda3bee-ed4c-4e25-b48e-8d50510bf074/svn/oatey-polypropylene-fittings-hdc9680-64_300.jpg",
+      "upc": "038753005768",
+      "storeSku": "1006127457",
       "any_clearance": false,
       "stores": [
         {
@@ -661,6 +733,8 @@
       "itemId": "324585503",
       "name": "MOEN Findlay 4 in Centerset Double Handle Bathroom Faucet in Spot Resist Brushed",
       "image": "https://images.thdstatic.com/productImages/0118c9bd-cb80-46c8-8735-19a6a4d43978/svn/spot-resist-brushed-nickel-moen-centerset-bathroom-faucets-84515srn-64_300.jpg",
+      "upc": "026508362464",
+      "storeSku": "1009270633",
       "any_clearance": false,
       "stores": [
         {
@@ -693,44 +767,11 @@
       ]
     },
     {
-      "itemId": "310827986",
-      "name": "Milwaukee Diamond Premium 9 in Segmented Blade 1 Pack 49 93 7025",
-      "image": "https://images.thdstatic.com/productImages/d00cd62c-adc4-4d8f-b327-ac3646950997/svn/milwaukee-diamond-blades-49-93-7025-64_300.jpg",
-      "any_clearance": false,
-      "stores": [
-        {
-          "store": "Bruce B Downs",
-          "aisle": "13",
-          "bay": "002",
-          "qty": null,
-          "price": 69.97,
-          "on_clearance": false,
-          "pct_off": null
-        },
-        {
-          "store": "Carrollwood",
-          "aisle": "12",
-          "bay": "004",
-          "qty": null,
-          "price": 69.97,
-          "on_clearance": false,
-          "pct_off": null
-        },
-        {
-          "store": "East Port Richey",
-          "aisle": "12",
-          "bay": "001",
-          "qty": null,
-          "price": 69.97,
-          "on_clearance": false,
-          "pct_off": null
-        }
-      ]
-    },
-    {
       "itemId": "326468633",
       "name": "RYOBI 18V ONE 1800 Watt Portable Battery Inverter Power Station 8 Port Charger T",
       "image": "https://images.thdstatic.com/productImages/41be38ae-5588-4db2-86c7-5d5e53919f74/svn/ryobi-battery-generators-ryi818bt-64_300.jpg",
+      "upc": "046396039798",
+      "storeSku": "1010136696",
       "any_clearance": false,
       "stores": [
         {
@@ -757,6 +798,8 @@
       "itemId": "321084124",
       "name": "Anvil 24 in Black Plastic Tool Box THD2015 05A",
       "image": "https://images.thdstatic.com/productImages/7a7a240c-6c74-4039-b6ab-8a1094f6cc65/svn/black-anvil-portable-tool-boxes-thd2015-05a-64_300.jpg",
+      "upc": "6974334553652",
+      "storeSku": "1008092784",
       "any_clearance": false,
       "stores": [
         {
@@ -783,6 +826,8 @@
       "itemId": "317882982",
       "name": "MOEN Banbury 1 Handle 1 Spray Trim Kit Tub and Shower Faucet 1 75 GPM in Matte B",
       "image": "https://images.thdstatic.com/productImages/33c7ad5f-7d11-4587-94da-3f5d5e60bd8e/svn/matte-black-moen-bathtub-shower-faucet-combos-82910bl-64_300.jpg",
+      "upc": "026508345658",
+      "storeSku": "1006655585",
       "any_clearance": false,
       "stores": [
         {
@@ -809,6 +854,8 @@
       "itemId": "326476178",
       "name": "Husky 6 in Micro Tip Pruning Shears with Stainless Steel Blades and Softgrip Han",
       "image": "https://images.thdstatic.com/productImages/817b8d7a-2153-4624-961d-28946a146db3/svn/husky-pruning-shears-husky-6-64_300.jpg",
+      "upc": "6938134924340",
+      "storeSku": "1009976447",
       "any_clearance": false,
       "stores": [
         {
@@ -835,6 +882,8 @@
       "itemId": "314498294",
       "name": "Glacier Bay Matte Black and Stainless Steel Bottom Load Water Dispenser LY619",
       "image": "https://images.thdstatic.com/productImages/22515490-e294-450e-9d62-e4217846a829/svn/black-matte-glacier-bay-water-dispensers-ly619-64_300.jpg",
+      "upc": "810058140005",
+      "storeSku": "1005743215",
       "any_clearance": false,
       "stores": [
         {
@@ -861,6 +910,8 @@
       "itemId": "205423758",
       "name": "Kidde Firex Plug In Carbon Monoxide Detector AA Battery Backup CO Detector 21029",
       "image": "https://images.thdstatic.com/productImages/201987c9-d65b-428f-9879-ddeb81efeaf5/svn/kidde-carbon-monoxide-detectors-21029713-64_300.jpg",
+      "upc": "047871257652",
+      "storeSku": "1000392353",
       "any_clearance": false,
       "stores": [
         {
@@ -887,6 +938,8 @@
       "itemId": "202756110",
       "name": "Kidde Firex Carbon Monoxide Detector Battery Operated CO Detector 21030863",
       "image": "https://images.thdstatic.com/productImages/146343ee-001a-49b3-8491-fda1f98c69c6/svn/kidde-carbon-monoxide-detectors-21030863-64_300.jpg",
+      "upc": "047871089055",
+      "storeSku": "184804",
       "any_clearance": false,
       "stores": [
         {
@@ -913,6 +966,8 @@
       "itemId": "314718832",
       "name": "DIABLO 3 1 2 in Demo Demon Universal Fit Bi Metal Oscillating Tool Blade for Gen",
       "image": "https://images.thdstatic.com/productImages/af56a7d4-51a1-40ce-b762-addfcff1cbbd/svn/diablo-oscillating-tool-attachments-dou350rbgp-64_300.jpg",
+      "upc": "008925155645",
+      "storeSku": "1005776216",
       "any_clearance": false,
       "stores": [
         {
@@ -939,6 +994,8 @@
       "itemId": "329239649",
       "name": "40 in x 40 in Fire Blanket 911411",
       "image": "https://images.thdstatic.com/productImages/daf0e380-6222-4b3f-ba2f-6e6f1ff54fee/svn/fire-blankets-911411-64_300.jpg",
+      "upc": "850000321434",
+      "storeSku": "1011107956",
       "any_clearance": false,
       "stores": [
         {
@@ -965,6 +1022,8 @@
       "itemId": "315577247",
       "name": "Kidde Firex Battery Operated Digital Carbon Monoxide Detector 21030262",
       "image": "https://images.thdstatic.com/productImages/f0f14102-7367-4418-ab6e-93d2fbdea56e/svn/kidde-carbon-monoxide-detectors-21030262-64_300.jpg",
+      "upc": "047871302628",
+      "storeSku": "1006001473",
       "any_clearance": false,
       "stores": [
         {
@@ -991,6 +1050,8 @@
       "itemId": "100045210",
       "name": "Kidde Firex Plug in Carbon Monoxide Detector 9 Volt Battery Backup and Digital D",
       "image": "https://images.thdstatic.com/productImages/5b8b1a0d-2d9c-4ec6-9bc2-96a568ae6c88/svn/kidde-carbon-monoxide-detectors-21029915-64_300.jpg",
+      "upc": "784908007605",
+      "storeSku": "201001",
       "any_clearance": false,
       "stores": [
         {
@@ -1017,6 +1078,8 @@
       "itemId": "305821257",
       "name": "ZEP 32 oz Advanced Kitchen Sink Drain Opener U49710",
       "image": "https://images.thdstatic.com/productImages/3fc66e97-5c43-4155-a3e9-16ce7d15c7d6/svn/zep-drain-cleaners-u49710-64_300.jpg",
+      "upc": "021709022148",
+      "storeSku": "1003431983",
       "any_clearance": false,
       "stores": [
         {
@@ -1031,26 +1094,11 @@
       ]
     },
     {
-      "itemId": "202281774",
-      "name": "Kidde Firex Hardwired Carbon Monoxide Detector with 9 Volt Battery Backup 210298",
-      "image": "https://images.thdstatic.com/productImages/b0decacc-d820-48f9-81c2-bb5a048ab5ca/svn/kidde-carbon-monoxide-detectors-21029892-64_300.jpg",
-      "any_clearance": false,
-      "stores": [
-        {
-          "store": "Carrollwood",
-          "aisle": "07",
-          "bay": "016",
-          "qty": null,
-          "price": 42.38,
-          "on_clearance": false,
-          "pct_off": null
-        }
-      ]
-    },
-    {
       "itemId": "300412385",
       "name": "KOHLER Elmbrook 7 in W x 8 in D Rectangular Pedestal Sink Base in White K R5334 ",
       "image": "https://images.thdstatic.com/productImages/9646c9a9-5523-42a4-a935-22a2fa062835/svn/white-kohler-pedestal-sinks-k-r5334-0-64_300.jpg",
+      "upc": "885612536327",
+      "storeSku": "1002161865",
       "any_clearance": false,
       "stores": [
         {
@@ -1068,6 +1116,8 @@
       "itemId": "100120175",
       "name": "Grip Rite 3 in x 9 Gauge 10 penny Bright Steel Common Nails 30 lb Box 10C30BK",
       "image": "https://images.thdstatic.com/productImages/cd89f9aa-c3a6-40b4-9f8d-796c5dd37c88/svn/grip-rite-common-nails-10c30bk-64_300.jpg",
+      "upc": "764666508415",
+      "storeSku": "235576",
       "any_clearance": false,
       "stores": [
         {
