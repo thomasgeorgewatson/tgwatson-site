@@ -117,7 +117,18 @@
 
     var foot = document.createElement('div');
     foot.className = 'penny-card-foot';
-    foot.textContent = 'SKU ' + (d.itemId || DASH);
+    var sku = document.createElement('span');
+    sku.textContent = 'SKU ' + (d.itemId || DASH);
+    foot.appendChild(sku);
+    if (d.itemId) {
+      var hd = document.createElement('a');
+      hd.className = 'penny-hd-link';
+      hd.href = 'https://www.homedepot.com/p/' + d.itemId;
+      hd.target = '_blank';
+      hd.rel = 'noopener noreferrer';
+      hd.textContent = 'View on Home Depot ↗';
+      foot.appendChild(hd);
+    }
     card.appendChild(foot);
 
     return card;

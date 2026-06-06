@@ -104,7 +104,13 @@
 .penny-card-foot {
   margin-top: var(--space-sm); font-family: var(--font-sans);
   font-size: 0.68rem; color: var(--color-muted); font-variant: all-small-caps; letter-spacing: 0.06em;
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm);
 }
+.penny-hd-link {
+  background-image: none; color: var(--color-accent);
+  font-variant: all-small-caps; letter-spacing: 0.06em; white-space: nowrap;
+}
+.penny-hd-link:hover { color: var(--color-text); }
 
 .penny-empty, .penny-error { color: var(--color-muted); font-style: italic; padding: var(--space-lg) 0; }
 
