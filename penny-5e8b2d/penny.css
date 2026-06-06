@@ -1,0 +1,114 @@
+/* ============================================
+   Home Depot Penny Tracker — scoped styles.
+   Builds on /css/style.css design tokens.
+   ============================================ */
+
+:root {
+  --penny-fg: #b06a16;                       /* copper — "a penny" */
+  --penny-bg: rgba(176, 106, 22, 0.12);
+  --penny-bd: rgba(176, 106, 22, 0.34);
+  --clr-fg: #b3402e;                          /* clearance red */
+  --clr-bg: rgba(179, 64, 46, 0.12);
+  --clr-bd: rgba(179, 64, 46, 0.32);
+}
+[data-theme="study"] {
+  --penny-fg: #d9a24a;
+  --clr-fg: #e0795f;
+}
+
+.penny.container { max-width: 980px; }
+.penny .page-header { margin-bottom: var(--space-lg); }
+
+/* --- Header meta (same look as the other tracker) --- */
+.tracker-meta {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  margin-top: var(--space-sm);
+}
+.tracker-meta .dot { color: var(--color-border); margin: 0 0.4em; user-select: none; }
+
+/* --- Controls --- */
+.penny-controls {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--space-md) var(--space-lg);
+  padding: var(--space-md) 0 var(--space-lg);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px dotted var(--color-border);
+  font-family: var(--font-sans);
+}
+.control-group { display: flex; align-items: center; gap: var(--space-sm); }
+.control-label { font-variant: all-small-caps; letter-spacing: 0.1em; font-size: 0.72rem; color: var(--color-muted); }
+.check { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; color: var(--color-text); cursor: pointer; white-space: nowrap; }
+.penny-controls input[type="checkbox"] { accent-color: var(--color-accent); cursor: pointer; }
+.penny-controls select,
+.penny-controls input[type="search"] {
+  font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text);
+  background: transparent; border: 1px solid var(--color-border); border-radius: 3px;
+  padding: 4px 8px; transition: border-color 200ms ease;
+}
+.penny-controls select:focus,
+.penny-controls input[type="search"]:focus { outline: none; border-color: var(--color-accent); }
+.penny-controls option { color: #2C2C2C; }
+
+/* --- Card grid --- */
+.penny-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.penny-card {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: var(--space-md) var(--space-md) var(--space-sm);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 250ms ease, transform 250ms ease;
+}
+@media (hover: hover) {
+  .penny-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+}
+
+.penny-card-title {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+.penny-card-title a { background-image: none; color: var(--color-text); }
+.penny-card-title a:hover { color: var(--color-accent); }
+
+.penny-badges { margin: var(--space-sm) 0 var(--space-md); display: flex; flex-wrap: wrap; gap: 6px; }
+.pbadge {
+  display: inline-block; font-family: var(--font-sans);
+  font-size: 0.64rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 3px; border: 1px solid transparent;
+}
+.pbadge-penny { color: var(--penny-fg); background: var(--penny-bg); border-color: var(--penny-bd); }
+.pbadge-clr   { color: var(--clr-fg);   background: var(--clr-bg);   border-color: var(--clr-bd); }
+.pbadge-count { color: var(--color-muted); border-color: var(--color-border); }
+
+/* --- Store rows --- */
+.penny-stores { font-family: var(--font-sans); font-size: 0.8rem; }
+.penny-store-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-md);
+  padding: 6px 0; border-bottom: 1px dotted var(--color-border);
+}
+.penny-store-row:last-child { border-bottom: none; }
+.penny-store-name { font-weight: 500; color: var(--color-text); }
+.penny-loc { color: var(--color-accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.penny-store-meta { color: var(--color-muted); font-size: 0.74rem; margin-top: 1px; }
+
+.penny-card-foot {
+  margin-top: var(--space-sm); font-family: var(--font-sans);
+  font-size: 0.68rem; color: var(--color-muted); font-variant: all-small-caps; letter-spacing: 0.06em;
+}
+
+.penny-empty, .penny-error { color: var(--color-muted); font-style: italic; padding: var(--space-lg) 0; }
+
+@media (max-width: 720px) {
+  .penny.container { max-width: var(--measure); }
+  .penny-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,289 @@
+{
+  "updated": "2026-06-06 10:18",
+  "stores": [
+    "Bruce B Downs",
+    "Zephyrhills",
+    "Carrollwood",
+    "Northgate",
+    "East Port Richey"
+  ],
+  "counts": {
+    "deals": 8,
+    "clearance": 0,
+    "checked": 16
+  },
+  "deals": [
+    {
+      "itemId": "320324795",
+      "name": "Milwaukee Packout 19 5 in W x 14 7 in H x 14 5 in D Cabinet in Red 1 Piece 48 22",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "FW",
+          "bay": "006",
+          "qty": 22,
+          "price": 149.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "FW",
+          "bay": "021",
+          "qty": 4,
+          "price": 149.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "38",
+          "bay": "010",
+          "qty": 1,
+          "price": 149.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "FW",
+          "bay": "001",
+          "qty": 1,
+          "price": 149.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "FW",
+          "bay": "019",
+          "qty": 21,
+          "price": 149.0,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "323830662",
+      "name": "item 323830662",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "RT",
+          "bay": "001",
+          "qty": 13,
+          "price": 199.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "RT",
+          "bay": "001",
+          "qty": 23,
+          "price": 199.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": null,
+          "bay": null,
+          "qty": 25,
+          "price": 199.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "RT",
+          "bay": "002",
+          "qty": 10,
+          "price": 199.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "37",
+          "bay": "001",
+          "qty": 9,
+          "price": 199.0,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "301901056",
+      "name": "DEWALT 20V MAX Compact Lithium Ion 3 0Ah Battery Pack 2 Pack DCB230 2",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "13",
+          "bay": "001",
+          "qty": null,
+          "price": 99.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "08",
+          "bay": "EC1",
+          "qty": null,
+          "price": 99.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "15",
+          "bay": "EC1",
+          "qty": null,
+          "price": 99.0,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "315713931",
+      "name": "Oatey 1 1 2 in PVC P Trap with Insta Plumb Technology HDC9680",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "32",
+          "bay": "014",
+          "qty": null,
+          "price": 19.21,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "09",
+          "bay": "012",
+          "qty": null,
+          "price": 19.21,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "08",
+          "bay": "014",
+          "qty": null,
+          "price": 19.21,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "326468633",
+      "name": "RYOBI 18V ONE 1800 Watt Portable Battery Inverter Power Station 8 Port Charger T",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "47",
+          "bay": "005",
+          "qty": 1,
+          "price": 649.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "51",
+          "bay": "015",
+          "qty": 2,
+          "price": 649.0,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "321084124",
+      "name": "Anvil 24 in Black Plastic Tool Box THD2015 05A",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "14",
+          "bay": "020",
+          "qty": null,
+          "price": 34.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "13",
+          "bay": "013",
+          "qty": null,
+          "price": 34.98,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "317882982",
+      "name": "MOEN Banbury 1 Handle 1 Spray Trim Kit Tub and Shower Faucet 1 75 GPM in Matte B",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Northgate",
+          "aisle": "30",
+          "bay": "008",
+          "qty": null,
+          "price": 142.66,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "35",
+          "bay": "010",
+          "qty": null,
+          "price": 142.66,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "326476178",
+      "name": "Husky 6 in Micro Tip Pruning Shears with Stainless Steel Blades and Softgrip Han",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "53",
+          "bay": "003",
+          "qty": null,
+          "price": 13.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "61",
+          "bay": "007",
+          "qty": null,
+          "price": 13.98,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    }
+  ]
+}

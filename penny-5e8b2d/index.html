@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Penny Tracker &mdash; Thomas Watson</title>
+  <meta name="description" content="Private tracker.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="penny.css">
+  <script src="/js/site.js" defer></script>
+  <script src="penny.js" defer></script>
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Toggle theme">The Study</button>
+  <nav class="page-nav">
+    <a href="/">&larr; Home</a>
+  </nav>
+  <main class="container penny">
+    <header class="page-header reveal">
+      <h1>Home Depot Penny Tracker</h1>
+      <p class="tracker-meta text-muted" id="penny-meta">Loading&hellip;</p>
+      <div class="rule"></div>
+    </header>
+
+    <section class="penny-controls reveal" aria-label="Filters">
+      <div class="control-group">
+        <label class="control-label" for="f-store">Store</label>
+        <select id="f-store"><option value="">All stores</option></select>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="f-search">Item</label>
+        <input type="search" id="f-search" placeholder="search&hellip;" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="control-group">
+        <label class="check"><input type="checkbox" id="f-clearance"> Clearance only</label>
+      </div>
+    </section>
+
+    <div id="penny-cards"></div>
+  </main>
+</body>
+</html>
