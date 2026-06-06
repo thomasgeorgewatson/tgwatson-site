@@ -89,6 +89,24 @@
     var card = document.createElement('article');
     card.className = 'penny-card reveal';
 
+    if (d.image) {
+      var thumbWrap = document.createElement('a');
+      thumbWrap.className = 'penny-thumb-wrap';
+      if (d.itemId) {
+        thumbWrap.href = 'https://www.homedepot.com/p/' + d.itemId;
+        thumbWrap.target = '_blank';
+        thumbWrap.rel = 'noopener noreferrer';
+      }
+      var img = document.createElement('img');
+      img.className = 'penny-thumb';
+      img.src = d.image;
+      img.alt = d.name || '';
+      img.loading = 'lazy';
+      img.onerror = function () { thumbWrap.style.display = 'none'; };
+      thumbWrap.appendChild(img);
+      card.appendChild(thumbWrap);
+    }
+
     var title = document.createElement('div');
     title.className = 'penny-card-title';
     if (d.itemId) {

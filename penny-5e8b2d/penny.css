@@ -70,6 +70,14 @@
   .penny-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
 }
 
+.penny-thumb-wrap {
+  display: flex; align-items: center; justify-content: center;
+  height: 150px; margin-bottom: var(--space-md);
+  background: #fff; border: 1px solid var(--color-border); border-radius: 4px;
+  overflow: hidden; background-image: none;
+}
+.penny-thumb { max-height: 134px; max-width: 88%; object-fit: contain; }
+
 .penny-card-title {
   font-family: var(--font-body);
   font-size: 1.15rem;
