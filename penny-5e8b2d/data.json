@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-06 10:18",
+  "updated": "2026-06-06 10:31",
   "stores": [
     "Bruce B Downs",
     "Zephyrhills",
@@ -8,9 +8,9 @@
     "East Port Richey"
   ],
   "counts": {
-    "deals": 8,
+    "deals": 30,
     "clearance": 0,
-    "checked": 16
+    "checked": 48
   },
   "deals": [
     {
@@ -118,6 +118,508 @@
       ]
     },
     {
+      "itemId": "315781986",
+      "name": "Leviton Decora Smart Wi Fi Dimmer 2nd Gen No Hub Required Works with Google Alex",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "43",
+          "bay": "003",
+          "qty": null,
+          "price": 51.4,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "06",
+          "bay": "007",
+          "qty": null,
+          "price": 51.4,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "06",
+          "bay": "009",
+          "qty": null,
+          "price": 51.4,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "06",
+          "bay": "008",
+          "qty": null,
+          "price": 51.4,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "09",
+          "bay": "003",
+          "qty": null,
+          "price": 51.4,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "202935842",
+      "name": "Iron Out 76 oz Rust and Stain Remover IO65N",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "32",
+          "bay": "013",
+          "qty": 9,
+          "price": 22.48,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "07",
+          "bay": "019",
+          "qty": 20,
+          "price": 22.48,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "09",
+          "bay": "009",
+          "qty": 9,
+          "price": 22.48,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": null,
+          "bay": null,
+          "qty": 9,
+          "price": 22.48,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "10",
+          "bay": "002",
+          "qty": 23,
+          "price": 22.48,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "310949458",
+      "name": "BEHR PREMIUM PLUS 1 qt PPU11 13 Frosted Jade Flat Exterior Paint Primer 405004",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "02",
+          "bay": "012",
+          "qty": 12,
+          "price": 23.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "43",
+          "bay": "010",
+          "qty": 8,
+          "price": 23.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "43",
+          "bay": "010",
+          "qty": 15,
+          "price": 23.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "44",
+          "bay": "009",
+          "qty": 17,
+          "price": 23.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "06",
+          "bay": "011",
+          "qty": 11,
+          "price": 23.98,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "314718823",
+      "name": "DIABLO 2 in Starlock Bi Metal Oscillating Blade for Drywall DOS200RBD",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "14",
+          "bay": "003",
+          "qty": 5,
+          "price": 19.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "12",
+          "bay": "020",
+          "qty": 4,
+          "price": 19.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": null,
+          "bay": null,
+          "qty": 5,
+          "price": 19.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "12",
+          "bay": "018",
+          "qty": 2,
+          "price": 19.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "12",
+          "bay": "007",
+          "qty": 3,
+          "price": 19.97,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "315782019",
+      "name": "Leviton Decora Smart 15 Amp Wi Fi Smart Rocker Light Switch with Alexa Google an",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "43",
+          "bay": "003",
+          "qty": null,
+          "price": 42.99,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "06",
+          "bay": "007",
+          "qty": null,
+          "price": 42.99,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "06",
+          "bay": "009",
+          "qty": null,
+          "price": 42.99,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "06",
+          "bay": "008",
+          "qty": null,
+          "price": 42.99,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "09",
+          "bay": "003",
+          "qty": null,
+          "price": 42.99,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "323305533",
+      "name": "FastenMaster Collated Cortex Hidden Fastening System for Veranda Trim 2 inch Cor",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "25",
+          "bay": "015",
+          "qty": 2,
+          "price": 165.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": null,
+          "bay": null,
+          "qty": 7,
+          "price": 165.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": null,
+          "bay": null,
+          "qty": 4,
+          "price": 165.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "15",
+          "bay": "002",
+          "qty": 4,
+          "price": 165.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "17",
+          "bay": "008",
+          "qty": 9,
+          "price": 165.0,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "312425781",
+      "name": "Ram Board 34 in x 19 In Stair Armor Stair Protectors 6 Per Box 5018350",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": null,
+          "bay": null,
+          "qty": 1,
+          "price": 24.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": null,
+          "bay": null,
+          "qty": 29,
+          "price": 24.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": null,
+          "bay": null,
+          "qty": 1,
+          "price": 24.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": null,
+          "bay": null,
+          "qty": 1,
+          "price": 24.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": null,
+          "bay": null,
+          "qty": 1,
+          "price": 24.98,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "204592556",
+      "name": "Gibraltar Building Products 6 in Adjustable Pitch Galvanized Steel Pipe Flashing",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "18",
+          "bay": "014",
+          "qty": 6,
+          "price": 27.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "20",
+          "bay": "017",
+          "qty": 2,
+          "price": 27.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "21",
+          "bay": "014",
+          "qty": 5,
+          "price": 27.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "22",
+          "bay": "011",
+          "qty": 9,
+          "price": 27.98,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": null,
+          "bay": null,
+          "qty": 5,
+          "price": 27.98,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "337318726",
+      "name": "item 337318726",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "44",
+          "bay": "EC1",
+          "qty": null,
+          "price": 79.99,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "07",
+          "bay": "018",
+          "qty": null,
+          "price": 79.99,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Northgate",
+          "aisle": "10",
+          "bay": "006",
+          "qty": null,
+          "price": 79.99,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "09",
+          "bay": "020",
+          "qty": null,
+          "price": 79.99,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "310827986",
+      "name": "Milwaukee Diamond Premium 9 in Segmented Blade 1 Pack 49 93 7025",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "13",
+          "bay": "002",
+          "qty": null,
+          "price": 69.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "12",
+          "bay": "003",
+          "qty": null,
+          "price": 69.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "12",
+          "bay": "004",
+          "qty": null,
+          "price": 69.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "12",
+          "bay": "001",
+          "qty": null,
+          "price": 69.97,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
       "itemId": "301901056",
       "name": "DEWALT 20V MAX Compact Lithium Ion 3 0Ah Battery Pack 2 Pack DCB230 2",
       "any_clearance": false,
@@ -180,6 +682,40 @@
           "bay": "014",
           "qty": null,
           "price": 19.21,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "324585503",
+      "name": "MOEN Findlay 4 in Centerset Double Handle Bathroom Faucet in Spot Resist Brushed",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "36",
+          "bay": "003",
+          "qty": null,
+          "price": 92.56,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Zephyrhills",
+          "aisle": "31",
+          "bay": "005",
+          "qty": null,
+          "price": 92.56,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "31",
+          "bay": "006",
+          "qty": null,
+          "price": 92.56,
           "on_clearance": false,
           "pct_off": null
         }
@@ -280,6 +816,245 @@
           "bay": "007",
           "qty": null,
           "price": 13.98,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "314498294",
+      "name": "Glacier Bay Matte Black and Stainless Steel Bottom Load Water Dispenser LY619",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Carrollwood",
+          "aisle": "07",
+          "bay": "001",
+          "qty": null,
+          "price": 199.0,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "10",
+          "bay": "007",
+          "qty": null,
+          "price": 199.0,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "205423758",
+      "name": "Kidde Firex Plug In Carbon Monoxide Detector AA Battery Backup CO Detector 21029",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "43",
+          "bay": "006",
+          "qty": null,
+          "price": 31.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "07",
+          "bay": "016",
+          "qty": null,
+          "price": 31.97,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "202756110",
+      "name": "Kidde Firex Carbon Monoxide Detector Battery Operated CO Detector 21030863",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "44",
+          "bay": "EC1",
+          "qty": null,
+          "price": 22.97,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "07",
+          "bay": "016",
+          "qty": null,
+          "price": 22.97,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "314718832",
+      "name": "DIABLO 3 1 2 in Demo Demon Universal Fit Bi Metal Oscillating Tool Blade for Gen",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Carrollwood",
+          "aisle": "12",
+          "bay": "016",
+          "qty": null,
+          "price": 23.93,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "East Port Richey",
+          "aisle": "12",
+          "bay": "020",
+          "qty": null,
+          "price": 23.93,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "329239649",
+      "name": "40 in x 40 in Fire Blanket 911411",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "44",
+          "bay": "EC1",
+          "qty": null,
+          "price": 16.99,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "RV",
+          "bay": "015",
+          "qty": null,
+          "price": 16.99,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "315577247",
+      "name": "Kidde Firex Battery Operated Digital Carbon Monoxide Detector 21030262",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "44",
+          "bay": "EC1",
+          "qty": null,
+          "price": 27.94,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "07",
+          "bay": "016",
+          "qty": null,
+          "price": 27.94,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "100045210",
+      "name": "Kidde Firex Plug in Carbon Monoxide Detector 9 Volt Battery Backup and Digital D",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "44",
+          "bay": "EC1",
+          "qty": null,
+          "price": 39.68,
+          "on_clearance": false,
+          "pct_off": null
+        },
+        {
+          "store": "Carrollwood",
+          "aisle": "07",
+          "bay": "016",
+          "qty": null,
+          "price": 39.68,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "305821257",
+      "name": "ZEP 32 oz Advanced Kitchen Sink Drain Opener U49710",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Bruce B Downs",
+          "aisle": "32",
+          "bay": "013",
+          "qty": null,
+          "price": 13.07,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "202281774",
+      "name": "Kidde Firex Hardwired Carbon Monoxide Detector with 9 Volt Battery Backup 210298",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Carrollwood",
+          "aisle": "07",
+          "bay": "016",
+          "qty": null,
+          "price": 42.38,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "300412385",
+      "name": "KOHLER Elmbrook 7 in W x 8 in D Rectangular Pedestal Sink Base in White K R5334 ",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "Carrollwood",
+          "aisle": "29",
+          "bay": "008",
+          "qty": 0,
+          "price": 129.0,
+          "on_clearance": false,
+          "pct_off": null
+        }
+      ]
+    },
+    {
+      "itemId": "100120175",
+      "name": "Grip Rite 3 in x 9 Gauge 10 penny Bright Steel Common Nails 30 lb Box 10C30BK",
+      "any_clearance": false,
+      "stores": [
+        {
+          "store": "East Port Richey",
+          "aisle": null,
+          "bay": null,
+          "qty": 4,
+          "price": 82.3,
           "on_clearance": false,
           "pct_off": null
         }
