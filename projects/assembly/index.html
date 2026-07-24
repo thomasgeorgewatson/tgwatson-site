@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembly &mdash; your DOM, as 100,000 particles</title>
+  <meta name="description" content="Real live DOM text rasterised to a texture and rendered as a GPU particle system. Works in every browser — no experimental flags.">
+  <link rel="stylesheet" href="assembly.css">
+
+  <!-- Single source of truth for the hero's look. assembly.js reads this block
+       verbatim and inlines it into the SVG used for rasterisation, so the
+       snapshot is guaranteed to match what you actually see. -->
+  <style id="hero-style">
+    .hero {
+      font-family: Georgia, 'Times New Roman', 'Iowan Old Style', serif;
+      text-align: center;
+      color: #F2ECDF;
+      padding: 0 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .hero .eyebrow {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #8C8272;
+      margin: 0 0 26px;
+    }
+    .hero .mark {
+      font-size: 104px;
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin: 0 0 20px;
+    }
+    .hero .mark em { font-style: italic; color: #D8A63C; }
+    .hero .tagline {
+      font-size: 19px;
+      font-style: italic;
+      color: #B9AF9C;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav"><a href="/projects/">&larr; Projects</a></nav>
+
+  <section class="stage" id="stage">
+    <canvas class="dust" id="dust" aria-hidden="true"></canvas>
+
+    <!-- Real DOM. Rasterised once, then faded to opacity 0 — it stays in the
+         accessibility tree, stays selectable, stays in find-in-page. The
+         particles are only how it is drawn. -->
+    <div class="hero" id="hero">
+      <p class="eyebrow">One snapshot &middot; No flags required</p>
+      <h1 class="mark">Made of <em>nothing</em></h1>
+      <p class="tagline">Sweep the cursor through the letters.</p>
+    </div>
+
+    <div class="stage-ui">
+      <button type="button" id="replay" class="ghost">Reassemble</button>
+      <span class="readout" id="readout"></span>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section class="note">
+      <h2>How this works, and why it works everywhere</h2>
+      <p>
+        The headline above is not an image, a font file, or a canvas
+        <code>fillText</code> call. It is a real <code>&lt;h1&gt;</code>, laid out and
+        typeset by your browser in your own fonts. It was rasterised once into a
+        texture; every non-transparent pixel became a particle with a target
+        position and a colour sampled from that pixel. What you see is
+        <span id="count-inline">those particles</span> under spring forces on the GPU.
+      </p>
+      <p>
+        The <a href="https://github.com/WICG/canvas-place-element" target="_blank" rel="noopener">html-in-canvas</a>
+        proposal adds <code>drawElementImage()</code>, which does that rasterisation
+        natively — and, crucially, can redo it <em>every frame</em>, so the texture
+        tracks a live, changing page. That is the part that needs
+        <code>chrome://flags/#enable-experimental-web-platform-features</code>.
+      </p>
+      <p>
+        But this effect only ever needs <strong>one</strong> snapshot. Once the particle
+        targets exist, the DOM has done its job. And a single snapshot has been
+        available in every browser for years, via an SVG
+        <code>&lt;foreignObject&gt;</code> drawn to a canvas. So this page takes the
+        native path when the flag is on and the universal path when it is not, and
+        <strong>the result is pixel-identical.</strong> The status line below the headline
+        tells you which one you got.
+      </p>
+      <p class="aside">
+        That is the useful distinction, and it is not the one the demos make. Ask
+        whether your effect needs the DOM <em>live</em> or merely needs it <em>once</em>.
+        Live means you are shipping a flagged feature nobody has enabled. Once means
+        you can ship today.
+      </p>
+
+      <h2>The part that is genuinely still real</h2>
+      <p>
+        Try to select the headline. Use find-in-page for the word
+        <em>nothing</em>. It is there, because the element was never removed &mdash; only
+        faded to <code>opacity: 0</code>, which keeps it in the accessibility tree and in
+        the text layer. A screen reader reads a heading, not a canvas.
+      </p>
+      <p>
+        Honest caveat, and it is the exact hazard worth naming: because the glyphs are
+        painted by the GPU and the element itself is transparent, your selection
+        highlight lands on invisible text. That is the tension in all of this &mdash;
+        the moment you move pixels away from where the browser put them, input and
+        visuals stop agreeing. Here nothing moves until you push it, so it mostly
+        holds. Reduced motion is honoured: the particles settle instantly and the
+        cursor forces are off.
+      </p>
+    </section>
+  </main>
+
+  <script src="assembly.js" type="module"></script>
+</body>
+</html>

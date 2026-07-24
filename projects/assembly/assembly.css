@@ -1,0 +1,184 @@
+/* ============================================
+   Assembly — self-contained.
+   Hero typography lives in the #hero-style block
+   in index.html, not here (see assembly.js).
+   ============================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:    #08090B;
+  --paper:  #F2ECDF;
+  --muted:  #8C8272;
+  --dim:    #B9AF9C;
+  --gold:   #D8A63C;
+  --line:   #1E2026;
+  --sans:   'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --serif:  Georgia, 'Times New Roman', serif;
+}
+
+html { font-size: 100%; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: rgba(216, 166, 60, 0.3); }
+
+a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 200ms ease; }
+a:hover { border-bottom-color: var(--gold); }
+
+.nav { position: absolute; top: 26px; left: 30px; z-index: 5; }
+.nav a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted); border: 0; }
+.nav a:hover { color: var(--paper); border: 0; }
+
+/* --- Stage --- */
+.stage {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.dust {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;   /* the DOM underneath must stay reachable */
+}
+
+/* The hero starts fully visible so the page is correct with no JS and no WebGL.
+   assembly.js only fades it out once particles are actually on screen. */
+.hero {
+  position: relative;
+  z-index: 1;
+  transition: opacity 420ms ease;
+}
+
+.hero.is-painted { opacity: 0; }
+
+/* --- Stage UI --- */
+.stage-ui {
+  position: absolute;
+  left: 0; right: 0; bottom: 34px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.ghost {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: color 220ms ease, border-color 220ms ease;
+}
+
+.ghost:hover { color: var(--gold); border-color: var(--gold); }
+.ghost:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.readout {
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #5C5648;
+}
+
+.readout .ok   { color: #6FA96A; }
+.readout .warn { color: var(--gold); }
+
+/* --- Note --- */
+.wrap { max-width: 660px; margin: 0 auto; padding: 0 30px; }
+
+.note { padding: 92px 0 124px; }
+
+.note h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.note h2 + p { margin-top: 0; }
+.note h2:not(:first-child) { margin-top: 64px; }
+
+.note p { color: var(--dim); margin-bottom: 20px; }
+
+.note code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8em;
+  background: #101218;
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--paper);
+  word-break: break-word;
+}
+
+.note strong { color: var(--paper); font-weight: 400; }
+
+.note .aside {
+  border-left: 1px solid var(--line);
+  padding-left: 20px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+  .nav { top: 16px; left: 16px; }
+  .wrap { padding: 0 20px; }
+  .note { padding: 64px 0 88px; }
+  .stage-ui { bottom: 22px; }
+}
+
+/* The hero's own type scale is in #hero-style; only the responsive step is here,
+   and assembly.js re-reads computed size at raster time so both paths agree. */
+@media (max-width: 700px) {
+  .hero .mark { font-size: 58px !important; }
+  .hero .tagline { font-size: 16px !important; }
+}
+
+/* --- Native html-in-canvas host ---
+   Only created when drawElementImage() is usable. The hero is moved inside it,
+   which is the API's hard requirement (immediate children only). Children of a
+   layoutsubtree canvas are laid out and hit-tested but not painted by the
+   browser, so once we clear the bitmap the particles are the only rendering
+   while the heading stays selectable and in the accessibility tree. */
+.host {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.host > .hero {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;            /* invisible by virtue of not being painted, not opacity */
+}
