@@ -292,6 +292,21 @@ small, .text-sm {
   animation: landingFadeIn 800ms ease 1000ms both;
 }
 
+/* An unmarked door. Reads as plain text — no underline, no pointer cursor —
+   and only warms to accent if you happen to rest on it. */
+.colophon-seam {
+  color: inherit;
+  background-image: none;
+  cursor: default;
+  transition: color 900ms ease;
+}
+
+.colophon-seam:hover,
+.colophon-seam:focus-visible {
+  color: var(--color-accent);
+  background-image: none;
+}
+
 /* --- Page Nav --- */
 .page-nav {
   padding: var(--space-lg);

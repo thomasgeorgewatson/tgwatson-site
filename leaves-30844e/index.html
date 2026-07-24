@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Leaves &mdash; Thomas Watson</title>
+  <meta name="description" content="A collection of things worth keeping.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="gallery.css">
+  <script src="/js/site.js" defer></script>
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Toggle theme">The Study</button>
+  <nav class="page-nav">
+    <a href="/">&larr; Home</a>
+  </nav>
+  <main class="container gallery-container">
+    <header class="page-header reveal">
+      <h1>Leaves</h1>
+      <div class="rule"></div>
+      <p class="gallery-note">Things worth keeping. Pressed flat and saved.</p>
+      <blockquote class="gallery-epigraph">
+        <p>I have a strong urge to build software that feels like this.</p>
+        <cite>van Schneider</cite>
+      </blockquote>
+    </header>
+    <div class="plates reveal">
+        <button class="plate" type="button" data-src="img/01.jpg">
+          <img src="img/01.jpg" alt="A letterpress card found folded in returned laundry: “When processing your laundry, the enclosed items were found within your garments. We are pleased to return them to you. Thank you.”, repeated in Japanese, with the items sealed in a small bag" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/02.jpg">
+          <img src="img/02.jpg" alt="A printed card: “Go for it. Don’t be afraid. Nobody cares. And even if they do, people are nothing.”, with a Chinese translation beneath" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/03.jpg">
+          <img src="img/03.jpg" alt="A single cumulus cloud and a leafy vine against a flat blue sky" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/04.jpg">
+          <img src="img/04.jpg" alt="A curved white concrete building sitting low over still water" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/05.jpg">
+          <img src="img/05.jpg" alt="A concrete building with a large circular oculus cut through its face" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/06.jpg">
+          <img src="img/06.jpg" alt="A timber-framed cabin with tall windows, standing in deep snow" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/07.jpg">
+          <img src="img/07.jpg" alt="A warm, low-lit lounge of dark wood and shaded lamps" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/08.jpg">
+          <img src="img/08.jpg" alt="A book-lined study with a writing desk, brass lamp and a hide rug" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/09.jpg">
+          <img src="img/09.jpg" alt="A panelled hallway with a chandelier, staircase and patterned runner" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/10.jpg">
+          <img src="img/10.jpg" alt="A long timber room with a stone fireplace, plank floor and shuttered doors" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/11.jpg">
+          <img src="img/11.jpg" alt="A rustic room with a lit fire and framed pictures crowding a whitewashed wall" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/12.jpg">
+          <img src="img/12.jpg" alt="Golden grass running down a hillside at dusk" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/13.jpg">
+          <img src="img/13.jpg" alt="A rapeseed field in full yellow under a pink evening sky" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/14.jpg">
+          <img src="img/14.jpg" alt="A curved, carpeted restaurant interior seen from the balcony above" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/15.jpg">
+          <img src="img/15.jpg" alt="A green velvet bar with brass stools, overlooking a city at night" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/16.jpg">
+          <img src="img/16.jpg" alt="A wood-panelled washroom with a round mirror and dark stone" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/17.jpg">
+          <img src="img/17.jpg" alt="A wide green meadow giving way to wooded hills and distant mountains" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/18.jpg">
+          <img src="img/18.jpg" alt="A domed library of tiered bookshelves beneath a stained-glass ceiling" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/19.jpg">
+          <img src="img/19.jpg" alt="Yellow wildflowers on a coastal slope, a lone palm and the sea beyond" loading="lazy" decoding="async">
+        </button>
+        <button class="plate" type="button" data-src="img/20.jpg">
+          <img src="img/20.jpg" alt="A wood-panelled room with a stone bench and a classical bust" loading="lazy" decoding="async">
+        </button>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+  (function () {
+    var box = document.getElementById('lightbox');
+    var img = document.getElementById('lightbox-img');
+    var last = null;
+
+    document.querySelectorAll('.plate').forEach(function (b) {
+      b.addEventListener('click', function () {
+        last = b;
+        img.src = b.dataset.src;
+        box.hidden = false;
+        document.body.style.overflow = 'hidden';
+        box.querySelector('.lightbox-close').focus();
+      });
+    });
+
+    function close() {
+      box.hidden = true;
+      img.src = '';
+      document.body.style.overflow = '';
+      if (last) last.focus();
+    }
+
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target.classList.contains('lightbox-close')) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !box.hidden) close();
+    });
+  })();
+  </script>
+</body>
+</html>
