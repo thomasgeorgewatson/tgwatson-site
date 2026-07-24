@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commonplace &mdash; an html-in-canvas demo</title>
+  <meta name="description" content="A demo lander where a WebGL fluid simulation bleeds through live DOM text like ink into paper, using the experimental html-in-canvas API.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="commonplace.css">
+  <script src="commonplace.js" type="module"></script>
+</head>
+<body>
+  <nav class="nav"><a href="/projects/">&larr; Projects</a></nav>
+
+  <!-- commonplace.js rebuilds the inside of this to match the supported render path. -->
+  <section class="stage" id="stage" aria-label="Commonplace"></section>
+
+  <template id="hero">
+    <div class="hero">
+      <p class="eyebrow">Bottled in small batches &middot; Est. MMXXVI</p>
+      <h1 class="mark">Commonplace</h1>
+      <div class="rule"></div>
+      <p class="tagline">Ink for people who still write things down.</p>
+      <p class="body">
+        An iron gall formula, ground the slow way and aged eight weeks before it ever
+        meets glass. It darkens on the page as it dries, the way the good inks always did.
+      </p>
+      <form class="form" id="reserve-form" novalidate>
+        <label class="sr-only" for="reserve-email">Email address</label>
+        <input id="reserve-email" name="email" type="email" inputmode="email"
+               autocomplete="email" placeholder="you@example.com" required>
+        <button type="submit">Reserve a bottle</button>
+      </form>
+      <p class="note" id="reserve-note" role="status">Thirty millilitres. Two hundred bottles.</p>
+    </div>
+  </template>
+
+  <main class="wrap">
+    <ul class="specs">
+      <li><h2>Iron gall</h2><p>Oak gall, iron salt, gum arabic. The recipe monks used, minus the parts that ate through the page.</p></li>
+      <li><h2>Archival</h2><p>Rated a century on cotton stock. Longer if you keep it out of the sun, which you should anyway.</p></li>
+      <li><h2>Hand filled</h2><p>Poured into 30ml apothecary glass, labelled wet, and boxed the same afternoon.</p></li>
+    </ul>
+
+    <section class="about">
+      <div class="rule"></div>
+      <h2>What you're actually looking at</h2>
+      <p>
+        The ink above is not a video and not an image. It's a WebGL fluid simulation reading
+        the headline as a live texture &mdash; which is why the letterforms bleed and swim
+        instead of sitting politely under a coloured overlay. The words are still real text.
+        Select them. Tab into the field and type. The button still takes your clicks.
+      </p>
+      <p>
+        That comes from <a href="https://canvasui.dev" target="_blank" rel="noopener">Canvas&nbsp;UI</a>
+        riding the <a href="https://github.com/WICG/canvas-place-element" target="_blank" rel="noopener">html-in-canvas</a>
+        proposal: <code>drawElementImage()</code> hands a canvas a rasterised copy of live DOM every
+        frame, while the DOM underneath stays laid out, focusable and clickable. It's a proposal,
+        not a standard, and today it needs
+        <code>chrome://flags/#enable-experimental-web-platform-features</code> in a Chromium browser.
+      </p>
+      <p>
+        Without that flag &mdash; which is to say, for essentially every real visitor right now &mdash;
+        the shader has no page texture to bend, so it washes ink <em>over</em> the type instead of
+        through it. The two states are tuned separately here, because a fluid sim at full strength
+        does not politely flow around your paragraphs. It covers them.
+      </p>
+      <p class="credit">
+        Fluid component by <a href="https://github.com/DavidHDev/canvas-ui" target="_blank" rel="noopener">David&nbsp;Haz</a>
+        (MIT + Commons Clause), recoloured and retuned. The simulation itself is unmodified.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

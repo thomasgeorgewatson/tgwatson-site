@@ -1,0 +1,192 @@
+/* ============================================
+   Commonplace — self-contained.
+   Borrows nothing from /css/style.css and exports
+   nothing to it. Lives entirely in this folder.
+   ============================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:        #0A0908;   /* page */
+  --ink-raised: #12100E;
+  --paper:      #EDE6D8;   /* type */
+  --muted:      #8A8175;
+  --gold:       #C9A227;
+  --line:       #241F1A;
+
+  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --measure: 660px;
+}
+
+html { font-size: 100%; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(201, 162, 39, 0.28); color: var(--paper); }
+
+a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 220ms ease; }
+a:hover { border-bottom-color: var(--gold); }
+
+/* --- Nav --- */
+.nav { position: absolute; top: 28px; left: 32px; z-index: 4; }
+.nav a {
+  font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.08em;
+  color: var(--muted); border: 0;
+}
+.nav a:hover { color: var(--paper); border: 0; }
+
+/* --- Ink stage --- */
+.stage {
+  position: relative;
+  min-height: 100svh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.stage-source { display: block; }          /* rasterised canvas, native path only */
+
+/* On the native path this is laid out inside the <canvas>, which does not inherit the
+   stage's flex centring — so it has to centre the hero itself. Harmless on the
+   fallback path, where it is already a centred flex child of .stage. */
+.stage-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stage-output {                             /* WebGL canvas — must never eat clicks */
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+/* --- Hero --- */
+.hero {
+  width: 100%; max-width: var(--measure);
+  margin: 0 auto; padding: 96px 32px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--sans); font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.22em;
+  color: var(--muted); margin-bottom: 34px;
+}
+
+.mark {
+  font-size: clamp(3rem, 11vw, 6rem);
+  font-weight: 400; line-height: 1.02; letter-spacing: 0.02em;
+  margin-bottom: 22px;
+}
+
+.rule {
+  width: 60px; height: 1px; margin: 0 auto 30px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.tagline { font-style: italic; font-size: 1.35rem; margin-bottom: 18px; }
+
+.body { color: var(--muted); max-width: 44ch; margin: 0 auto 44px; }
+
+/* --- Reserve form --- */
+.form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; }
+
+.form input, .form button {
+  font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.05em;
+  padding: 12px 20px; border-radius: 2px;
+  border: 1px solid var(--line);
+  background: rgba(237, 230, 216, 0.02);
+  color: var(--paper);
+  transition: border-color 240ms ease, background-color 240ms ease, color 240ms ease;
+}
+
+.form input { width: 268px; max-width: 100%; }
+.form input::placeholder { color: var(--muted); }
+
+.form input:focus-visible, .form button:focus-visible {
+  outline: none; border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.16);
+}
+
+.form button {
+  cursor: pointer; border-color: var(--gold); color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.14em;
+}
+.form button:hover { background: var(--gold); color: var(--ink); }
+
+.note {
+  font-family: var(--sans); font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--muted); min-height: 1.4em;
+}
+
+/* --- Ink opt-in (only rendered when the OS asks for reduced motion) --- */
+.optin {
+  position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); z-index: 3;
+  font-family: var(--sans); font-size: 0.66rem;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--muted); background: transparent;
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: 8px 16px; cursor: pointer;
+  transition: color 240ms ease, border-color 240ms ease;
+}
+.optin:hover { color: var(--gold); border-color: var(--gold); }
+
+/* --- Body --- */
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 32px; }
+
+.specs {
+  list-style: none;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px;
+  padding: 96px 0; border-bottom: 1px solid var(--line);
+}
+.specs h2 {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 12px;
+}
+.specs p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+
+.about { padding: 96px 0 128px; }
+.about .rule { margin: 0 0 32px; }
+.about h2 { font-size: 1.6rem; font-weight: 400; margin-bottom: 22px; }
+.about p { color: var(--muted); margin-bottom: 20px; }
+.about code {
+  font-family: var(--sans); font-size: 0.78em;
+  background: var(--ink-raised); border: 1px solid var(--line);
+  padding: 2px 7px; border-radius: 2px; color: var(--paper);
+  word-break: break-word;
+}
+.about .credit { font-size: 0.9rem; margin-top: 36px; }
+
+/* --- Utility --- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+  .specs { grid-template-columns: 1fr; gap: 32px; padding: 64px 0; }
+  .about { padding: 64px 0 96px; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 1rem; }
+  .nav { top: 18px; left: 18px; }
+  .hero { padding: 72px 20px; }
+  .wrap { padding: 0 20px; }
+  .form input, .form button { width: 100%; }
+}
