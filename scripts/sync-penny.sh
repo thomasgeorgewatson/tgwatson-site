@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 # Sync the Home Depot penny-tracker deals feed into this site and deploy via GitHub Pages.
-# Copies penny-tracker/deals.json into the unlisted penny page, and commits + pushes only
-# when the data actually changed. Idempotent and quiet when there is nothing new.
+# Copies penny-tracker/deals.json into the penny page, and commits + pushes only when the
+# data actually changed. Idempotent and quiet when there is nothing new.
+#
+# NOT SCHEDULED. Nothing has run this since 2026-06-06, and the page it feeds is now
+# published as an ARCHIVED SNAPSHOT under /projects/. Running this would un-freeze that
+# artifact — which is fine if you're reviving the tracker, but check the scraper still
+# works first, and drop the .archive-note from projects/penny-tracker/index.html.
 set -euo pipefail
 
 SRC="/Users/tw/Documents/Claude/penny-tracker/deals.json"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-REL="penny-5e8b2d/data.json"
+REL="projects/penny-tracker/data.json"
 DEST="$REPO_DIR/$REL"
 
 if [ ! -f "$SRC" ]; then

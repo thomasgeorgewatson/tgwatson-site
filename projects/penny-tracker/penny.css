@@ -19,6 +19,20 @@
 .penny.container { max-width: 980px; }
 .penny .page-header { margin-bottom: var(--space-lg); }
 
+/* --- Archived-snapshot notice: this page is a frozen artifact, not a live tracker --- */
+.archive-note {
+  max-width: var(--measure);
+  margin: var(--space-md) 0 0;
+  padding: var(--space-sm) var(--space-md);
+  border-left: 2px solid var(--penny-bd);
+  background: var(--penny-bg);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.archive-note strong { color: var(--penny-fg); }
+
 /* --- Header meta (same look as the other tracker) --- */
 .tracker-meta {
   font-family: var(--font-sans);
