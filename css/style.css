@@ -392,6 +392,13 @@ small, .text-sm {
   margin-bottom: var(--space-xs);
 }
 
+.project-links {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-xs);
+}
+
 .project-year {
   font-family: var(--font-sans);
   font-variant: all-small-caps;
