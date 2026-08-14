@@ -5,43 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects &mdash; Thomas Watson</title>
   <meta name="description" content="Projects by Thomas Watson.">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/site.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/note.css">
 </head>
 <body>
-  <button class="theme-toggle" aria-label="Toggle theme">The Study</button>
-  <nav class="page-nav">
-    <a href="/">&larr; Home</a>
-  </nav>
-  <main class="container">
-    <header class="page-header reveal">
-      <h1>Projects</h1>
-      <div class="rule"></div>
-    </header>
-    <ul class="project-list">
-      <li class="project-item reveal">
-        <h2 class="project-title"><a href="https://landhawk.tgwatson.com" target="_blank" rel="noopener">LandHawk</a></h2>
-        <p class="project-desc">A parcel recon console for Florida land. Fly around a dark map, click any parcel, and the dock fills in &mdash; ownership, acreage, deed history, flood, soils, elevation &mdash; streamed per source as each one answers. Deterministic data all the way down: no LLM in the loop.</p>
-        <span class="project-year">2026</span>
-      </li>
-      <li class="project-item reveal">
-        <h2 class="project-title">YTranscript</h2>
-        <p class="project-desc">A browser extension that pulls the transcript out of any YouTube video &mdash; timestamps, chapters, pause-inferred paragraphs &mdash; as plain text or Obsidian-ready Markdown. Point it at a channel or playlist and it archives the whole thing to disk, one file per video.</p>
-        <p class="project-links"><a href="/downloads/ytranscript-1.1.1.zip">Download v1.1.1 (.zip)</a> &middot; unzip, then &ldquo;Load unpacked&rdquo; at chrome://extensions</p>
-        <span class="project-year">2026</span>
-      </li>
-      <li class="project-item reveal">
-        <h2 class="project-title">Amex Offers &mdash; Add All</h2>
-        <p class="project-desc">Loops through the American Express offers page and adds every offer to your card &mdash; re-querying after each click, scrolling past the lazy-loading, until none remain. Replaces the console snippet that quietly stopped matching anything.</p>
-        <p class="project-links"><a href="/downloads/amex-offers-adder-1.0.0.zip">Download v1.0.0 (.zip)</a> &middot; unzip, then &ldquo;Load unpacked&rdquo; at chrome://extensions</p>
-        <span class="project-year">2026</span>
-      </li>
-      <li class="project-item reveal">
-        <h2 class="project-title"><a href="/projects/penny-tracker/">Penny Tracker</a></h2>
-        <p class="project-desc">Home Depot quietly marks dead inventory down to $0.01, but only at the register &mdash; the pricing API never admits it. So this tracked the tell instead, pulling per-store stock and aisle&nbsp;/&nbsp;bay for candidate SKUs and rendering a scannable UPC&#8209;A barcode to check at the shelf. Archived snapshot: the data is frozen at its last run, the filters and barcodes still work.</p>
-        <span class="project-year">2026</span>
-      </li>
-    </ul>
+  <main class="desk">
+    <article class="card card--projects">
+      <span class="staple" aria-hidden="true"></span>
+
+      <header class="masthead">
+        <p class="masthead-return"><a href="/">Thomas George Watson</a></p>
+        <h1 class="masthead-name">Projects</h1>
+      </header>
+
+      <hr class="rule">
+
+      <p class="note-line note-line--intro">
+        <span aria-hidden="true"><span class="initial">I</span>n the course of things, the following items were made. We are pleased to present them to you.</span>
+        <span class="sr-only">In the course of things, the following items were made. We are pleased to present them to you.</span>
+      </p>
+
+      <section class="entry">
+        <header class="entry-head">
+          <h2 class="entry-title"><a href="https://landhawk.tgwatson.com" target="_blank" rel="noopener">LandHawk</a></h2>
+          <span class="entry-year">2026</span>
+        </header>
+        <p class="entry-desc">A parcel recon console for Florida land. Fly around a dark map, click any parcel, and the dock fills in &mdash; ownership, acreage, deed history, flood, soils, elevation &mdash; streamed per source as each one answers. Deterministic data all the way down: no LLM in the loop.</p>
+      </section>
+
+      <section class="entry">
+        <header class="entry-head">
+          <h2 class="entry-title">YTranscript</h2>
+          <span class="entry-year">2026</span>
+        </header>
+        <p class="entry-desc">A browser extension that pulls the transcript out of any YouTube video &mdash; timestamps, chapters, pause-inferred paragraphs &mdash; as plain text or Obsidian-ready Markdown. Point it at a channel or playlist and it archives the whole thing to disk, one file per video.</p>
+        <p class="enclosure"><a href="/downloads/ytranscript-1.1.1.zip">Download v1.1.1 (.zip)</a><span class="enclosure-hint"> &mdash; unzip, then &ldquo;Load unpacked&rdquo; at chrome://extensions</span></p>
+      </section>
+
+      <section class="entry">
+        <header class="entry-head">
+          <h2 class="entry-title">Amex Offers &mdash; Add All</h2>
+          <span class="entry-year">2026</span>
+        </header>
+        <p class="entry-desc">Loops through the American Express offers page and adds every offer to your card &mdash; re-querying after each click, scrolling past the lazy-loading, until none remain. Replaces the console snippet that quietly stopped matching anything.</p>
+        <p class="enclosure"><a href="/downloads/amex-offers-adder-1.0.0.zip">Download v1.0.0 (.zip)</a><span class="enclosure-hint"> &mdash; unzip, then &ldquo;Load unpacked&rdquo; at chrome://extensions</span></p>
+      </section>
+
+      <section class="entry">
+        <header class="entry-head">
+          <h2 class="entry-title"><a href="/projects/penny-tracker/">Penny Tracker</a></h2>
+          <span class="entry-year">2026</span>
+        </header>
+        <p class="entry-desc">Home Depot quietly marks dead inventory down to $0.01, but only at the register &mdash; the pricing API never admits it. So this tracked the tell instead, pulling per-store stock and aisle&nbsp;/&nbsp;bay for candidate SKUs and rendering a scannable UPC&#8209;A barcode to check at the shelf. Archived snapshot: the data is frozen at its last run, the filters and barcodes still work.</p>
+      </section>
+
+      <hr class="rule rule--foot">
+
+      <p class="signoff">
+        <span class="signoff-en">Thank you.</span>
+        <span class="signoff-ja" lang="ja">ありがとうございます。</span>
+      </p>
+    </article>
   </main>
 </body>
 </html>

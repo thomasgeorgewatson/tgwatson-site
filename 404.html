@@ -4,15 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Not found &mdash; Thomas Watson</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/site.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/note.css">
 </head>
 <body>
-  <button class="theme-toggle" aria-label="Toggle theme">The Study</button>
-  <main class="not-found">
-    <h1>404</h1>
-    <p>This page seems to have wandered off.</p>
-    <a href="/">Go home</a>
+  <main class="desk">
+    <article class="card">
+      <span class="staple" aria-hidden="true"></span>
+
+      <header class="masthead">
+        <h1 class="masthead-name">Not Found</h1>
+      </header>
+
+      <hr class="rule">
+
+      <p class="note-line">
+        <span aria-hidden="true"><span class="initial">W</span>hen processing your request, the enclosed page could not be found. We apologize for the inconvenience.</span>
+        <span class="sr-only">When processing your request, the enclosed page could not be found. We apologize for the inconvenience.</span>
+      </p>
+
+      <nav class="nav" aria-label="Pages">
+        <a href="/">Return home</a>
+      </nav>
+
+      <hr class="rule rule--foot">
+
+      <p class="signoff">
+        <span class="signoff-en">Thank you.</span>
+        <span class="signoff-ja" lang="ja">ありがとうございます。</span>
+      </p>
+    </article>
   </main>
 </body>
 </html>

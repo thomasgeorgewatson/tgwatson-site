@@ -1,0 +1,422 @@
+/* ============================================================
+   tgwatson.com — "the laundry note"
+   A hotel laundry-return card: cream stock, one staple,
+   letterpress Garamond set mostly in italic, a right-aligned
+   thank-you with its Japanese line beneath.
+   ============================================================ */
+
+:root {
+  --paper:   #f6f1e3;   /* cream cardstock */
+  --paper-lo:#efe8d5;   /* shadowed paper edge */
+  --ink:     #2b2418;   /* warm letterpress black */
+  --ink-soft:#5b5140;   /* secondary ink */
+  --hairline:rgba(43, 36, 24, 0.30);
+  --desk:    #514a3b;   /* the dark desk the note rests on */
+  --madder:  #8a3a2b;   /* faded stamp red — hover only */
+  --serif:   "EB Garamond", "Iowan Old Style", Georgia, serif;
+  --jp:      "Shippori Mincho", "Hiragino Mincho ProN", serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { font-size: 17px; }
+
+body {
+  font-family: var(--serif);
+  color: var(--ink);
+  background-color: var(--desk);
+  background-image: radial-gradient(120% 110% at 50% -10%, #665d49 0%, #514a3b 55%, #423c2f 100%);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: oldstyle-nums;
+}
+
+::selection { background: rgba(138, 58, 43, 0.22); }
+
+/* ---------- the desk ---------- */
+
+.desk {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 5vw, 4.5rem) clamp(0.75rem, 4vw, 3rem);
+}
+
+/* ---------- the card ---------- */
+
+.card {
+  position: relative;
+  width: min(100%, 36rem);
+  background-color: var(--paper);
+  background-image: linear-gradient(160deg, #f8f4e8 0%, var(--paper) 45%, var(--paper-lo) 100%);
+  border-radius: 2px;
+  padding: clamp(2.4rem, 7vw, 3.6rem) clamp(1.6rem, 6vw, 3.2rem) clamp(2rem, 6vw, 2.8rem);
+  box-shadow:
+    0 1px 2px rgba(26, 21, 12, 0.35),
+    0 14px 40px rgba(26, 21, 12, 0.40);
+  transform: rotate(-0.35deg);
+  animation: settle 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.card--projects { width: min(100%, 42rem); }
+
+/* paper grain */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+}
+
+@keyframes settle {
+  from { opacity: 0; transform: translateY(12px) rotate(0.5deg); }
+  to   { opacity: 1; transform: translateY(0)    rotate(-0.35deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { animation: none; }
+}
+
+/* ---------- the staple ---------- */
+
+.staple {
+  position: absolute;
+  top: 1.35rem;
+  left: 1.6rem;
+  width: 42px;
+  height: 8px;
+  transform: rotate(-38deg);
+  border-radius: 2px;
+  background: linear-gradient(180deg, #d9d6cd 0%, #a6a29a 45%, #8b877f 55%, #c9c6be 100%);
+  box-shadow:
+    0 1px 1px rgba(43, 36, 24, 0.45),
+    inset 0 0 1px rgba(255, 255, 255, 0.7);
+  z-index: 1;
+}
+
+/* pressed-through legs at either end */
+.staple::before,
+.staple::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  width: 3px;
+  height: 5px;
+  background: linear-gradient(180deg, #7c786f, rgba(60, 52, 38, 0.15));
+  border-radius: 0 0 1px 1px;
+}
+.staple::before { left: 1px; }
+.staple::after  { right: 1px; }
+
+/* ---------- masthead ---------- */
+
+.masthead { text-align: center; }
+
+.masthead-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  text-indent: 0.30em; /* re-center the tracked caps */
+  color: var(--ink);
+}
+
+.masthead-return {
+  margin-bottom: 0.9rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-indent: 0.24em;
+}
+.masthead-return a { text-decoration: none; color: var(--ink-soft); }
+.masthead-return a::before { content: "\2190\00a0\00a0"; }
+.masthead-return a:hover { color: var(--madder); }
+
+/* ---------- rules ---------- */
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 1.5rem 0 2.1rem;
+}
+
+.rule--foot { margin: 2.4rem 0 1.1rem; }
+
+/* ---------- the note voice ---------- */
+
+.note-line {
+  font-style: italic;
+  font-size: clamp(1.3rem, 4.2vw, 1.55rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+
+.note-line--intro {
+  font-size: clamp(1.1rem, 3.4vw, 1.25rem);
+  margin-bottom: 0.4rem;
+}
+
+/* the oversized italic initial — the swash-capital treatment.
+   A real span, not ::first-letter: Chromium substitutes the roman
+   face inside ::first-letter, and the whole point is the italic L. */
+.initial {
+  float: left;
+  font-style: italic;
+  font-size: 3.9em;
+  line-height: 0.78;
+  padding: 0.04em 0.12em 0 0;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- navigation ---------- */
+
+.nav {
+  clear: left;
+  margin-top: 2.2rem;
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.nav--contact {
+  margin-top: 0.9rem;
+  font-size: 0.64rem;
+  color: color-mix(in srgb, var(--ink-soft) 75%, var(--paper));
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.nav a:hover { color: var(--madder); border-bottom-color: rgba(138, 58, 43, 0.45); }
+
+.sep { margin: 0 0.55em; color: var(--hairline); }
+
+/* ---------- project entries ---------- */
+
+.entry {
+  padding: 1.6rem 0 1.7rem;
+}
+.entry + .entry { border-top: 1px solid var(--hairline); }
+.note-line--intro + .entry { margin-top: 1.4rem; border-top: 1px solid var(--hairline); }
+
+.entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.55rem;
+}
+
+.entry-title {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.28rem;
+  letter-spacing: 0.01em;
+}
+
+.entry-title a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(43, 36, 24, 0.35);
+  text-underline-offset: 4px;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+.entry-title a:hover { color: var(--madder); text-decoration-color: rgba(138, 58, 43, 0.5); }
+
+.entry-year {
+  flex: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+}
+
+.entry-desc {
+  font-style: italic;
+  font-size: 1.0rem;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 60ch;
+}
+
+/* ---------- the glassine bag ---------- */
+/* downloads sit in a small translucent sleeve, like the
+   enclosed-items bag stapled to the original note */
+
+.enclosure {
+  display: inline-block;
+  margin-top: 0.95rem;
+  padding: 0.5rem 0.85rem;
+  font-style: normal;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  background: linear-gradient(115deg,
+    rgba(255, 255, 255, 0.60) 0%,
+    rgba(255, 255, 255, 0.28) 42%,
+    rgba(255, 255, 255, 0.55) 100%);
+  border: 1px solid rgba(110, 98, 76, 0.30);
+  border-radius: 1px;
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.55),
+    0 1px 1px rgba(43, 36, 24, 0.10);
+}
+
+.enclosure a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(43, 36, 24, 0.4);
+  text-underline-offset: 3px;
+}
+.enclosure a:hover { color: var(--madder); text-decoration-color: rgba(138, 58, 43, 0.5); }
+
+.enclosure-hint { color: color-mix(in srgb, var(--ink-soft) 80%, var(--paper)); }
+
+/* ---------- sign-off ---------- */
+
+.signoff {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  text-align: right;
+}
+
+.signoff-en {
+  font-style: italic;
+  font-size: 1.12rem;
+  color: var(--ink);
+}
+
+.signoff-ja {
+  font-family: var(--jp);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+/* ---------- focus & small screens ---------- */
+
+a:focus-visible {
+  outline: 2px solid var(--madder);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+@media (max-width: 480px) {
+  html { font-size: 16px; }
+  .masthead-name { letter-spacing: 0.2em; text-indent: 0.2em; }
+  .staple { top: 1.05rem; left: 1.1rem; width: 36px; }
+  .entry-head { flex-wrap: wrap; gap: 0.2rem 1rem; }
+}
+
+/* ============================================================
+   site additions beyond the prototype
+   ============================================================ */
+
+/* the desk stacks card + seam */
+.desk {
+  grid-auto-flow: row;
+  row-gap: 1.4rem;
+}
+
+/* the colophon seam — barely-there, resting on the desk */
+.seam a {
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(246, 241, 227, 0.28);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.seam a:hover { color: rgba(246, 241, 227, 0.55); }
+
+/* ---------- longer prose (about, articles) ---------- */
+
+.prose { clear: left; }
+
+.prose p {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 1.1rem;
+  max-width: 60ch;
+}
+
+.prose--italic p { font-style: italic; }
+
+.prose a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(43, 36, 24, 0.35);
+  text-underline-offset: 4px;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+.prose a:hover { color: var(--madder); text-decoration-color: rgba(138, 58, 43, 0.5); }
+
+.prose blockquote {
+  font-style: italic;
+  color: var(--ink-soft);
+  border-left: 1px solid var(--hairline);
+  padding-left: 1.1rem;
+  margin: 1.4rem 0;
+}
+
+.prose code {
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  font-size: 0.82em;
+  font-style: normal;
+}
+
+/* a set-apart line, letter-spaced small caps, centered */
+.aside-line {
+  margin: 1.6rem 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+
+/* article headings */
+.prose h2 {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.25rem;
+  margin: 1.8rem 0 0.7rem;
+}
+
+.article-date {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-indent: 0.24em;
+  color: var(--ink-soft);
+  font-style: normal;
+}

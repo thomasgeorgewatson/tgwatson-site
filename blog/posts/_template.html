@@ -5,26 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>POST_TITLE &mdash; Thomas Watson</title>
   <meta name="description" content="POST_DESCRIPTION">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/site.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/note.css">
 </head>
 <body>
-  <button class="theme-toggle" aria-label="Toggle theme">The Study</button>
-  <nav class="page-nav">
-    <a href="/blog/">&larr; Writing</a>
-  </nav>
-  <main class="container">
-    <article>
-      <header class="article-header reveal">
+  <main class="desk">
+    <article class="card card--projects">
+      <span class="staple" aria-hidden="true"></span>
+
+      <header class="masthead">
+        <p class="masthead-return"><a href="/blog/">Writing</a></p>
+        <h1 class="masthead-name">POST_TITLE</h1>
         <time class="article-date">DD Month YYYY</time>
-        <h1>POST_TITLE</h1>
       </header>
-      <div class="article-content reveal">
-        <!-- Write here -->
+
+      <hr class="rule">
+
+      <div class="prose">
+        <!-- Write here. Open the first paragraph with:
+             <span class="initial" aria-hidden="true">X</span><span class="sr-only">X</span>rest of first word... -->
       </div>
-      <footer class="article-footer">
-        <a href="/blog/">&larr; Back to Writing</a>
-      </footer>
+
+      <hr class="rule rule--foot">
+
+      <p class="signoff">
+        <span class="signoff-en">Thank you.</span>
+        <span class="signoff-ja" lang="ja">ありがとうございます。</span>
+      </p>
     </article>
   </main>
 </body>

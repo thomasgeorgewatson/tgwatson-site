@@ -5,26 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About &mdash; Thomas Watson</title>
   <meta name="description" content="About Thomas George Watson.">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/site.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/note.css">
 </head>
 <body>
-  <button class="theme-toggle" aria-label="Toggle theme">The Study</button>
-  <nav class="page-nav">
-    <a href="/">&larr; Home</a>
-  </nav>
-  <main class="container">
-    <header class="page-header reveal">
-      <h1>About</h1>
-      <div class="rule"></div>
-    </header>
-    <div class="article-content reveal">
-      <p>I'm Thomas. I build things, write occasionally, and pay attention to the details that most people skip.</p>
-      <p>I believe the best work feels inevitable in hindsight&mdash;simple on the surface, considered underneath. Like a well-built room you never want to leave.</p>
-      <aside class="pull-quote">Life happens wherever you are, whether you make it or not.</aside>
-      <p>This site is built by hand. No frameworks, no templates, no build step. Just HTML and CSS, the way the web was meant to be.</p>
-      <p>If you'd like to get in touch, <a href="mailto:thomasgwatson@outlook.com">send me a note</a>.</p>
-    </div>
+  <main class="desk">
+    <article class="card">
+      <span class="staple" aria-hidden="true"></span>
+
+      <header class="masthead">
+        <p class="masthead-return"><a href="/">Thomas George Watson</a></p>
+        <h1 class="masthead-name">About</h1>
+      </header>
+
+      <hr class="rule">
+
+      <div class="prose prose--italic">
+        <p><span class="initial" aria-hidden="true">I</span><span class="sr-only">I</span>'m Thomas. I build things, write occasionally, and pay attention to the details that most people skip.</p>
+        <p>I believe the best work feels inevitable in hindsight&mdash;simple on the surface, considered underneath. Like a well-built room you never want to leave.</p>
+      </div>
+
+      <p class="aside-line">Life happens wherever you are, whether you make it or not.</p>
+
+      <div class="prose prose--italic">
+        <p>This site is built by hand. No frameworks, no templates, no build step. Just HTML and CSS, the way the web was meant to be.</p>
+        <p>If you'd like to get in touch, <a href="mailto:thomasgwatson@outlook.com">send me a note</a>.</p>
+      </div>
+
+      <hr class="rule rule--foot">
+
+      <p class="signoff">
+        <span class="signoff-en">Thank you.</span>
+        <span class="signoff-ja" lang="ja">ありがとうございます。</span>
+      </p>
+    </article>
   </main>
 </body>
 </html>

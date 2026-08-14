@@ -3,32 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thomas Watson</title>
+  <title>Thomas George Watson</title>
   <meta name="description" content="The personal site of Thomas George Watson.">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/site.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/note.css">
 </head>
 <body>
-  <button class="theme-toggle" aria-label="Toggle theme">The Study</button>
-  <main class="landing">
-    <h1>Thomas George Watson</h1>
-    <div class="rule"></div>
-    <p class="tagline">Life happens wherever you are, whether you make it or not.</p>
-    <nav class="landing-links">
-      <a href="/about/">About</a>
-      <span class="sep">&middot;</span>
-      <a href="/projects/">Projects</a>
-      <span class="sep">&middot;</span>
-      <a href="/blog/">Writing</a>
-    </nav>
-    <nav class="landing-links">
-      <a href="mailto:thomasgwatson@outlook.com">Email</a>
-      <span class="sep">&middot;</span>
-      <a href="https://github.com/thomasgeorgewatson" target="_blank" rel="noopener">GitHub</a>
-    </nav>
+  <main class="desk">
+    <article class="card card--landing">
+      <span class="staple" aria-hidden="true"></span>
+
+      <header class="masthead">
+        <h1 class="masthead-name">Thomas George Watson</h1>
+      </header>
+
+      <hr class="rule">
+
+      <p class="note-line">
+        <span aria-hidden="true"><span class="initial">L</span>ife happens wherever you are, whether you make it or not.</span>
+        <span class="sr-only">Life happens wherever you are, whether you make it or not.</span>
+      </p>
+
+      <nav class="nav" aria-label="Pages">
+        <a href="/about/">About</a>
+        <span class="sep" aria-hidden="true">&middot;</span>
+        <a href="/projects/">Projects</a>
+        <span class="sep" aria-hidden="true">&middot;</span>
+        <a href="/blog/">Writing</a>
+      </nav>
+
+      <nav class="nav nav--contact" aria-label="Contact">
+        <a href="mailto:thomasgwatson@outlook.com">Email</a>
+        <span class="sep" aria-hidden="true">&middot;</span>
+        <a href="https://github.com/thomasgeorgewatson" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+
+      <hr class="rule rule--foot">
+
+      <p class="signoff">
+        <span class="signoff-en">Thank you.</span>
+        <span class="signoff-ja" lang="ja">ありがとうございます。</span>
+      </p>
+    </article>
+
+    <footer class="seam">
+      <a href="/leaves-30844e/">Leaves of grass grow here.</a>
+    </footer>
   </main>
-  <footer class="colophon">
-    <a href="/leaves-30844e/" class="colophon-seam">Leaves of grass grow here.</a>
-  </footer>
 </body>
 </html>
