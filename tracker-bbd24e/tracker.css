@@ -1,58 +1,33 @@
 /* ============================================
    Reverse-Split Tracker — scoped styles.
-   Builds on /css/style.css design tokens.
+   Builds on /css/note.css: the tracker is a wide
+   card on the desk; scores are ink stamps.
    ============================================ */
 
-/* --- Score badge palette (theme-aware) --- */
-:root {
-  --badge-high-fg: #2e7d52;
-  --badge-high-bg: rgba(46, 125, 82, 0.12);
-  --badge-high-bd: rgba(46, 125, 82, 0.32);
-
-  --badge-med-fg: var(--color-accent);
-  --badge-med-bg: rgba(139, 105, 20, 0.12);
-  --badge-med-bd: rgba(139, 105, 20, 0.32);
-
-  --badge-prebuy-fg: #2f6f9f;
-  --badge-prebuy-bg: rgba(47, 111, 159, 0.12);
-  --badge-prebuy-bd: rgba(47, 111, 159, 0.32);
-
-  --badge-low-fg: var(--color-muted);
-  --badge-low-bg: rgba(122, 114, 103, 0.10);
-  --badge-low-bd: rgba(122, 114, 103, 0.28);
+/* --- Wide card: the table needs room --- */
+/* keep the desk's grid track at the viewport so the nowrap
+   table scrolls inside its section instead of widening the card */
+.desk {
+  grid-template-columns: minmax(0, 1fr);
 }
 
-[data-theme="study"] {
-  --badge-high-fg: #7cc79b;
-  --badge-high-bg: rgba(124, 199, 155, 0.14);
-  --badge-high-bd: rgba(124, 199, 155, 0.30);
-
-  --badge-prebuy-fg: #84bce8;
-  --badge-prebuy-bg: rgba(132, 188, 232, 0.14);
-  --badge-prebuy-bd: rgba(132, 188, 232, 0.30);
+.card--tracker {
+  width: min(100%, 62rem);
+  justify-self: center;
 }
 
 /* --- Header meta --- */
-.tracker .page-header {
-  margin-bottom: var(--space-lg);
-}
-
-.tracker-meta {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.02em;
-  margin-top: var(--space-sm);
+.masthead .tracker-meta {
+  margin-top: 0.55rem;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
 }
 
 .tracker-meta .dot {
-  color: var(--color-border);
+  color: var(--hairline);
   margin: 0 0.4em;
   user-select: none;
-}
-
-/* --- Wider measure: the table needs room --- */
-.tracker.container {
-  max-width: 980px;
 }
 
 /* --- Controls --- */
@@ -60,107 +35,106 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-md) var(--space-lg);
-  padding: var(--space-md) 0 var(--space-lg);
-  margin-bottom: var(--space-lg);
-  border-bottom: 1px dotted var(--color-border);
-  font-family: var(--font-sans);
+  gap: 0.8rem 1.8rem;
+  padding-bottom: 1.4rem;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid var(--hairline);
 }
 
 .control-group {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0.5rem;
 }
 
 .control-label {
-  font-variant: all-small-caps;
-  letter-spacing: 0.1em;
-  font-size: 0.72rem;
-  color: var(--color-muted);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
 }
 
 .check {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.8rem;
-  color: var(--color-text);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink);
   cursor: pointer;
   white-space: nowrap;
 }
 
 .tracker-controls input[type="checkbox"] {
-  accent-color: var(--color-accent);
+  accent-color: var(--madder);
   cursor: pointer;
 }
 
 .tracker-controls select,
 .tracker-controls input[type="search"] {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  color: var(--color-text);
-  background: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 3px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--hairline);
+  border-radius: 1px;
   padding: 4px 8px;
-  transition: border-color 200ms ease;
+  transition: border-color 0.18s ease;
 }
 
 .tracker-controls select:focus,
 .tracker-controls input[type="search"]:focus {
   outline: none;
-  border-color: var(--color-accent);
-}
-
-.tracker-controls option {
-  color: #2C2C2C;
+  border-color: var(--madder);
 }
 
 /* --- Section --- */
 .tracker-section {
-  margin-bottom: var(--space-xl);
+  margin-bottom: 2.4rem;
+  overflow-x: auto;
 }
 
 .tracker-section > h2 {
-  font-size: 1.333rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-bottom: var(--space-xs);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.28rem;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.15rem;
 }
 
 .tracker-section .section-count {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-variant: all-small-caps;
-  letter-spacing: 0.1em;
-  color: var(--color-muted);
-  margin-bottom: var(--space-md);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.9rem;
 }
 
 /* --- Table --- */
 .tracker-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
 }
 
 .tracker-table thead th {
   text-align: left;
   font-weight: 500;
-  font-variant: all-small-caps;
-  letter-spacing: 0.08em;
-  font-size: 0.72rem;
-  color: var(--color-muted);
-  padding: 0 var(--space-md) var(--space-sm);
-  border-bottom: 1px solid var(--color-border);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 0 0.85rem 0.5rem;
+  border-bottom: 1px solid var(--hairline);
   white-space: nowrap;
 }
 
 .tracker-table tbody td {
-  padding: var(--space-sm) var(--space-md);
-  border-bottom: 1px dotted var(--color-border);
+  padding: 0.5rem 0.85rem;
+  border-bottom: 1px solid rgba(43, 36, 24, 0.14);
   vertical-align: middle;
   white-space: nowrap;
 }
@@ -171,77 +145,79 @@
 
 @media (hover: hover) {
   .tracker-table tbody tr {
-    transition: background-color 200ms ease;
+    transition: background-color 0.18s ease;
   }
   .tracker-table tbody tr:hover {
-    background-color: var(--color-selection);
+    background-color: rgba(255, 255, 255, 0.4);
   }
 }
 
 .tracker-table .col-ticker {
-  font-family: var(--font-body);
-  font-size: 1rem;
+  font-style: italic;
+  font-size: 1.02rem;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
 
 .tracker-table .col-num {
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 .tracker-table .muted {
-  color: var(--color-muted);
+  color: var(--ink-soft);
 }
 
 .tracker-table .edgar-link {
-  font-size: 0.75rem;
-  background-image: none;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(43, 36, 24, 0.35);
+  text-underline-offset: 3px;
 }
 
 .tracker-table .edgar-link:hover {
-  color: var(--color-accent);
+  color: var(--madder);
+  text-decoration-color: rgba(138, 58, 43, 0.5);
 }
 
-/* --- Score badge --- */
+/* --- Score stamps: rubber-stamp ink on the card --- */
 .badge {
   display: inline-block;
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: 0.6rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 3px;
-  border: 1px solid transparent;
+  padding: 2px 7px;
+  border-radius: 1px;
+  border: 1px solid currentColor;
+  transform: rotate(-1.2deg);
 }
 
-.badge-HIGH   { color: var(--badge-high-fg);   background: var(--badge-high-bg);   border-color: var(--badge-high-bd); }
-.badge-MED    { color: var(--badge-med-fg);    background: var(--badge-med-bg);    border-color: var(--badge-med-bd); }
-.badge-PREBUY { color: var(--badge-prebuy-fg); background: var(--badge-prebuy-bg); border-color: var(--badge-prebuy-bd); }
-.badge-LOW    { color: var(--badge-low-fg);    background: var(--badge-low-bg);    border-color: var(--badge-low-bd); }
+.badge-HIGH   { color: var(--madder); }
+.badge-MED    { color: var(--ink); }
+.badge-PREBUY { color: var(--ink-soft); }
+.badge-LOW    { color: rgba(91, 81, 64, 0.55); }
 
 /* --- Dropped section: quieter --- */
 .tracker-section.dropped .tracker-table tbody td {
-  color: var(--color-muted);
+  color: var(--ink-soft);
 }
 
 /* --- Empty / error states --- */
-.tracker-empty {
-  color: var(--color-muted);
+.tracker-empty,
+.tracker-error {
+  color: var(--ink-soft);
   font-style: italic;
 }
 
 .tracker-error {
-  color: var(--color-muted);
-  font-style: italic;
-  padding: var(--space-lg) 0;
+  padding: 1.4rem 0;
 }
 
 /* --- Responsive: stacked cards on mobile --- */
 @media (max-width: 720px) {
-  .tracker.container {
-    max-width: var(--measure);
-  }
-
   .tracker-table thead {
     display: none;
   }
@@ -255,21 +231,21 @@
   }
 
   .tracker-table tr {
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: var(--space-sm) var(--space-md);
-    margin-bottom: var(--space-md);
+    border: 1px solid var(--hairline);
+    border-radius: 1px;
+    padding: 0.5rem 0.85rem;
+    margin-bottom: 0.9rem;
   }
 
   .tracker-table tbody td {
     border: none;
-    border-bottom: 1px dotted var(--color-border);
+    border-bottom: 1px solid rgba(43, 36, 24, 0.14);
     padding: 6px 0;
     white-space: normal;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: var(--space-md);
+    gap: 0.9rem;
     text-align: right;
   }
 
@@ -279,10 +255,12 @@
 
   .tracker-table tbody td::before {
     content: attr(data-label);
-    font-variant: all-small-caps;
-    letter-spacing: 0.08em;
-    font-size: 0.7rem;
-    color: var(--color-muted);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-style: normal;
+    color: var(--ink-soft);
     text-align: left;
     flex: 0 0 auto;
   }
