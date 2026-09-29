@@ -4,6 +4,7 @@
 # Commits + pushes only when data.json actually changed. A failed build (exit 1) leaves the
 # existing snapshot in place and pushes nothing.
 set -euo pipefail
+echo "sync-dashboard: $(date '+%F %T')"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -18,6 +19,8 @@ fi
 
 git add -- "$REL"
 git commit -q -m "dashboard: refresh data" -- "$REL"
+# the tracker sync pushes to the same branch; replay on top of whatever landed first
+git pull -q --rebase --autostash
 git push -q
 
 echo "sync-dashboard: pushed updated data ($REL)"
