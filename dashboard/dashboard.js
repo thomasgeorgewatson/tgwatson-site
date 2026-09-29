@@ -41,7 +41,7 @@
   var METRICS = [['1d', 'Today', 4], ['1m', '1 month', 15], ['ytd', 'Year to date', 35], ['hi', 'Off 52-wk high', 50]];
   var TOPICS = [['all', 'All'], ['builders', 'Builders'], ['rates', 'Rates'], ['housing', 'Housing data'], ['florida', 'Florida'], ['land', 'Land']];
   var STATES = [['all', 'All'], ['FL', 'Florida'], ['GA SC NC', 'Georgia and Carolinas'], ['TN', 'Tennessee']];
-  var DEFAULTS = { price: null, down: 10, ti: 2, lot: 20, bd: 1 };
+  var DEFAULTS = { price: null, down: 10, ti: 2, lotLo: 20, lotHi: 35, bd: 1 }; // finished lots run 20-35% of price
 
   var S = {
     d: null, q: {}, live: false, lastTick: null, status: null, drawer: null, booted: false,
@@ -133,6 +133,8 @@
   function factor(r) { var i = r / 1200; return i === 0 ? 1 / 360 : i / (1 - Math.pow(1 + i, -360)); }
   function price() { return S.a.price || (last(series('MSPNHSUS')) || [0, 400000])[1]; }
   function payment(P, r) { return P * (1 - S.a.down / 100) * factor(r) + P * S.a.ti / 1200; }
+  function lotShare() { var a = S.a.lotLo / 100, b = S.a.lotHi / 100; return [Math.min(a, b), Math.max(a, b)]; }
+  function usdKRange(v, sh) { return usdK(v * sh[0]) + '\u2013' + usdK(v * sh[1]); }
   function afford(pay, r) { return pay / ((1 - S.a.down / 100) * factor(r) + S.a.ti / 1200); }
 
   // ------------------------------------------------------------ tooltip
@@ -334,7 +336,7 @@
   function renderHero(pulse) {
     var R = rates(), ref = refRate(R), sel = selRate(R), P = price(), whatIf = S.rate != null;
     var payRef = payment(P, ref.rate), paySel = payment(P, sel);
-    var buys = afford(payRef, sel), lot = S.a.lot / 100;
+    var buys = afford(payRef, sel), sh = lotShare();
     var refTxt = ref.k === 'today' ? 'today' : ref.label.toLowerCase() + ' (' + ref.rate.toFixed(2) + '%)';
     var c10 = num(S.q.US10Y && S.q.US10Y.change) * 100;
 
@@ -349,12 +351,12 @@
         d: ref.rate === sel ? 'Same as ' + refTxt : dir(paySel - payRef, signed(paySel - payRef, 0).replace(/(\d+)/, function (x) { return '$' + (+x).toLocaleString('en-US'); }) + ' vs ' + refTxt) },
       { k: 'House that payment budget buys', v: usdK(buys),
         d: Math.abs(buys - P) < 1 ? 'Set a compare rate or drag the rate' : dir(buys - P, usdK(buys - P) + ' of price') },
-      { k: 'Finished lot at ' + S.a.lot + '% of price', v: usdK(buys * lot),
-        d: Math.abs(buys - P) < 1 ? usdK(P * lot) + ' at the compare rate' : dir(buys - P, usdK((buys - P) * lot) + ' per lot') }
+      { k: 'Finished lot at ' + Math.round(sh[0] * 100) + '\u2013' + Math.round(sh[1] * 100) + '% of price', v: usdKRange(buys, sh), range: true,
+        d: Math.abs(buys - P) < 1 ? usdKRange(P, sh) + ' at the compare rate' : dir(buys - P, usdK((buys - P) * sh[0]) + ' to ' + usdK((buys - P) * sh[1]) + ' per lot') }
     ];
     var ol = $('#chain');
     ol.innerHTML = links.map(function (l, i) {
-      return '<li class="link' + (l.wi ? ' is-whatif' : '') + (pulse ? ' is-pulse' : '') + '" style="animation-delay:' + (i * 110) + 'ms">' +
+      return '<li class="link' + (l.wi ? ' is-whatif' : '') + (l.range ? ' is-range' : '') + (pulse ? ' is-pulse' : '') + '" style="animation-delay:' + (i * 110) + 'ms">' +
         '<div class="link-k">' + l.k + '</div><div class="link-v">' + l.v + '</div><div class="link-d">' + l.d + '</div></li>';
     }).join('');
 
@@ -378,7 +380,7 @@
     var save = L * (factor(sel) - factor(t)), pv = save * (1 - Math.pow(1 + i, -84)) / i;
     $('#bd-rate').textContent = t.toFixed(2) + '%';
     $('#buydown').innerHTML = usd(pv) + '<small>' + (pv / P * 100).toFixed(1) + '% of the price, or ' +
-      Math.round(pv / (P * lot) * 100) + '% of the lot. Saves the buyer ' + usd(save) + ' a month.</small>';
+      Math.round(pv / (P * sh[1]) * 100) + '\u2013' + Math.round(pv / (P * sh[0]) * 100) + '% of the lot. Saves the buyer ' + usd(save) + ' a month.</small>';
 
     drawAfford(R, ref, sel, P, payRef);
   }
@@ -390,6 +392,17 @@
     var pts = []; for (var r = r0; r <= r1 + 1e-9; r += 0.05) pts.push([r, afford(payRef, r)]);
     var y0 = afford(payRef, r1) * 0.95, y1 = afford(payRef, r0) * 1.03;
     var X = function (v) { return m.l + (v - r0) / (r1 - r0) * (W - m.l - m.r); };
+    // pins for the named rates: labels under the axis, a second row when a narrow chart can't fit them
+    var pins = refs(R).map(function (p) { return { x: X(p.rate), label: p.label + ' ' + p.rate.toFixed(2) + '%', k: p.k, rate: p.rate }; })
+      .filter(function (p) { return p.rate >= r0 && p.rate <= r1; }).sort(function (p, q) { return p.x - q.x; });
+    var ends = [-Infinity, -Infinity], rowsUsed = 1;
+    pins.forEach(function (p) {
+      var w = p.label.length * 5.6, x = Math.min(Math.max(p.x, w / 2), W - m.r - w / 2);
+      p.row = x - w / 2 >= ends[0] + 8 ? 0 : x - w / 2 >= ends[1] + 8 ? 1 : (ends[0] <= ends[1] ? 0 : 1);
+      p.lx = Math.min(Math.max(x, ends[p.row] + 8 + w / 2), W - m.r - w / 2);
+      ends[p.row] = p.lx + w / 2; if (p.row) rowsUsed = 2;
+    });
+    m.b += (rowsUsed - 1) * 14;
     var Y = function (v) { return m.t + (1 - (v - y0) / (y1 - y0)) * (H - m.t - m.b); };
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
       'aria-label': 'Home price the same monthly payment supports at each mortgage rate. Selected ' + sel.toFixed(2) + '% buys ' + usdK(afford(payRef, sel)) }, host);
@@ -412,17 +425,10 @@
     el('line', { class: 'pin-line', x1: m.l, x2: W - m.r, y1: Y(P), y2: Y(P) }, svg);
     el('path', { class: 'curve-afford', d: pathOf(pts, X, Y) }, svg);
 
-    // pins for the named rates, labels on a row under the axis with collision nudging
-    var pins = refs(R).map(function (p) { return { x: X(p.rate), label: p.label + ' ' + p.rate.toFixed(2) + '%', k: p.k, rate: p.rate }; })
-      .filter(function (p) { return p.rate >= r0 && p.rate <= r1; }).sort(function (p, q) { return p.x - q.x; });
-    var lastEnd = -Infinity;
     pins.forEach(function (p) {
       el('line', { class: 'pin-line', x1: p.x, x2: p.x, y1: H - m.b, y2: Y(afford(payRef, p.rate)) }, svg);
       el('circle', { cx: p.x, cy: Y(afford(payRef, p.rate)), r: p.k === S.ref ? 5 : 3, style: p.k === S.ref ? 'fill:var(--sheet);stroke:var(--ink);stroke-width:2' : 'fill:var(--ink-3)' }, svg);
-      var w = p.label.length * 5.6, x = Math.max(p.x, lastEnd + 8 + w / 2);
-      x = Math.min(x, W - m.r - w / 2);
-      el('text', { class: 'pin-label', x: x, y: H - 6, 'text-anchor': 'middle' }, svg, p.label);
-      lastEnd = x + w / 2;
+      el('text', { class: 'pin-label', x: p.lx, y: H - 6 - (rowsUsed - 1 - p.row) * 14, 'text-anchor': 'middle' }, svg, p.label);
     });
 
     // handle
@@ -452,7 +458,7 @@
       var v = toRate(e);
       if (drag) { setRate(v); return; }
       var g = host._g, bp = afford(g.payRef, v);
-      showTip('<b>At ' + v.toFixed(2) + '%</b>' + row('Budget buys', usdK(bp)) + row('Lot at ' + S.a.lot + '%', usdK(bp * S.a.lot / 100)) +
+      showTip('<b>At ' + v.toFixed(2) + '%</b>' + row('Budget buys', usdK(bp)) + row('Lot at ' + S.a.lotLo + '\u2013' + S.a.lotHi + '%', usdKRange(bp, lotShare())) +
         row('vs compare', usdK(bp - g.P)), e.clientX, e.clientY);
     });
     function end() { drag = false; }
@@ -468,12 +474,12 @@
   }
 
   function fillBlanks() {
-    var map = { 'a-price': Math.round(price()).toLocaleString('en-US'), 'a-down': S.a.down, 'a-ti': S.a.ti, 'a-lot': S.a.lot, 'a-bd': S.a.bd };
+    var map = { 'a-price': Math.round(price()).toLocaleString('en-US'), 'a-down': S.a.down, 'a-ti': S.a.ti, 'a-lotLo': S.a.lotLo, 'a-lotHi': S.a.lotHi, 'a-bd': S.a.bd };
     Object.keys(map).forEach(function (id) { var i = $('#' + id); if (document.activeElement !== i) i.value = map[id]; });
   }
-  var LIMITS = { price: [50000, 5e6], down: [0, 50], ti: [0, 6], lot: [5, 60], bd: [0.125, 4] };
+  var LIMITS = { price: [50000, 5e6], down: [0, 50], ti: [0, 6], lotLo: [5, 60], lotHi: [5, 60], bd: [0.125, 4] };
   function bindBlanks() {
-    ['price', 'down', 'ti', 'lot', 'bd'].forEach(function (k) {
+    ['price', 'down', 'ti', 'lotLo', 'lotHi', 'bd'].forEach(function (k) {
       var inp = $('#a-' + k);
       inp.addEventListener('input', function () {
         var v = num(inp.value), lim = LIMITS[k];
