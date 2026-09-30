@@ -3,8 +3,10 @@
 
 The page pulls LIVE quotes itself from CNBC (its quote + chart feeds are CORS-open).
 This script gathers what a browser can't reach: FRED history (rates, housing, metro
-listings), 1-year price bars, next earnings dates (Nasdaq), the FOMC calendar
-(federalreserve.gov) and a headline wire (Google News RSS).
+listings, build-cost indexes, state permits), 1-year price bars for builders, ETFs,
+Treasuries and materials futures, next earnings dates plus analyst targets and
+earnings-surprise history (Nasdaq), the FOMC calendar (federalreserve.gov), housing
+release dates (Census) and a headline wire (Google News RSS).
 
 Every fetch shells to curl: the system python here has no SSL roots, and urllib's
 timeout doesn't bound a wedged HTTPS read. Any single source failing is logged and
@@ -50,14 +52,26 @@ TICKERS = [
     ("FOR", "B"), ("JOE", "B"), ("HHH", "B"), ("FPH", "B"), ("BN", "B"),
     ("SKY", "C"), ("CVCO", "C"), ("BLDR", "C"), ("RKT", "C"),
 ]
-BENCH = ["ITB", "XHB", ".SPX", ".VIX", "@LBR.1", "US10Y", "US2Y", "US30Y", "US3M", "US5Y"]
+# the live tape: (symbol, label, group). The page draws Today's tiles and Build costs from this,
+# so adding an instrument here is the whole change (plus an entry in dashboard/notes.js).
+TAPE = [
+    ("US10Y", "10-yr Treasury", "rates"), ("US2Y", "2-yr Treasury", "rates"),
+    ("US30Y", "30-yr Treasury", "rates"), ("US3M", "3-mo bill", "rates"),
+    ("ITB", "Home construction ETF", "stocks"), ("XHB", "Homebuilders ETF", "stocks"),
+    (".SPX", "S&P 500", "stocks"), (".RUT", "Russell 2000", "stocks"),
+    ("KRE", "Regional banks ETF", "stocks"), ("MBB", "Mortgage bonds ETF", "stocks"),
+    (".VIX", "VIX", "stocks"),
+    ("@LBR.1", "Lumber", "costs"), ("@HG.1", "Copper", "costs"), ("@HRC.1", "Steel, hot-rolled", "costs"),
+    ("@CL.1", "WTI crude", "costs"), ("@HO.1", "Diesel", "costs"),
+]
+BENCH = [s for s, _, _ in TAPE] + ["US5Y", ".DXY"]
 
 # ---------------------------------------------------------------- FRED
 def years_ago(n):
     return (TODAY - timedelta(days=int(365.25 * n))).isoformat()
 
 FRED = {
-    # id: (title, units, start)
+    # id: (title, units, start). Each lives on the page as a detail panel at #f:ID.
     "OBMMIC30YF": ("30-yr conforming (Optimal Blue)", "%", years_ago(3)),
     "OBMMIFHA30YF": ("30-yr FHA (Optimal Blue)", "%", years_ago(3)),
     "OBMMIJUMBO30YF": ("30-yr jumbo (Optimal Blue)", "%", years_ago(3)),
@@ -65,16 +79,39 @@ FRED = {
     "MORTGAGE15US": ("15-yr fixed (Freddie Mac PMMS)", "%", years_ago(12)),
     "DGS10": ("10-yr Treasury", "%", years_ago(3)),
     "DGS2": ("2-yr Treasury", "%", years_ago(3)),
-    "DFEDTARU": ("Fed funds target, upper", "%", years_ago(3)),
+    "T10Y2Y": ("10-yr less 2-yr Treasury", "pts", years_ago(5)),
+    "DFEDTARU": ("Fed funds target, upper", "%", years_ago(12)),
+    # housing
     "HOUST1F": ("Single-family starts", "k SAAR", years_ago(12)),
+    "HOUST": ("Total housing starts", "k SAAR", years_ago(12)),
     "PERMIT1": ("Single-family permits", "k SAAR", years_ago(12)),
+    "UNDCON1USA": ("Single-family units under construction", "k", years_ago(12)),
+    "COMPU1USA": ("Single-family completions", "k SAAR", years_ago(12)),
     "HSN1F": ("New home sales", "k SAAR", years_ago(12)),
     "MSACSR": ("Months' supply, new homes", "months", years_ago(12)),
     "MSPNHSUS": ("Median new home price", "$", years_ago(12)),
     "NHFSEPUCS": ("Completed new homes for sale", "k", years_ago(12)),
     "CSUSHPINSA": ("Case-Shiller national index", "index", years_ago(12)),
+    "EXHOSLUSM495S": ("Existing home sales", "SAAR", years_ago(12)),  # NAR: FRED serves ~13 months only
+    "HOSINVUSM495N": ("Existing homes for sale", "units", years_ago(12)),
+    "RHORUSQ156N": ("Homeownership rate", "%", years_ago(12)),
+    # state permits
     "FLBPPRIVSA": ("Florida permits, all units", "units", years_ago(12)),
+    "GABPPRIVSA": ("Georgia permits, all units", "units", years_ago(12)),
+    "SCBPPRIVSA": ("South Carolina permits, all units", "units", years_ago(12)),
+    "NCBPPRIVSA": ("North Carolina permits, all units", "units", years_ago(12)),
+    "TNBPPRIVSA": ("Tennessee permits, all units", "units", years_ago(12)),
+    # build costs
+    "WPUIP2311001": ("PPI, inputs to residential construction", "index", years_ago(12)),
+    "WPUSI012011": ("PPI, construction materials", "index", years_ago(12)),
+    "WPU081": ("PPI, lumber and wood products", "index", years_ago(12)),
+    "WPU101": ("PPI, iron and steel", "index", years_ago(12)),
+    "WPU1321": ("PPI, sand, gravel and crushed stone", "index", years_ago(12)),
+    "WPU1333": ("PPI, ready-mix concrete", "index", years_ago(12)),
+    "USCONS": ("Construction employment", "k", years_ago(12)),
+    "CES2000000003": ("Construction average hourly earnings", "$/hr", years_ago(12)),
 }
+STEPS = ["DFEDTARU"]
 CURVE = ["DGS1MO", "DGS3MO", "DGS6MO", "DGS1", "DGS2", "DGS3", "DGS5", "DGS7",
          "DGS10", "DGS20", "DGS30"]
 CURVE_YRS = [1/12, 0.25, 0.5, 1, 2, 3, 5, 7, 10, 20, 30]
@@ -90,7 +127,8 @@ METROS = [
     ("34980", "Nashville", "TN"),
 ]
 METRO_SERIES = {"MEDLISPRI": "price", "ACTLISCOU": "active", "MEDDAYONMAR": "dom",
-                "PRIREDCOU": "cuts"}
+                "PRIREDCOU": "cuts", "NEWLISCOU": "newl", "PENLISCOU": "pend",
+                "MEDLISPRIPERSQUFEE": "ppsf"}
 
 
 FRED_GATE = threading.Semaphore(3)  # FRED drops bursts of parallel requests
@@ -139,8 +177,10 @@ def cnbc_quotes(symbols):
     if not txt:
         return {}
     keep = ("name", "last", "change", "change_pct", "previous_day_closing", "mktcapView",
-            "pe", "fpe", "yrhiprice", "yrloprice", "dividendyield", "beta", "last_time",
-            "curmktstatus", "type")
+            "pe", "fpe", "eps", "feps", "yrhiprice", "yrloprice", "yrhidate", "yrlodate",
+            "dividendyield", "beta", "last_time", "curmktstatus", "type", "open", "high", "low",
+            "volume", "tendayavgvol", "revenuettm", "GROSMGNTTM", "NETPROFTTM", "ROETTM",
+            "DEBTEQTYQ", "enterpriseValue", "sharesout", "exchange")
     out = {}
     for q in json.loads(txt)["FormattedQuoteResult"]["FormattedQuote"]:
         if q.get("code") == 0:
@@ -184,6 +224,62 @@ def next_earnings(sym):
             "confirmed": "expected*" not in rpt}
 
 
+def nasdaq(path):
+    txt = get("https://api.nasdaq.com/api/" + path)
+    try:
+        return json.loads(txt)["data"] if txt else None
+    except (ValueError, KeyError, TypeError):
+        return None
+
+
+def analyst(sym):
+    """Consensus target, rating and the last four quarters of EPS surprise."""
+    out = {}
+    t = nasdaq(f"analyst/{sym}/targetprice")
+    if t and t.get("consensusOverview"):
+        c = t["consensusOverview"]
+        out["target"] = {k: c.get(k) for k in ("priceTarget", "lowPriceTarget", "highPriceTarget", "buy", "hold", "sell")}
+    r = nasdaq(f"analyst/{sym}/ratings")
+    if r and r.get("meanRatingType"):
+        out["rating"] = r["meanRatingType"]
+        out["ratingNote"] = r.get("ratingsSummary")
+    e = nasdaq(f"company/{sym}/earnings-surprise")
+    try:
+        out["surprise"] = [{"q": x["fiscalQtrEnd"], "date": x["dateReported"], "eps": x["eps"],
+                            "est": x["consensusForecast"], "pct": x["percentageSurprise"]}
+                           for x in e["earningsSurpriseTable"]["rows"]]
+    except (TypeError, KeyError):
+        pass
+    return out or None
+
+
+# ---------------------------------------------------------------- Census release calendar
+RELEASES = {  # link on the Census calendar -> (short name, detail ref on the page)
+    "/construction/nrc": ("Housing starts and permits", "f:HOUST1F"),
+    "/construction/nrs": ("New home sales", "f:HSN1F"),
+    "/construction/c30": ("Construction spending", None),
+    "/housing/hvs": ("Homeownership and vacancy", "f:RHORUSQ156N"),
+}
+
+
+def releases():
+    txt = get("https://www.census.gov/economic-indicators/calendar-listview.html")
+    if not txt:
+        return []
+    out, seen = [], set()
+    for href, key, period in re.findall(
+            r'<a href="([^"]+)">[^<]*</a>\s*</td>\s*<td sorttable_customkey="(\d{12})">[^<]*</td>\s*<td>[^<]*</td>\s*<td>([^<]*)</td>',
+            txt):
+        m = next((v for k, v in RELEASES.items() if href.rstrip("/").startswith(k)), None)
+        d = f"{key[:4]}-{key[4:6]}-{key[6:8]}"
+        if not m or d < (TODAY - timedelta(days=1)).isoformat() or (m[0], d) in seen:
+            continue
+        seen.add((m[0], d))
+        out.append({"date": d, "time": f"{key[8:10]}:{key[10:]}", "name": m[0], "ref": m[1],
+                    "period": period.strip()})
+    return sorted(out, key=lambda e: e["date"])[:24]
+
+
 # ---------------------------------------------------------------- FOMC
 MONTHS = {m: i for i, m in enumerate(
     ["January", "February", "March", "April", "May", "June", "July", "August",
@@ -224,6 +320,7 @@ NEWS_QUERIES = [
     ("florida", 'Florida housing market OR "Florida homebuilders" when:7d'),
     ("land", '"land development" OR "lot supply" OR "finished lots" OR "land banking" homebuilder when:14d'),
     ("land", 'Forestar OR "St. Joe Company" OR "Howard Hughes" OR "Brookfield Residential" when:10d'),
+    ("costs", '"lumber prices" OR "lumber futures" OR "construction costs" OR "building materials" tariffs when:10d'),
 ]
 TAGS = {  # headline keyword -> ticker
     "D.R. Horton": "DHI", "DR Horton": "DHI", "Lennar": "LEN", "Pulte": "PHM", "NVR": "NVR",
@@ -294,17 +391,22 @@ def main():
         for sym, _ in TICKERS:
             jobs[("bars", sym)] = ex.submit(cnbc_bars, sym)
             jobs[("earn", sym)] = ex.submit(next_earnings, sym)
-        for sym in ("ITB", "XHB", ".SPX", "US10Y", "@LBR.1"):
+            jobs[("analyst", sym)] = ex.submit(analyst, sym)
+        for sym, _, _ in TAPE:
             jobs[("bars", sym)] = ex.submit(cnbc_bars, sym)
         quotes_f = ex.submit(cnbc_quotes, [s for s, _ in TICKERS] + BENCH)
         fomc_f = ex.submit(fomc)
         news_f = ex.submit(news)
+        rel_f = ex.submit(releases)
 
     res = {k: f.result() for k, f in jobs.items()}
     fred_all = {}
     for k, v in res.items():
         if k[0] in ("fred", "metro"):
             fred_all.update(v)
+    for sid in STEPS:  # daily step series: keep the changes (and the last day), not 3,000 repeats
+        o = fred_all.get(sid) or []
+        fred_all[sid] = [p for i, p in enumerate(o) if i in (0, len(o) - 1) or p[1] != o[i - 1][1]]
     fred_out = {sid: {"title": FRED[sid][0], "units": FRED[sid][1], "obs": fred_all[sid]}
                 for sid in FRED if fred_all.get(sid)}
     metros = []
@@ -317,9 +419,12 @@ def main():
     data = {
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "universe": [{"sym": s, "block": b} for s, b in TICKERS],
+        "tape": [{"sym": s, "label": l, "group": g} for s, l, g in TAPE],
         "quotes": quotes_f.result(),
         "bars": {k[1]: v for k, v in res.items() if k[0] == "bars" and v},
         "earnings": {k[1]: v for k, v in res.items() if k[0] == "earn" and v},
+        "analyst": {k[1]: v for k, v in res.items() if k[0] == "analyst" and v},
+        "releases": rel_f.result(),
         "fred": fred_out,
         "curve": curve_snapshots(res[("curve", "")]),
         "metros": metros,
@@ -339,7 +444,8 @@ def main():
     OUT.write_text(json.dumps(data, separators=(",", ":")))
     print(f"build-dashboard: {OUT.stat().st_size/1024:.0f} KB in {time.time()-t0:.0f}s; "
           f"{len(data['quotes'])} quotes, {len(data['bars'])} bar sets, {len(fred_out)} FRED, "
-          f"{len(data['earnings'])} earnings, {len(data['fomc'])} FOMC, {len(data['news'])} headlines; "
+          f"{len(data['earnings'])} earnings, {len(data['analyst'])} analyst, {len(data['fomc'])} FOMC, "
+          f"{len(data['releases'])} releases, {len(data['news'])} headlines; "
           f"{len(errors)} errors", file=sys.stderr)
     for e in errors:
         print("  miss:", e, file=sys.stderr)
