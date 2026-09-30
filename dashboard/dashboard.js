@@ -1286,7 +1286,7 @@
       if (S.tickerFilter) return n.tickers.indexOf(S.tickerFilter) >= 0;
       return S.topic === 'all' || n.topic === S.topic;
     });
-    $('#wire-note').textContent = items.length + ' headlines, newest first. Collected ' + ago(S.d.generated) + '; links open the source in a new tab, ticker chips open the company.';
+    $('#wire-note').textContent = items.length + ' headlines, newest first. Collected ' + ago(S.newsAt || S.d.generated) + '; links open the source in a new tab, ticker chips open the company.';
     $('#wire-list').innerHTML = items.slice(0, 40).map(newsItem).join('') || '<li class="wire-empty">No headlines match. Pick All to see every topic.</li>';
   }
 
@@ -1998,7 +1998,7 @@
     addEventListener('hashchange', followHash);
     var rt;
     addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(renderCharts, 150); });
-    document.addEventListener('visibilitychange', function () { if (!document.hidden) { poll(); pollIntra(); } });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) { poll(); pollIntra(); loadNews(); } });
   }
 
   // ------------------------------------------------------------ live loop
@@ -2034,6 +2034,19 @@
     if (S.drawer) redrawDetailChart();
   }
 
+  // ------------------------------------------------------------ headlines: news.json refreshes every 30 min
+  var newsTimer = null;
+  function loadNews() {
+    clearTimeout(newsTimer);
+    return fetch('news.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (n) {
+      if (!n || !n.news || n.news.length < 10 || n.generated <= (S.newsAt || S.d.generated)) return;
+      S.d.news = n.news; S.newsAt = n.generated;
+      renderWire(); // an open detail panel picks the new list up next time it opens, so it doesn't jump
+    }).catch(function () {}).then(function () {
+      if (!document.hidden) newsTimer = setTimeout(loadNews, 600000);
+    });
+  }
+
   // ------------------------------------------------------------ boot
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; // closing the drawer walks history; keep the page still
   fetch('data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
@@ -2045,7 +2058,7 @@
     S.booted = true;
     var r = hashRef();
     if (r && refExists(r)) { S.trail = [r]; showDrawer(); renderDetail(); }
-    poll(); pollIntra();
+    poll(); pollIntra(); loadNews();
   }).catch(function (err) {
     $('#lede').textContent = 'The data snapshot did not load (' + err.message + '). Run scripts/build-dashboard.py to rebuild dashboard/data.json.';
     console.error(err);

@@ -12,7 +12,8 @@ Every fetch shells to curl: the system python here has no SSL roots, and urllib'
 timeout doesn't bound a wedged HTTPS read. Any single source failing is logged and
 skipped -- the page renders whatever arrived.
 
-Run:  python3 scripts/build-dashboard.py            (writes dashboard/data.json)
+Run:  python3 scripts/build-dashboard.py            (writes dashboard/data.json + news.json)
+      python3 scripts/build-dashboard.py --news     (headlines only: dashboard/news.json)
 """
 import csv, io, json, re, subprocess, sys, threading, time
 from concurrent.futures import ThreadPoolExecutor
@@ -23,6 +24,7 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 OUT = Path(__file__).resolve().parent.parent / "dashboard" / "data.json"
+NEWS_OUT = OUT.parent / "news.json"  # headlines alone, refreshed every 30 min by `--news`
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/128.0 Safari/537.36")
 TODAY = date.today()
@@ -379,6 +381,31 @@ def news():
 
 
 # ---------------------------------------------------------------- main
+def write_news(items):
+    """news.json is what the page reads for the Wire; a thin pull never overwrites a good one."""
+    if len(items) < 10:
+        print(f"build-dashboard: only {len(items)} headlines; kept the existing {NEWS_OUT.name}", file=sys.stderr)
+        return False
+    try:  # same headlines as last time: leave the file (and git) alone
+        if json.loads(NEWS_OUT.read_text()).get("news") == items:
+            return True
+    except (OSError, ValueError):
+        pass
+    NEWS_OUT.write_text(json.dumps({"generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                    "news": items}, separators=(",", ":")))
+    return True
+
+
+def news_only():
+    t0 = time.time()
+    items = news()
+    ok = write_news(items)
+    print(f"build-dashboard --news: {len(items)} headlines in {time.time()-t0:.0f}s; {len(errors)} errors", file=sys.stderr)
+    for e in errors:
+        print("  miss:", e, file=sys.stderr)
+    sys.exit(0 if ok else 1)
+
+
 def main():
     t0 = time.time()
     jobs = {}
@@ -442,6 +469,7 @@ def main():
         sys.exit(1)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, separators=(",", ":")))
+    write_news(data["news"])
     print(f"build-dashboard: {OUT.stat().st_size/1024:.0f} KB in {time.time()-t0:.0f}s; "
           f"{len(data['quotes'])} quotes, {len(data['bars'])} bar sets, {len(fred_out)} FRED, "
           f"{len(data['earnings'])} earnings, {len(data['analyst'])} analyst, {len(data['fomc'])} FOMC, "
@@ -452,4 +480,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    news_only() if "--news" in sys.argv else main()
