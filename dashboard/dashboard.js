@@ -367,7 +367,7 @@
     $('#btn-theme').textContent = document.documentElement.getAttribute('data-theme') === 'study' ? 'Day' : 'Night';
     var day = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
     var sess = S.status === 'REG_MKT' ? 'regular session' : S.status === 'PRE_MKT' ? 'pre-market' : S.status === 'POST_MKT' ? 'after hours' : 'market closed';
-    $('#today-note').textContent = day + ', ' + sess + '. Select any tile, bar or row for its full file.';
+    $('#today-note').textContent = day + ' \u00B7 ' + sess.charAt(0).toUpperCase() + sess.slice(1);
   }
 
   function renderLede() {
@@ -419,6 +419,34 @@
     if (f1) s4.push('the Fed decides ' + dshort(f1.date));
     if (s4.length) out.push('Next: ' + s4.join('; ') + '.');
     $('#lede').innerHTML = out.join(' ');
+    renderBand();
+  }
+
+  // builders against the S&P, drawn as a map scale bar: one segment per half point, capped at 4 points
+  function gapHtml(g) {
+    if (!isFinite(g)) return '';
+    var pts = Math.abs(g), w = Math.max(3, Math.min(4, pts) * 40);
+    return '<span class="bh-gap"><span class="gap-bar' + (pts > 4 ? ' is-capped' : '') + '" style="width:' + w.toFixed(0) + 'px" aria-hidden="true"></span>' +
+      '<span><b>' + pts.toFixed(2) + ' pts</b> ' + (Math.abs(g) < 0.005 ? 'even with' : g < 0 ? 'under' : 'over') + ' the S&amp;P</span></span>';
+  }
+
+  // the "today" band: the two moves that matter to dirt, set big (presentation only; same numbers as the lede)
+  function renderBand() {
+    var host = $('#band-head'); if (!host) return;
+    var A = S.d.universe.filter(function (u) { return u.block === 'A'; })
+      .map(function (u) { return num(S.q[u.sym] && S.q[u.sym].change_pct); }).filter(isFinite);
+    var avg = A.length ? mean(A) : NaN;
+    var spx = num(S.q['.SPX'] && S.q['.SPX'].change_pct), itb = num(S.q.ITB && S.q.ITB.change_pct);
+    var c10 = num(S.q.US10Y && S.q.US10Y.change) * 100, R = rates();
+    var big = function (v, txt) {
+      var c = v > 0 ? 'up' : v < 0 ? 'down' : '', g = v > 0 ? '\u25B2' : v < 0 ? '\u25BC' : '';
+      return '<span class="bh-v ' + c + '"><span class="bh-g" aria-hidden="true">' + g + '</span>' + txt + '</span>';
+    };
+    host.innerHTML =
+      '<button type="button" class="bh bh--main" data-open="q:ITB"><span class="bh-k">Production builders today</span>' + big(avg, signed(avg, 1, '%')) +
+      '<span class="bh-s">S&amp;P 500 ' + dir(spx, signed(spx, 2, '%')) + '<i></i>ITB ' + dir(itb, signed(itb, 2, '%')) + '</span>' + gapHtml(avg - spx) + '</button>' +
+      '<button type="button" class="bh" data-open="q:US10Y"><span class="bh-k">10-yr Treasury today</span>' + big(c10, signed(c10, 1, ' bp')) +
+      '<span class="bh-s">at ' + lastStr('US10Y') + '<i></i>30-yr mortgage est. ' + R.now.toFixed(2) + '%</span></button>';
   }
 
   // ------------------------------------------------------------ today: tiles
@@ -570,10 +598,37 @@
   }
   function contrast(a, b) { var x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
   var STEPS = 5;
+  // OKLab <-> sRGB, so the board ramp steps evenly in perceived lightness instead of muddying through RGB
+  function lin(v) { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }
+  function toLab(c) {
+    var r = lin(c[0]), g = lin(c[1]), b = lin(c[2]);
+    var l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b),
+        m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b),
+        s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+    return [0.2104542553 * l + 0.7936177850 * m - 0.0040720420 * s, 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s, 0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s];
+  }
+  function lchRgb(L, C, h) { // chroma pulled in until the color fits sRGB
+    for (var n = 0; n < 80; n++, C *= 0.97) {
+      var a = C * Math.cos(h), b = C * Math.sin(h);
+      var l = Math.pow(L + 0.3963377774 * a + 0.2158037573 * b, 3), m = Math.pow(L - 0.1055613458 * a - 0.0638541728 * b, 3), s = Math.pow(L - 0.0894841775 * a - 1.2914855480 * b, 3);
+      var rgb = [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s, -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s];
+      if (rgb.every(function (v) { return v >= -1e-4 && v <= 1 + 1e-4; }) || C < 0.001) return rgb.map(function (v) {
+        v = Math.max(0, Math.min(1, v)); return Math.round((v <= 0.0031308 ? 12.92 * v : 1.055 * Math.pow(v, 1 / 2.4) - 0.055) * 255);
+      });
+    }
+  }
+  var rampCache = {};
   function divColor(t) { // t in [-1, 1]; stepped so equal colors mean equal bins
-    var mid = hexRgb(css('--mid')), pole = hexRgb(css(t >= 0 ? '--up' : '--down'));
-    var k = Math.round(Math.min(1, Math.abs(t)) * STEPS) / STEPS;
-    return mid.map(function (v, i) { return Math.round(v + (pole[i] - v) * k); });
+    var k = Math.round(Math.min(1, Math.abs(t)) * STEPS);
+    if (!k) return hexRgb(css('--mid'));
+    // per-theme lightness stops (--ramp-l) skip the band where neither ink nor sheet text reads; chroma eases in (--ramp-e, --ramp-c)
+    var pole = css(t >= 0 ? '--up' : '--down'), key = pole + '|' + k + '|' + css('--ramp-l') + css('--ramp-h');
+    if (rampCache[key]) return rampCache[key];
+    var Ls = css('--ramp-l').split(/\s+/).map(parseFloat), lab = toLab(hexRgb(pole));
+    var C = Math.hypot(lab[1], lab[2]) * (parseFloat(css('--ramp-c')) || 1) * Math.pow(k / STEPS, parseFloat(css('--ramp-e')) || 1);
+    // the down side rotates toward clay/ochre at small moves (--ramp-h degrees) so it reads as earth, not flesh
+    var h = Math.atan2(lab[2], lab[1]) + (t < 0 ? (parseFloat(css('--ramp-h')) || 0) * Math.PI / 180 * (1 - k / STEPS) : 0);
+    return (rampCache[key] = lchRgb(Ls[k - 1] || lab[0], Math.max(0.035, C), h));
   }
   function rgbStr(c) { return 'rgb(' + c.join(',') + ')'; }
   function textOn(c) {
@@ -1285,7 +1340,8 @@
   function showDrawer() {
     S.drawer = true; $('#scrim').hidden = false; $('#drawer').hidden = false;
     document.body.classList.add('drawer-open');
-    setTimeout(function () { $('#dr-close').focus(); }, 0);
+    // keyboard arrivals land on Close (with its ring); pointer and deep-link arrivals focus the panel itself, no ring
+    setTimeout(function () { if (kbdNav) $('#dr-close').focus(); else $('#drawer').focus({ preventScroll: true }); }, 0);
   }
   function hideDrawer() {
     if (!S.drawer) return;
@@ -1852,8 +1908,11 @@
     SECTIONS.forEach(function (s) { var t = document.getElementById(s[0]); if (t) io.observe(t); });
   }
 
+  var kbdNav = false; // last input modality, for where the drawer puts focus
   function bindUI() {
     bindBlanks(); bindCurveDrag(); bindJump();
+    document.addEventListener('keydown', function (e) { if (!e.metaKey || e.key === 'k') kbdNav = true; }, true);
+    document.addEventListener('pointerdown', function () { kbdNav = false; }, true);
     $('#rate').addEventListener('input', function (e) { setRate(parseFloat(e.target.value)); });
     $('#rate-reset').addEventListener('click', function () { setRate(null); });
     $('#dirt-toggle').addEventListener('click', function () { setDirt(!S.dirtOpen); });
@@ -1926,11 +1985,17 @@
       if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
       else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
     });
-    addEventListener('popstate', function () {
+    function followHash() { // back/forward, or a new #ref typed or pasted while the page is open
       var r = hashRef();
-      if (!r) hideDrawer();
-      else if (!S.drawer) { S.trail = [r]; showDrawer(); renderDetail(); }
-    });
+      if (!r || !refExists(r)) { hideDrawer(); return; }
+      if (r === curRef() && S.drawer) return;
+      var i = S.trail.indexOf(r);
+      S.trail = i >= 0 ? S.trail.slice(0, i + 1) : (S.drawer ? S.trail.concat([r]) : [r]);
+      if (!S.drawer) showDrawer();
+      renderDetail();
+    }
+    addEventListener('popstate', followHash);
+    addEventListener('hashchange', followHash);
     var rt;
     addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(renderCharts, 150); });
     document.addEventListener('visibilitychange', function () { if (!document.hidden) { poll(); pollIntra(); } });

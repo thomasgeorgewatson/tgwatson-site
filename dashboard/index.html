@@ -16,7 +16,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=EB+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Archivo+Narrow:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
@@ -47,19 +47,27 @@
   <main>
     <!-- ============ Today ============ -->
     <section class="sheet today" id="today" aria-labelledby="today-h">
-      <div class="sheet-head">
-        <h2 id="today-h">Today</h2>
-        <p class="sheet-note" id="today-note"></p>
+      <div class="tband">
+        <div class="band-top">
+          <h2 id="today-h">Today</h2>
+          <p class="sheet-note" id="today-note"></p>
+        </div>
+        <div class="band-main">
+          <div class="band-head" id="band-head"></div>
+          <figure class="session">
+            <figcaption id="session-cap">The session, from the prior close</figcaption>
+            <div class="chart chart--session" id="ch-session"></div>
+            <div class="chart chart--session10" id="ch-session10"></div>
+          </figure>
+        </div>
+        <div class="tiles" id="tiles"></div>
       </div>
-      <p class="lede" id="lede" aria-live="polite"></p>
-      <div class="tiles" id="tiles"></div>
 
       <div class="today-body">
-        <figure class="session">
-          <figcaption id="session-cap">The session, from the prior close</figcaption>
-          <div class="chart chart--session" id="ch-session"></div>
-          <div class="chart chart--session10" id="ch-session10"></div>
-        </figure>
+        <div class="read">
+          <h3>The read</h3>
+          <p class="lede" id="lede" aria-live="polite"></p>
+        </div>
         <div class="movers-wrap">
           <div class="sub-head">
             <h3>Leaders and laggards</h3>
@@ -243,7 +251,7 @@
 
   <!-- detail drawer: one panel for every instrument, series, metro and meeting -->
   <div class="scrim" id="scrim" hidden></div>
-  <aside class="drawer" id="drawer" aria-labelledby="dr-name" role="dialog" aria-modal="true" hidden>
+  <aside class="drawer" id="drawer" aria-labelledby="dr-name" role="dialog" aria-modal="true" tabindex="-1" hidden>
     <div class="dr-bar">
       <button class="dr-btn" id="dr-back" type="button" aria-label="Back">← Back</button>
       <ol class="dr-trail" id="dr-trail" aria-label="Trail"></ol>
