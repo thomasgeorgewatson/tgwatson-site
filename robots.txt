@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /tracker-bbd24e/
+Disallow: /dashboard-lab/
