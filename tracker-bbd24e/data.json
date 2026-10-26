@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26 11:13 UTC",
+  "updated": "2026-10-26 17:33 UTC",
   "counts": {
     "upcoming": 4,
     "pending_tbd": 55,
@@ -21,11 +21,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/746210/000143774926033416/",
       "sent_at": "2026-10-26T07:11:35.278372-04:00",
       "sent_date": "2026-10-26",
-      "current_price": 1.44,
-      "price_asof": "2026-10-26T11:13:10.833281+00:00",
+      "current_price": 1.45,
+      "price_asof": "2026-10-26T17:33:50.314625+00:00",
       "status": "pending_tbd",
-      "post_split": "$2.88\u201314.40",
-      "price_str": "$1.44"
+      "post_split": "$2.90\u201314.50",
+      "price_str": "$1.45"
     },
     {
       "accession": "0001104659-26-118522",
@@ -41,11 +41,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1927578/000110465926118522/",
       "sent_at": "2026-10-26T07:11:35.194081-04:00",
       "sent_date": "2026-10-26",
-      "current_price": 0.657,
-      "price_asof": "2026-10-26T11:13:10.926921+00:00",
+      "current_price": 0.6851,
+      "price_asof": "2026-10-26T17:33:50.446905+00:00",
       "status": "pending_tbd",
-      "post_split": "$6.57",
-      "price_str": "$0.66"
+      "post_split": "$6.85",
+      "price_str": "$0.69"
     },
     {
       "accession": "0001104659-26-118508",
@@ -61,11 +61,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1735556/000110465926118508/",
       "sent_at": "2026-10-26T07:11:35.108807-04:00",
       "sent_date": "2026-10-26",
-      "current_price": 0.388,
-      "price_asof": "2026-10-26T11:13:11.033311+00:00",
+      "current_price": 0.3817,
+      "price_asof": "2026-10-26T17:33:50.550962+00:00",
       "status": "pending_tbd",
-      "post_split": "$3.88",
-      "price_str": "$0.39"
+      "post_split": "$3.82",
+      "price_str": "$0.38"
     },
     {
       "accession": "0001185185-26-004980",
@@ -81,11 +81,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1876766/000118518526004980/",
       "sent_at": "2026-10-26T07:11:35.025730-04:00",
       "sent_date": "2026-10-26",
-      "current_price": 1.03,
-      "price_asof": "2026-10-26T11:13:11.166991+00:00",
+      "current_price": 0.9995,
+      "price_asof": "2026-10-26T17:33:50.822945+00:00",
       "status": "pending_tbd",
-      "post_split": "$103.00",
-      "price_str": "$1.03"
+      "post_split": "$99.95",
+      "price_str": "$1.00"
     },
     {
       "accession": "0001213900-26-112092",
@@ -101,11 +101,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1959994/000121390026112092/0001213900-26-112092-index.htm",
       "sent_at": "2026-10-24T21:48:48.579651-04:00",
       "sent_date": "2026-10-24",
-      "current_price": 0.38,
-      "price_asof": "2026-10-26T11:13:11.266444+00:00",
+      "current_price": 0.385,
+      "price_asof": "2026-10-26T17:33:50.971331+00:00",
       "status": "pending_tbd",
-      "post_split": "$30.40",
-      "price_str": "$0.38"
+      "post_split": "$30.80",
+      "price_str": "$0.39"
     },
     {
       "accession": "0001185185-26-004971",
@@ -121,11 +121,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1993097/000118518526004971/0001185185-26-004971-index.htm",
       "sent_at": "2026-10-24T21:48:31.402659-04:00",
       "sent_date": "2026-10-24",
-      "current_price": 0.83,
-      "price_asof": "2026-10-26T11:13:11.362715+00:00",
+      "current_price": 0.75,
+      "price_asof": "2026-10-26T17:33:51.072881+00:00",
       "status": "upcoming",
-      "post_split": "$1.66",
-      "price_str": "$0.83"
+      "post_split": "$1.50",
+      "price_str": "$0.75"
     },
     {
       "accession": "discord:SXTC:20261023",
@@ -181,10 +181,10 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1596812/000121390026111752/",
       "sent_at": "2026-10-23T07:15:07.396414-04:00",
       "sent_date": "2026-10-23",
-      "current_price": 0.1734,
-      "price_asof": "2026-10-26T11:13:11.463971+00:00",
+      "current_price": 0.1694,
+      "price_asof": "2026-10-26T17:33:51.343441+00:00",
       "status": "upcoming",
-      "post_split": "$2.77",
+      "post_split": "$2.71",
       "price_str": "$0.17"
     },
     {
@@ -201,11 +201,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1826011/000143774926033292/",
       "sent_at": "2026-10-23T07:15:07.310313-04:00",
       "sent_date": "2026-10-23",
-      "current_price": 0.4251,
-      "price_asof": "2026-10-26T11:13:11.560100+00:00",
+      "current_price": 0.4175,
+      "price_asof": "2026-10-26T17:33:51.496157+00:00",
       "status": "upcoming",
-      "post_split": "$4.25",
-      "price_str": "$0.43"
+      "post_split": "$4.17",
+      "price_str": "$0.42"
     },
     {
       "accession": "0001493152-26-048139",
@@ -281,11 +281,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/2021688/000149315226047781/",
       "sent_at": "2026-10-21T07:12:56.214457-04:00",
       "sent_date": "2026-10-21",
-      "current_price": 0.354,
-      "price_asof": "2026-10-26T11:13:11.690957+00:00",
+      "current_price": 0.3401,
+      "price_asof": "2026-10-26T17:33:51.604364+00:00",
       "status": "pending_tbd",
-      "post_split": "$3.54",
-      "price_str": "$0.35"
+      "post_split": "$3.40",
+      "price_str": "$0.34"
     },
     {
       "accession": "0001493152-26-047809",
@@ -301,11 +301,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1964946/000149315226047809/",
       "sent_at": "2026-10-21T07:12:56.127464-04:00",
       "sent_date": "2026-10-21",
-      "current_price": 0.92,
-      "price_asof": "2026-10-26T11:13:11.799856+00:00",
+      "current_price": 0.8599,
+      "price_asof": "2026-10-26T17:33:51.785822+00:00",
       "status": "pending_tbd",
-      "post_split": "$5.52",
-      "price_str": "$0.92"
+      "post_split": "$5.16",
+      "price_str": "$0.86"
     },
     {
       "accession": "0001213900-26-111081",
@@ -321,10 +321,10 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1826376/000121390026111081/",
       "sent_at": "2026-10-21T07:12:56.039743-04:00",
       "sent_date": "2026-10-21",
-      "current_price": 0.185,
-      "price_asof": "2026-10-26T11:13:11.897781+00:00",
+      "current_price": 0.1766,
+      "price_asof": "2026-10-26T17:33:51.891291+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.85",
+      "post_split": "$1.77",
       "price_str": "$0.18"
     },
     {
@@ -341,11 +341,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1871638/000187163826000073/",
       "sent_at": "2026-10-21T07:12:55.863259-04:00",
       "sent_date": "2026-10-21",
-      "current_price": 0.239,
-      "price_asof": "2026-10-26T11:13:11.995184+00:00",
+      "current_price": 0.1856,
+      "price_asof": "2026-10-26T17:33:52.127162+00:00",
       "status": "pending_tbd",
-      "post_split": "$2.39\u20138.37",
-      "price_str": "$0.24"
+      "post_split": "$1.86\u20136.50",
+      "price_str": "$0.19"
     },
     {
       "accession": "0001213900-26-110831",
@@ -381,10 +381,10 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1716166/000149315226047606/",
       "sent_at": "2026-10-20T07:13:44.728377-04:00",
       "sent_date": "2026-10-20",
-      "current_price": 0.134,
-      "price_asof": "2026-10-26T11:13:12.094734+00:00",
+      "current_price": 0.1299,
+      "price_asof": "2026-10-26T17:33:52.302065+00:00",
       "status": "pending_tbd",
-      "post_split": "$2.68\u20135.36",
+      "post_split": "$2.60\u20135.20",
       "price_str": "$0.13"
     },
     {
@@ -421,11 +421,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1819142/000181914226000051/",
       "sent_at": "2026-10-19T07:18:40.693631-04:00",
       "sent_date": "2026-10-19",
-      "current_price": 0.692,
-      "price_asof": "2026-10-26T11:13:12.214429+00:00",
+      "current_price": 0.6462,
+      "price_asof": "2026-10-26T17:33:52.442903+00:00",
       "status": "pending_tbd",
-      "post_split": "$3.46",
-      "price_str": "$0.69"
+      "post_split": "$3.23",
+      "price_str": "$0.65"
     },
     {
       "accession": "0001213900-26-110322",
@@ -441,11 +441,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1905956/000121390026110322/",
       "sent_at": "2026-10-19T07:18:40.513996-04:00",
       "sent_date": "2026-10-19",
-      "current_price": 0.222,
-      "price_asof": "2026-10-26T11:13:12.319465+00:00",
+      "current_price": 0.2477,
+      "price_asof": "2026-10-26T17:33:52.626677+00:00",
       "status": "pending_tbd",
-      "post_split": "$0.44",
-      "price_str": "$0.22"
+      "post_split": "$0.50",
+      "price_str": "$0.25"
     },
     {
       "accession": "0001185185-26-004800",
@@ -461,11 +461,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1916331/000118518526004800/",
       "sent_at": "2026-10-16T07:10:48.206904-04:00",
       "sent_date": "2026-10-16",
-      "current_price": 0.79,
-      "price_asof": "2026-10-26T11:13:12.419089+00:00",
+      "current_price": 0.86,
+      "price_asof": "2026-10-26T17:33:52.737486+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.58\u2013316.00",
-      "price_str": "$0.79"
+      "post_split": "$1.72\u2013344.00",
+      "price_str": "$0.86"
     },
     {
       "accession": "0001493152-26-047241",
@@ -481,8 +481,8 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1880343/000149315226047241/",
       "sent_at": "2026-10-16T07:10:48.121808-04:00",
       "sent_date": "2026-10-16",
-      "current_price": 0.011,
-      "price_asof": "2026-10-26T11:13:12.518129+00:00",
+      "current_price": 0.0102,
+      "price_asof": "2026-10-26T17:33:52.853100+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
       "price_str": "$0.01"
@@ -601,11 +601,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1958713/000121390026109018/",
       "sent_at": "2026-10-14T07:14:57.654478-04:00",
       "sent_date": "2026-10-14",
-      "current_price": 1.655,
-      "price_asof": "2026-10-26T11:13:12.620481+00:00",
+      "current_price": 1.71,
+      "price_asof": "2026-10-26T17:33:52.953746+00:00",
       "status": "pending_tbd",
-      "post_split": "$16.55",
-      "price_str": "$1.66"
+      "post_split": "$17.10",
+      "price_str": "$1.71"
     },
     {
       "accession": "0001837607-26-000068",
@@ -621,11 +621,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1837607/000183760726000068/",
       "sent_at": "2026-10-14T07:14:57.570992-04:00",
       "sent_date": "2026-10-14",
-      "current_price": 0.24,
-      "price_asof": "2026-10-26T11:13:12.737330+00:00",
+      "current_price": 0.2498,
+      "price_asof": "2026-10-26T17:33:53.069031+00:00",
       "status": "pending_tbd",
-      "post_split": "$0.48\u201324.00",
-      "price_str": "$0.24"
+      "post_split": "$0.50\u201324.98",
+      "price_str": "$0.25"
     },
     {
       "accession": "0001493152-26-046825",
@@ -641,11 +641,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/2019793/000149315226046825/",
       "sent_at": "2026-10-14T07:14:57.488007-04:00",
       "sent_date": "2026-10-14",
-      "current_price": 0.159,
-      "price_asof": "2026-10-26T11:13:12.837913+00:00",
+      "current_price": 0.1505,
+      "price_asof": "2026-10-26T17:33:53.262405+00:00",
       "status": "pending_tbd",
-      "post_split": "$0.32\u20137.95",
-      "price_str": "$0.16"
+      "post_split": "$0.30\u20137.52",
+      "price_str": "$0.15"
     },
     {
       "accession": "0001140361-26-039426",
@@ -661,11 +661,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1467761/000114036126039426/",
       "sent_at": "2026-10-14T07:14:57.403004-04:00",
       "sent_date": "2026-10-14",
-      "current_price": 3.15,
-      "price_asof": "2026-10-26T11:13:12.946001+00:00",
+      "current_price": 3.12,
+      "price_asof": "2026-10-26T17:33:53.371026+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
-      "price_str": "$3.15"
+      "price_str": "$3.12"
     },
     {
       "accession": "0001493152-26-046859",
@@ -701,11 +701,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1875016/000149315226046580/",
       "sent_at": "2026-10-12T07:15:24.812594-04:00",
       "sent_date": "2026-10-12",
-      "current_price": 2.05,
-      "price_asof": "2026-10-26T11:13:13.132383+00:00",
+      "current_price": 2.15,
+      "price_asof": "2026-10-26T17:33:53.473933+00:00",
       "status": "pending_tbd",
-      "post_split": "$20.50",
-      "price_str": "$2.05"
+      "post_split": "$21.50",
+      "price_str": "$2.15"
     },
     {
       "accession": "0001140361-26-039267",
@@ -722,7 +722,7 @@
       "sent_at": "2026-10-12T07:15:24.728459-04:00",
       "sent_date": "2026-10-12",
       "current_price": 1.81,
-      "price_asof": "2026-10-26T11:13:13.261589+00:00",
+      "price_asof": "2026-10-26T17:33:53.594473+00:00",
       "status": "pending_tbd",
       "post_split": "$5.43",
       "price_str": "$1.81"
@@ -741,8 +741,8 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/2025774/000149315226046334/",
       "sent_at": "2026-10-09T07:15:13.821075-04:00",
       "sent_date": "2026-10-09",
-      "current_price": 0.328,
-      "price_asof": "2026-10-26T11:13:13.361206+00:00",
+      "current_price": 0.3279,
+      "price_asof": "2026-10-26T17:33:53.699666+00:00",
       "status": "pending_tbd",
       "post_split": "$1.64",
       "price_str": "$0.33"
@@ -761,11 +761,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1130598/000110465926114700/",
       "sent_at": "2026-10-09T07:15:13.737652-04:00",
       "sent_date": "2026-10-09",
-      "current_price": 0.34,
-      "price_asof": "2026-10-26T11:13:13.464454+00:00",
+      "current_price": 0.3327,
+      "price_asof": "2026-10-26T17:33:53.874074+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
-      "price_str": "$0.34"
+      "price_str": "$0.33"
     },
     {
       "accession": "0001493152-26-046366",
@@ -801,11 +801,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1821424/000121390026107735/",
       "sent_at": "2026-10-08T13:33:54.772586-04:00",
       "sent_date": "2026-10-08",
-      "current_price": 1.81,
-      "price_asof": "2026-10-26T11:13:13.565015+00:00",
+      "current_price": 1.8,
+      "price_asof": "2026-10-26T17:33:53.973898+00:00",
       "status": "pending_tbd",
-      "post_split": "$3.62",
-      "price_str": "$1.81"
+      "post_split": "$3.60",
+      "price_str": "$1.80"
     },
     {
       "accession": "0001213900-26-107822",
@@ -882,7 +882,7 @@
       "sent_at": "2026-10-07T07:13:20.018778-04:00",
       "sent_date": "2026-10-07",
       "current_price": 0.24,
-      "price_asof": "2026-10-26T11:13:13.660786+00:00",
+      "price_asof": "2026-10-26T17:33:54.160554+00:00",
       "status": "pending_tbd",
       "post_split": "$0.48",
       "price_str": "$0.24"
@@ -901,10 +901,10 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/2032341/000121390026106900/",
       "sent_at": "2026-10-06T13:34:50.024993-04:00",
       "sent_date": "2026-10-06",
-      "current_price": 0.14,
-      "price_asof": "2026-10-26T11:13:13.785376+00:00",
+      "current_price": 0.1403,
+      "price_asof": "2026-10-26T17:33:54.310329+00:00",
       "status": "pending_tbd",
-      "post_split": "$0.28\u20134.20",
+      "post_split": "$0.28\u20134.21",
       "price_str": "$0.14"
     },
     {
@@ -941,11 +941,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1853825/000149315226045752/",
       "sent_at": "2026-10-06T07:12:55.367138-04:00",
       "sent_date": "2026-10-06",
-      "current_price": 1.28,
-      "price_asof": "2026-10-26T11:13:13.888251+00:00",
+      "current_price": 1.26,
+      "price_asof": "2026-10-26T17:33:54.427674+00:00",
       "status": "pending_tbd",
-      "post_split": "$2.56",
-      "price_str": "$1.28"
+      "post_split": "$2.52",
+      "price_str": "$1.26"
     },
     {
       "accession": "0001193125-26-413235",
@@ -961,11 +961,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1640384/000119312526413235/lmfa-20261005.htm",
       "sent_at": "2026-10-05T13:36:29.355864-04:00",
       "sent_date": "2026-10-05",
-      "current_price": 0.615,
-      "price_asof": "2026-10-26T11:13:13.984311+00:00",
+      "current_price": 0.591,
+      "price_asof": "2026-10-26T17:33:54.530290+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
-      "price_str": "$0.61"
+      "price_str": "$0.59"
     },
     {
       "accession": "0001493152-26-045701",
@@ -1021,11 +1021,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1807166/000121390026106416/",
       "sent_at": "2026-10-05T07:13:57.890372-04:00",
       "sent_date": "2026-10-05",
-      "current_price": 0.618,
-      "price_asof": "2026-10-26T11:13:14.087213+00:00",
+      "current_price": 0.611,
+      "price_asof": "2026-10-26T17:33:54.638095+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
-      "price_str": "$0.62"
+      "price_str": "$0.61"
     },
     {
       "accession": "0001213900-26-106478",
@@ -1041,11 +1041,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1711786/000121390026106478/",
       "sent_at": "2026-10-05T07:13:57.807484-04:00",
       "sent_date": "2026-10-05",
-      "current_price": 0.548,
-      "price_asof": "2026-10-26T11:13:14.192631+00:00",
+      "current_price": 0.5213,
+      "price_asof": "2026-10-26T17:33:54.738147+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.10\u20138.22",
-      "price_str": "$0.55"
+      "post_split": "$1.04\u20137.82",
+      "price_str": "$0.52"
     },
     {
       "accession": "0001213900-26-106390",
@@ -1121,11 +1121,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1951229/000121390026106065/",
       "sent_at": "2026-10-02T07:15:53.323021-04:00",
       "sent_date": "2026-10-02",
-      "current_price": 0.025,
-      "price_asof": "2026-10-26T11:13:14.309513+00:00",
+      "current_price": 0.015,
+      "price_asof": "2026-10-26T17:33:54.839841+00:00",
       "status": "pending_tbd",
-      "post_split": "$0.25",
-      "price_str": "$0.03"
+      "post_split": "$0.15",
+      "price_str": "$0.01"
     },
     {
       "accession": "0001829126-26-010624",
@@ -1161,11 +1161,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1775194/000147793226005899/",
       "sent_at": "2026-09-30T07:13:03.875904-04:00",
       "sent_date": "2026-09-30",
-      "current_price": 0.766,
-      "price_asof": "2026-10-26T11:13:14.409979+00:00",
+      "current_price": 0.7601,
+      "price_asof": "2026-10-26T17:33:54.948933+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.53\u20133.06",
-      "price_str": "$0.77"
+      "post_split": "$1.52\u20133.04",
+      "price_str": "$0.76"
     },
     {
       "accession": "0001213900-26-104741",
@@ -1181,11 +1181,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1769624/000121390026104741/",
       "sent_at": "2026-09-30T07:13:03.792735-04:00",
       "sent_date": "2026-09-30",
-      "current_price": 0.075,
-      "price_asof": "2026-10-26T11:13:14.512741+00:00",
+      "current_price": 0.0599,
+      "price_asof": "2026-10-26T17:33:55.074862+00:00",
       "status": "pending_tbd",
-      "post_split": "$0.38",
-      "price_str": "$0.07"
+      "post_split": "$0.30",
+      "price_str": "$0.06"
     },
     {
       "accession": "0001628280-26-063750",
@@ -1241,11 +1241,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1825349/000118518526004371/",
       "sent_at": "2026-09-29T07:14:52.272847-04:00",
       "sent_date": "2026-09-29",
-      "current_price": 0.998,
-      "price_asof": "2026-10-26T11:13:14.622388+00:00",
+      "current_price": 0.9825,
+      "price_asof": "2026-10-26T17:33:55.258052+00:00",
       "status": "pending_tbd",
-      "post_split": "$99.80",
-      "price_str": "$1.00"
+      "post_split": "$98.25",
+      "price_str": "$0.98"
     },
     {
       "accession": "0001493152-26-044453",
@@ -1281,8 +1281,8 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/2036307/000149315226044304/",
       "sent_at": "2026-09-28T07:15:24.050087-04:00",
       "sent_date": "2026-09-28",
-      "current_price": 0.328,
-      "price_asof": "2026-10-26T11:13:14.737710+00:00",
+      "current_price": 0.3273,
+      "price_asof": "2026-10-26T17:33:55.361517+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
       "price_str": "$0.33"
@@ -1301,11 +1301,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1707919/000114036126037718/",
       "sent_at": "2026-09-28T07:15:23.966929-04:00",
       "sent_date": "2026-09-28",
-      "current_price": 2.34,
-      "price_asof": "2026-10-26T11:13:14.942615+00:00",
+      "current_price": 2.84,
+      "price_asof": "2026-10-26T17:33:55.463809+00:00",
       "status": "pending_tbd",
-      "post_split": "$4.68",
-      "price_str": "$2.34"
+      "post_split": "$5.68",
+      "price_str": "$2.84"
     },
     {
       "accession": "0001493152-26-044382",
@@ -1321,8 +1321,8 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1777319/000149315226044382/",
       "sent_at": "2026-09-28T07:15:23.881773-04:00",
       "sent_date": "2026-09-28",
-      "current_price": 0.186,
-      "price_asof": "2026-10-26T11:13:15.041377+00:00",
+      "current_price": 0.1855,
+      "price_asof": "2026-10-26T17:33:55.690918+00:00",
       "status": "pending_tbd",
       "post_split": "$0.37",
       "price_str": "$0.19"
@@ -1381,11 +1381,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1808377/000182912626010383/",
       "sent_at": "2026-09-25T07:14:12.178742-04:00",
       "sent_date": "2026-09-25",
-      "current_price": 0.867,
-      "price_asof": "2026-10-26T11:13:15.173774+00:00",
+      "current_price": 0.8406,
+      "price_asof": "2026-10-26T17:33:55.795160+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.73\u201310.40",
-      "price_str": "$0.87"
+      "post_split": "$1.68\u201310.09",
+      "price_str": "$0.84"
     },
     {
       "accession": "0001493152-26-044188",
@@ -1401,11 +1401,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/2010499/000149315226044188/",
       "sent_at": "2026-09-25T07:14:12.093591-04:00",
       "sent_date": "2026-09-25",
-      "current_price": 1.4,
-      "price_asof": "2026-10-26T11:13:15.360147+00:00",
+      "current_price": 1.34,
+      "price_asof": "2026-10-26T17:33:55.987857+00:00",
       "status": "pending_tbd",
-      "post_split": "$14.00",
-      "price_str": "$1.40"
+      "post_split": "$13.40",
+      "price_str": "$1.34"
     },
     {
       "accession": "0001104659-26-110425",
@@ -1581,11 +1581,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1692415/000149315226043582/",
       "sent_at": "2026-09-22T07:14:09.537953-04:00",
       "sent_date": "2026-09-22",
-      "current_price": 0.546,
-      "price_asof": "2026-10-26T11:13:15.458041+00:00",
+      "current_price": 0.5688,
+      "price_asof": "2026-10-26T17:33:56.213161+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.09\u201327.30",
-      "price_str": "$0.55"
+      "post_split": "$1.14\u201328.44",
+      "price_str": "$0.57"
     },
     {
       "accession": "0001213900-26-101807",
@@ -1621,11 +1621,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1563568/000143774926030750/",
       "sent_at": "2026-09-21T07:14:48.136353-04:00",
       "sent_date": "2026-09-21",
-      "current_price": 0.92,
-      "price_asof": "2026-10-26T11:13:15.562177+00:00",
+      "current_price": 0.8586,
+      "price_asof": "2026-10-26T17:33:56.318698+00:00",
       "status": "pending_tbd",
-      "post_split": "$13.80",
-      "price_str": "$0.92"
+      "post_split": "$12.88",
+      "price_str": "$0.86"
     },
     {
       "accession": "0001731122-26-001261",
@@ -1641,11 +1641,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1924482/000173112226001261/",
       "sent_at": "2026-09-21T07:14:48.052401-04:00",
       "sent_date": "2026-09-21",
-      "current_price": 0.87,
-      "price_asof": "2026-10-26T11:13:15.671472+00:00",
+      "current_price": 0.8642,
+      "price_asof": "2026-10-26T17:33:56.441941+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
-      "price_str": "$0.87"
+      "price_str": "$0.86"
     },
     {
       "accession": "0001213900-26-101140",
@@ -1761,11 +1761,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1874097/000121390026099262/",
       "sent_at": "2026-09-14T07:12:42.957463-04:00",
       "sent_date": "2026-09-14",
-      "current_price": 0.395,
-      "price_asof": "2026-10-26T11:13:15.776218+00:00",
+      "current_price": 0.3741,
+      "price_asof": "2026-10-26T17:33:56.735689+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.98",
-      "price_str": "$0.40"
+      "post_split": "$1.87",
+      "price_str": "$0.37"
     },
     {
       "accession": "wire:stocktitan:fee5154bc94e",
@@ -1981,11 +1981,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1843714/000168316826006972/",
       "sent_at": "2026-09-07T07:15:29.446205-04:00",
       "sent_date": "2026-09-07",
-      "current_price": 0.75,
-      "price_asof": "2026-10-26T11:13:15.884831+00:00",
+      "current_price": 0.68,
+      "price_asof": "2026-10-26T17:33:56.922825+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.50\u201337.50",
-      "price_str": "$0.75"
+      "post_split": "$1.36\u201334.00",
+      "price_str": "$0.68"
     },
     {
       "accession": "0001493152-26-041601",
@@ -2001,11 +2001,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1622345/000149315226041601/",
       "sent_at": "2026-09-07T07:15:29.362094-04:00",
       "sent_date": "2026-09-07",
-      "current_price": 0.76,
-      "price_asof": "2026-10-26T11:13:15.987718+00:00",
+      "current_price": 0.6908,
+      "price_asof": "2026-10-26T17:33:57.028972+00:00",
       "status": "pending_tbd",
-      "post_split": "$2.28\u201315.20",
-      "price_str": "$0.76"
+      "post_split": "$2.07\u201313.82",
+      "price_str": "$0.69"
     },
     {
       "accession": "0001213900-26-097765",
@@ -2021,11 +2021,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1558569/000121390026097765/",
       "sent_at": "2026-09-07T07:15:29.275788-04:00",
       "sent_date": "2026-09-07",
-      "current_price": 0.817,
-      "price_asof": "2026-10-26T11:13:16.085716+00:00",
+      "current_price": 0.8252,
+      "price_asof": "2026-10-26T17:33:57.263765+00:00",
       "status": "pending_tbd",
-      "post_split": "$8.17\u201381.70",
-      "price_str": "$0.82"
+      "post_split": "$8.25\u201382.52",
+      "price_str": "$0.83"
     },
     {
       "accession": "0001171843-26-005881",
@@ -2061,11 +2061,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1938865/000121390026097196/",
       "sent_at": "2026-09-04T07:10:13.304131-04:00",
       "sent_date": "2026-09-04",
-      "current_price": 1.61,
-      "price_asof": "2026-10-26T11:13:16.189616+00:00",
+      "current_price": 1.46,
+      "price_asof": "2026-10-26T17:33:57.368706+00:00",
       "status": "upcoming",
-      "post_split": "$80.50",
-      "price_str": "$1.61"
+      "post_split": "$73.00",
+      "price_str": "$1.46"
     },
     {
       "accession": "wire:stocktitan:8c7ace70473e",
@@ -2122,7 +2122,7 @@
       "sent_at": "2026-09-03T07:13:37.715990-04:00",
       "sent_date": "2026-09-03",
       "current_price": 0.03,
-      "price_asof": "2026-10-26T11:13:16.293199+00:00",
+      "price_asof": "2026-10-26T17:33:57.468845+00:00",
       "status": "pending_tbd",
       "post_split": "$0.06",
       "price_str": "$0.03"
@@ -2201,11 +2201,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1809616/000121390026096306/",
       "sent_at": "2026-09-02T07:09:45.850272-04:00",
       "sent_date": "2026-09-02",
-      "current_price": 4.34,
-      "price_asof": "2026-10-26T11:13:16.409795+00:00",
+      "current_price": 3.385,
+      "price_asof": "2026-10-26T17:33:57.574117+00:00",
       "status": "pending_tbd",
-      "post_split": "$43.40",
-      "price_str": "$4.34"
+      "post_split": "$33.85",
+      "price_str": "$3.38"
     },
     {
       "accession": "0001477932-26-005346",
@@ -2242,7 +2242,7 @@
       "sent_at": "2026-09-01T13:40:11.996882-04:00",
       "sent_date": "2026-09-01",
       "current_price": 0.4,
-      "price_asof": "2026-10-26T11:13:16.520548+00:00",
+      "price_asof": "2026-10-26T17:33:57.889520+00:00",
       "status": "pending_tbd",
       "post_split": "$0.80\u201380.00",
       "price_str": "$0.40"
@@ -2261,11 +2261,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/832489/000143774926029328/",
       "sent_at": "2026-09-01T07:13:14.140009-04:00",
       "sent_date": "2026-09-01",
-      "current_price": 0.206,
-      "price_asof": "2026-10-26T11:13:16.633320+00:00",
+      "current_price": 0.195,
+      "price_asof": "2026-10-26T17:33:58.026889+00:00",
       "status": "pending_tbd",
       "post_split": "\u2014",
-      "price_str": "$0.21"
+      "price_str": "$0.20"
     },
     {
       "accession": "wire:stocktitan:c75c0e8e1094",
@@ -2281,11 +2281,11 @@
       "edgar_url": "https://www.stocktitan.net/news/AAWH/awh-stockholders-approve-reverse-stock-split-a-prerequisite-to-a-u-s-rrza2efbbgcf.html",
       "sent_at": "2026-08-31T13:39:06.424909-04:00",
       "sent_date": "2026-08-31",
-      "current_price": 0.408,
-      "price_asof": "2026-10-26T11:13:16.749151+00:00",
+      "current_price": 0.3952,
+      "price_asof": "2026-10-26T17:33:58.137904+00:00",
       "status": "pending_tbd",
-      "post_split": "$4.08\u201320.40",
-      "price_str": "$0.41"
+      "post_split": "$3.95\u201319.76",
+      "price_str": "$0.40"
     },
     {
       "accession": "0001213900-26-095155",
@@ -2302,7 +2302,7 @@
       "sent_at": "2026-08-31T07:16:59.376973-04:00",
       "sent_date": "2026-08-31",
       "current_price": 0.0085,
-      "price_asof": "2026-10-26T11:13:16.937366+00:00",
+      "price_asof": "2026-10-26T17:33:58.342688+00:00",
       "status": "pending_tbd",
       "post_split": "$0.02",
       "price_str": "$0.01"
@@ -2321,11 +2321,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1855467/000149315226040654/",
       "sent_at": "2026-08-31T07:16:59.290655-04:00",
       "sent_date": "2026-08-31",
-      "current_price": 0.72,
-      "price_asof": "2026-10-26T11:13:17.037327+00:00",
+      "current_price": 0.764,
+      "price_asof": "2026-10-26T17:33:58.448074+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.44",
-      "price_str": "$0.72"
+      "post_split": "$1.53",
+      "price_str": "$0.76"
     },
     {
       "accession": "0001339970-26-000058",
@@ -2341,11 +2341,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1339970/000133997026000058/",
       "sent_at": "2026-08-31T07:16:59.205488-04:00",
       "sent_date": "2026-08-31",
-      "current_price": 0.165,
-      "price_asof": "2026-10-26T11:13:17.133942+00:00",
+      "current_price": 0.1502,
+      "price_asof": "2026-10-26T17:33:58.567749+00:00",
       "status": "pending_tbd",
-      "post_split": "$1.65",
-      "price_str": "$0.17"
+      "post_split": "$1.50",
+      "price_str": "$0.15"
     },
     {
       "accession": "0001493152-26-040669",
@@ -2361,11 +2361,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1583771/000149315226040669/",
       "sent_at": "2026-08-31T07:16:59.034191-04:00",
       "sent_date": "2026-08-31",
-      "current_price": 0.14,
-      "price_asof": "2026-10-26T11:13:17.254975+00:00",
+      "current_price": 0.1281,
+      "price_asof": "2026-10-26T17:33:58.837323+00:00",
       "status": "pending_tbd",
-      "post_split": "$2.80",
-      "price_str": "$0.14"
+      "post_split": "$2.56",
+      "price_str": "$0.13"
     },
     {
       "accession": "0001213900-26-095146",
@@ -2481,11 +2481,11 @@
       "edgar_url": "https://www.sec.gov/Archives/edgar/data/1811216/000110465926102171/",
       "sent_at": "2026-08-27T13:42:30.386580-04:00",
       "sent_date": "2026-08-27",
-      "current_price": 0.166,
-      "price_asof": "2026-10-26T11:13:17.457442+00:00",
+      "current_price": 0.163,
+      "price_asof": "2026-10-26T17:33:58.940184+00:00",
       "status": "pending_tbd",
-      "post_split": "$6.64",
-      "price_str": "$0.17"
+      "post_split": "$6.52",
+      "price_str": "$0.16"
     },
     {
       "accession": "0001640334-26-001421",
