@@ -235,26 +235,30 @@ function textSprite(s,size,fill,stroke){
 /* ---------- fish art ---------- */
 function ell(g,x,y,rx,ry){g.beginPath();g.ellipse(x,y,rx,ry,0,0,TAU);}
 /* guppy geometry: a long oval with a blunt, heavy head and a deep belly, shared by the sprite and the per-frame eye */
-function gupRX(st){return FR[st]*(st===0?1.3:1.52);}
+function gupRX(st){return FR[st]*(st===0?1.36:st===1?1.39:1.42);}
 function gupRY(st){return FR[st]*(st===0?.96:1.0);}
-const GUP_INK='#2a1608';
-function gupPath(g,rx,ry){
- g.beginPath();g.moveTo(rx,-ry*.1);
- g.bezierCurveTo(rx*1.0,-ry*.82,rx*.45,-ry*1.04,-rx*.2,-ry*.92);
- g.bezierCurveTo(-rx*.8,-ry*.86,-rx*1.04,-ry*.62,-rx*1.02,0);
- g.bezierCurveTo(-rx*1.04,ry*.66,-rx*.62,ry*1.04,rx*.1,ry*1.14);
- g.bezierCurveTo(rx*.62,ry*1.2,rx*1.04,ry*.7,rx,-ry*.1);g.closePath();
+const GUP_INK='#2a1608',EYEB=[.75,1.0,.32,.32];
+function gupPath(g,rx,ry,st){
+ /* blunt round face, hump just behind the head, back falling away to a narrow tail root */
+ g.beginPath();g.moveTo(rx*1.02,ry*.05);
+ g.bezierCurveTo(rx*1.08,-ry*.62,rx*.6,-ry*1.08,-rx*.05,-ry*1.0);
+ /* the small stage's back falls further (measured back drop 0.25 on the reference) */
+ if(st===0)g.bezierCurveTo(-rx*.52,-ry*.9,-rx*.92,-ry*.34,-rx*1.0,ry*.16);else g.bezierCurveTo(-rx*.55,-ry*.92,-rx*.95,-ry*.42,-rx*1.0,ry*.12);
+ g.bezierCurveTo(-rx*1.03,ry*.6,-rx*.62,ry*1.02,rx*.1,ry*1.14);
+ g.bezierCurveTo(rx*.62,ry*1.2,rx*1.1,ry*.7,rx*1.02,ry*.05);g.closePath();
 }
 function finFill(g,c,x0,y0,x1,y1){const f=g.createLinearGradient(x0,y0,x1,y1);f.addColorStop(0,edge(c,.78));f.addColorStop(.6,c);f.addColorStop(1,tint(c,.18));return f;}
-function fishBody(g,st,p,sick){
+function gupDorsal(g,st,P){const rx=gupRX(st),ry=gupRY(st),lw=st===0?1.4:1.7;g.lineJoin='round';g.strokeStyle=GUP_INK;
+ g.beginPath();g.moveTo(-rx*.5,-ry*.78);g.bezierCurveTo(-rx*.7,-ry*1.5,-rx*.55,-ry*2.0,-rx*.05,-ry*1.86);g.bezierCurveTo(rx*.12,-ry*1.6,rx*.2,-ry*1.2,rx*.26,-ry*.95);g.closePath();
+ g.fillStyle=finFill(g,P.c,0,-ry*.8,-rx*.3,-ry*1.9);g.fill();g.lineWidth=lw*.8;g.stroke();}
+function fishBody(g,st,p,sick,noDorsal){
  const R=FR[st],rx=gupRX(st),ry=gupRY(st),P=sick?SICK:p,lw=st===0?1.4:1.7;
  g.lineJoin='round';g.strokeStyle=GUP_INK;
  /* dorsal: a tall sail swept back */
- g.beginPath();g.moveTo(-rx*.5,-ry*.78);g.bezierCurveTo(-rx*.7,-ry*1.5,-rx*.55,-ry*2.0,-rx*.05,-ry*1.86);g.bezierCurveTo(rx*.12,-ry*1.6,rx*.2,-ry*1.2,rx*.26,-ry*.95);g.closePath();
- g.fillStyle=finFill(g,P.c,0,-ry*.8,-rx*.3,-ry*1.9);g.fill();g.lineWidth=lw*.8;g.stroke();
+ if(!noDorsal)gupDorsal(g,st,P);
  /* body: flat yellow, a strong orange belly band, faint mottling */
- gupPath(g,rx,ry);g.fillStyle=P.b;g.fill();
- g.save();gupPath(g,rx,ry);g.clip();
+ gupPath(g,rx,ry,st);g.fillStyle=P.b;g.fill();
+ g.save();gupPath(g,rx,ry,st);g.clip();
  const bg=g.createLinearGradient(0,-ry*.15,0,ry*.75);bg.addColorStop(0,'rgba(0,0,0,0)');bg.addColorStop(1,P.a);g.fillStyle=bg;g.fillRect(-rx*1.1,-ry*.15,rx*2.2,ry*1.4);g.fillStyle=P.a;g.fillRect(-rx*1.1,ry*.75,rx*2.2,ry*.6);
  const bl=g.createLinearGradient(0,ry*.5,0,ry*1.1);bl.addColorStop(0,'rgba(0,0,0,0)');bl.addColorStop(1,edge(P.a,.85));g.fillStyle=bl;g.fillRect(-rx,ry*.4,rx*2,ry*.8);
  const jw=g.createRadialGradient(rx*.75,ry*.75,R*.1,rx*.6,ry*.6,rx*.75);jw.addColorStop(0,P.a);jw.addColorStop(1,'rgba(0,0,0,0)');g.globalAlpha=.55;g.fillStyle=jw;g.fillRect(-rx,-ry,rx*2.2,ry*2.4);
@@ -263,12 +267,18 @@ function fishBody(g,st,p,sick){
  g.globalAlpha=.35;g.strokeStyle=edge(P.a,.55);g.lineWidth=1.2;g.beginPath();g.arc(rx*.5,ry*.1,ry*.7,1.95,3.4);g.stroke();g.globalAlpha=1;
  const tl=g.createLinearGradient(0,-ry,0,-ry*.3);tl.addColorStop(0,'rgba(255,250,210,.35)');tl.addColorStop(1,'rgba(255,250,210,0)');g.fillStyle=tl;g.fillRect(-rx,-ry,rx*2,ry*.7);
  g.restore();
- gupPath(g,rx,ry);g.lineWidth=lw;const og=g.createLinearGradient(0,-ry,0,ry);og.addColorStop(0,edge(P.a,.5));og.addColorStop(1,GUP_INK);g.strokeStyle=og;g.stroke();g.strokeStyle=GUP_INK;
+ gupPath(g,rx,ry,st);g.lineWidth=lw;const og=g.createLinearGradient(0,-ry,0,ry);og.addColorStop(0,edge(P.a,.5));og.addColorStop(1,GUP_INK);g.strokeStyle=og;g.stroke();g.strokeStyle=GUP_INK;
  /* pectoral fin */
  g.globalAlpha=.75;g.beginPath();g.moveTo(rx*.16,ry*.2);g.bezierCurveTo(-rx*.02,ry*.2,-rx*.26,ry*.42,-rx*.2,ry*.56);g.bezierCurveTo(-rx*.05,ry*.52,rx*.1,ry*.4,rx*.16,ry*.2);g.closePath();g.fillStyle=edge(P.a,.88);g.fill();g.lineWidth=lw*.5;g.stroke();g.globalAlpha=1;
- /* a small open, downturned mouth under the eye */
- g.beginPath();g.moveTo(rx*.6,ry*.52);g.quadraticCurveTo(rx*.78,ry*.3,rx*.98,ry*.32);g.quadraticCurveTo(rx*1.08,ry*.44,rx*1.0,ry*.62);g.quadraticCurveTo(rx*.8,ry*.74,rx*.6,ry*.52);g.closePath();g.fillStyle=edge(P.a,.92);g.fill();g.lineWidth=lw*.6;g.strokeStyle=GUP_INK;g.stroke();
- g.beginPath();g.moveTo(rx*.72,ry*.52);g.quadraticCurveTo(rx*.88,ry*.42,rx*.98,ry*.48);g.quadraticCurveTo(rx*.86,ry*.58,rx*.72,ry*.52);g.closePath();g.fillStyle=sick?'#3a3a20':'#5a1608';g.fill();
+ /* a wide frown tucked under the eye, inside the head outline: arched mouth line over a thick lower lip */
+ g.beginPath();g.moveTo(rx*.88,ry*.5);g.quadraticCurveTo(rx*.86,ry*.76,rx*.68,ry*.78);g.quadraticCurveTo(rx*.52,ry*.76,rx*.46,ry*.6);g.quadraticCurveTo(rx*.66,ry*.58,rx*.88,ry*.5);g.closePath();
+ g.fillStyle=sick?'#9aa070':P.a;g.fill();g.lineWidth=lw*.6;g.strokeStyle=edge(P.a,.55);g.stroke();
+ g.globalAlpha=.45;g.fillStyle='rgba(255,240,200,.8)';ell(g,rx*.7,ry*.68,rx*.08,ry*.04);g.fill();g.globalAlpha=1;
+ /* soft orange-red chin band that follows the lower face under the lip, clipped to the body outline */
+ g.save();gupPath(g,rx,ry,st);g.clip();g.lineCap='round';g.strokeStyle=sick?'#8a9060':'#f2582a';
+ for(const[lwk,al]of[[.34,.16],[.22,.2],[.12,.22]]){g.globalAlpha=al;g.lineWidth=ry*lwk;g.beginPath();g.moveTo(rx*.42,ry*1.0);g.quadraticCurveTo(rx*.8,ry*1.0,rx*.98,ry*.66);g.stroke();}
+ g.globalAlpha=1;g.restore();
+ g.beginPath();g.moveTo(rx*.9,ry*.52);g.quadraticCurveTo(rx*.72,ry*.36,rx*.46,ry*.62);g.lineWidth=lw*1.05;g.strokeStyle='#3a1206';g.stroke();g.strokeStyle=GUP_INK;
  if(st===3){
   g.save();g.translate(rx*.1,-ry*.95);g.rotate(-.12);
   g.fillStyle='#1c1c2a';g.strokeStyle='#05050a';g.lineWidth=1.6;rr(g,-R*.44,-R*.72,R*.88,R*.72,3);g.fill();g.stroke();
@@ -277,13 +287,13 @@ function fishBody(g,st,p,sick){
  }
 }
 /* the pelvic fin flicks on its own, so it is a separate small sprite */
-function fishPelvic(g,st,p,sick){const P=sick?SICK:p,R=FR[st];g.translate(-R*.3,-R*.25);g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(R*.1,R*.75,R*.55,R*.62);g.quadraticCurveTo(R*.42,R*.2,R*.6,0);g.closePath();g.fillStyle=finFill(g,P.c,0,0,0,R*.7);g.fill();g.lineWidth=st===0?1.4:1.8;g.strokeStyle=GUP_INK;g.stroke();}
+function fishPelvic(g,st,p,sick){const P=sick?SICK:p,R=FR[st];g.beginPath();g.moveTo(-R*.22,0);g.quadraticCurveTo(-R*.26,R*.46,-R*.44,R*.8);g.quadraticCurveTo(-R*.08,R*.66,R*.22,0);g.closePath();g.fillStyle=finFill(g,P.c,0,R*.8,0,0);g.fill();g.lineWidth=st===0?1.4:1.8;g.strokeStyle=GUP_INK;g.stroke();}
+function tailW(st){return FR[st]*(st===0?1.65:st===1?1.45:1.4);}
 function fishTail(g,st,p,sick){
- const R=FR[st],P=sick?SICK:p,w=R*(st>=2?1.9:1.25),h=gupRY(st)*(st===0?.95:1.05);
+ const R=FR[st],P=sick?SICK:p,w=tailW(st),h=gupRY(st)*(st===0?1.42:st===1?1.42:1.22);
  g.translate(w/2,0);
  g.beginPath();g.moveTo(1,-R*.6);g.quadraticCurveTo(-w*.35,-h*.7,-w*.68,-h*.98);g.bezierCurveTo(-w*1.04,-h*.6,-w*1.04,h*.6,-w*.68,h*.98);g.quadraticCurveTo(-w*.35,h*.7,1,R*.6);g.closePath();
  g.fillStyle=finFill(g,P.c,2,0,-w,0);g.fill();g.strokeStyle=GUP_INK;g.lineWidth=st===0?1.5:1.9;g.stroke();
- g.globalAlpha=.22;g.lineWidth=1;g.beginPath();for(let i=-2;i<=2;i++){g.moveTo(0,i*R*.06);g.lineTo(-w*.78,i*h*.36);}g.stroke();g.globalAlpha=1;
 }
 /* the fish seen from the front, for the middle of a turn: one big face, tail edge-on behind */
 function fishFront(g,st,p,sick){
@@ -298,7 +308,7 @@ function fishFront(g,st,p,sick){
  ell(g,0,ry*.5,R*.22,R*.16);g.fillStyle='#4a1408';g.fill();g.lineWidth=lw*.6;g.stroke();
 }
 function fishSpr(st,pi,sick){return bake('fb'+st+'|'+pi+'|'+(sick?1:0),FR[st]*3.4,FR[st]*4.4,g=>fishBody(g,st,PALS[pi],sick));}
-function tailSpr(st,pi,sick){return bake('ft'+st+'|'+pi+'|'+(sick?1:0),FR[st]*1.25,FR[st]*2.5,g=>fishTail(g,st,PALS[pi],sick));}
+function tailSpr(st,pi,sick){return bake('ft'+st+'|'+pi+'|'+(sick?1:0),tailW(st),FR[st]*3.2,g=>fishTail(g,st,PALS[pi],sick));}
 
 /* ---------- coins and food ---------- */
 function coinSpr(t){return bake('coin'+t,52,52,g=>coinArt(g,t));}
@@ -514,8 +524,9 @@ function bigFish(g,k,sick,open){
  if(k===K.CATCHER){ell(g,w*.02,-h*.95,h*.5,h*.22);g.fillStyle='#2a0c20';g.lineWidth=2.6;g.fill();g.stroke();}
 }
 function bigTail(g,k,sick){
- const R=KR[k],col=sick?'#62665a':[null,'#2c333e',null,'#b03e12','#1e6a3f','#5e3c14','#5e0a1a'][k];
- g.translate(R*.42,0);g.beginPath();g.moveTo(2,-R*.22);g.quadraticCurveTo(-R*.4,-R*.45,-R*.8,-R*.66);g.quadraticCurveTo(-R*1.0,0,-R*.8,R*.66);g.quadraticCurveTo(-R*.4,R*.45,2,R*.22);g.closePath();g.fillStyle=col;g.fill();g.strokeStyle='#1a0e0a';g.lineWidth=2.2;g.stroke();
+ const R=KR[k],col=sick?'#62665a':[null,'#2c333e',null,'#b03e12','#1e6a3f','#5e3c14','#5e0a1a'][k],c1=sick?'#8b8f7a':[null,'#5a6674',null,'#e06a30','#3f9a5c','#a0702e','#a82238'][k];
+ g.translate(R*.42,0);g.beginPath();g.moveTo(3,-R*.26);g.quadraticCurveTo(-R*.32,-R*.34,-R*.86,-R*.7);g.quadraticCurveTo(-R*.74,-R*.3,-R*.6,0);g.quadraticCurveTo(-R*.74,R*.3,-R*.86,R*.7);g.quadraticCurveTo(-R*.32,R*.34,3,R*.26);g.closePath();
+ const tg=g.createLinearGradient(0,0,-R*.86,0);tg.addColorStop(0,col);tg.addColorStop(1,c1);g.fillStyle=tg;g.fill();g.strokeStyle='#1a0e0a';g.lineWidth=2.2;g.stroke();
 }
 function fishPal(f){return f.stage===3?KINGPAL:f.star?STARPAL:PALS[f.pal];}
 function fishSpr2(f,sick){
@@ -526,12 +537,21 @@ function fishSpr2(f,sick){
   if(br==='b'){/* a breeder wears the family apron */ g.fillStyle='#fff';g.strokeStyle=INK;g.lineWidth=2;const R=FR[f.stage];g.beginPath();g.moveTo(-R*.25,R*.1);g.lineTo(R*.35,R*.1);g.lineTo(R*.45,R*.78);g.lineTo(-R*.35,R*.78);g.closePath();g.fill();g.stroke();g.fillStyle='#ff6f9f';ell(g,R*.05,R*.42,R*.12,R*.12);g.fill();}
  });
 }
-function pelvicSpr(f){const ks=f.stage===3?'k':f.star?'s':f.pal,sk=f.sick?1:0;return bake('fp'+f.stage+'|'+ks+'|'+sk,FR[f.stage]*1.6,FR[f.stage]*1.6,g=>fishPelvic(g,f.stage,fishPal(f),f.sick));}
+/* the body in three baked pieces cut at two joints, so the rear third can really bend with the tail */
+function gupJoints(st){const rx=gupRX(st);return st===3?[-rx*.42,-rx*.68]:[rx*.02,-rx*.36];}
+function segSpr(f,i){const ks=f.stage===3?'k':f.star?'s':f.pal,br=f.kind===K.BREEDER?'b':'g',sk=f.sick?1:0,st=f.stage,R=FR[st];
+ return bake('fs'+br+st+'|'+ks+'|'+sk+'|'+i,R*3.8,R*4.6,(g,w,h)=>{const J=gupJoints(st),ov=gupRX(st)*.1;g.beginPath();
+  /* hard cuts sit under the piece in front; each front edge fades over 2*ov so no seam shows */
+  if(i===1)g.rect(-w,-h,w+J[0]+ov*2.5,h*2);else if(i===2)g.rect(-w,-h,w+J[1]+ov*2.5,h*2);else g.rect(-w,-h,w*2,h*2);g.clip();
+  fishBody(g,st,fishPal(f),f.sick);
+  if(br==='b'){g.fillStyle='#fff';g.strokeStyle=INK;g.lineWidth=2;g.beginPath();g.moveTo(-R*.25,R*.1);g.lineTo(R*.35,R*.1);g.lineTo(R*.45,R*.78);g.lineTo(-R*.35,R*.78);g.closePath();g.fill();g.stroke();g.fillStyle='#ff6f9f';ell(g,R*.05,R*.42,R*.12,R*.12);g.fill();}
+  if(i<2){const jx=J[i],m=g.createLinearGradient(jx-ov,0,jx+ov,0);m.addColorStop(0,'rgba(0,0,0,0)');m.addColorStop(1,'#000');g.globalCompositeOperation='destination-in';g.fillStyle=m;g.fillRect(-w,-h,w*2,h*2);g.globalCompositeOperation='source-over';}});}
+function pelvicSpr(f){const ks=f.stage===3?'k':f.star?'s':f.pal,sk=f.sick?1:0;return bake('fp'+f.stage+'|'+ks+'|'+sk,FR[f.stage]*2.3,FR[f.stage]*2.3,g=>fishPelvic(g,f.stage,fishPal(f),f.sick));}
 function frontSpr(f){const ks=f.stage===3?'k':f.star?'s':f.pal,sk=f.sick?1:0;return bake('ff'+f.stage+'|'+ks+'|'+sk,FR[f.stage]*3.4,FR[f.stage]*4.2,g=>fishFront(g,f.stage,fishPal(f),f.sick));}
 function tailSpr2(f,sick){
  if(f.kind!==K.GUPPY&&f.kind!==K.BREEDER){const R=KR[f.kind];return bake('bt'+f.kind+(sick?1:0),R*1,R*1.6,g=>bigTail(g,f.kind,sick));}
  const ks=f.stage===3?'k':f.star?'s':f.pal;
- return bake('ft'+f.stage+'|'+ks+'|'+(sick?1:0),FR[f.stage]*(f.stage>=2?1.9:1.25),FR[f.stage]*2.6,g=>fishTail(g,f.stage,fishPal(f),sick));
+ return bake('ft'+f.stage+'|'+ks+'|'+(sick?1:0),tailW(f.stage),FR[f.stage]*3.2,g=>fishTail(g,f.stage,fishPal(f),sick));
 }
 function floorArt(g,k,sick){
  g.lineWidth=2.8;g.strokeStyle=INK;
@@ -980,7 +1000,7 @@ function hurtAlien(a,dmg,x,y,kb){
 }
 function spawnAlien(kind,hp,x,y,spawn){
  const a=aliens.add();if(!a)return null;const D=ALIENS[kind];
- a.kind=kind;a.x=x;a.y=y;a.vx=0;a.vy=0;a.kbx=0;a.kby=0;a.hp=hp;a.max=hp;a.r=D.r;a.biteCd=spawn+(kind==='mini'?.2:2);a.spawnT=spawn;a.spawn0=Math.max(spawn,.01);a.flash=0;a.sq=0;a.sqv=0;a.mouth=0;a.face=x<VW/2?1:-1;
+ a.kind=kind;a.x=x;a.y=y;a.vx=0;a.vy=0;a.vdx=0;a.vdy=0;a.reach=0;a.kbx=0;a.kby=0;a.hp=hp;a.max=hp;a.r=D.r*alienK(kind);a.biteCd=spawn+(kind==='mini'?.2:2);a.spawnT=spawn;a.spawn0=Math.max(spawn,.01);a.flash=0;a.sq=0;a.sqv=0;a.mouth=0;a.face=x<VW/2?1:-1;
  a.fed=0;a.zap=0;a.need=D.need||0;a.stun=0;a.t=rnd()*6;a.dead=false;a.blue=false;a.moodT=7;a.fireT=kind==='orbo'?6:3;a.heads=2;a.pointy=false;a.bx=x+90;a.by=y+40;a.ax=x;a.ay=y;a.rage=0;
  return a;
 }
@@ -1176,7 +1196,10 @@ function bossWin(){
  G.alreadyHad=Save.pets.indexOf('mimi')>=0;if(!G.alreadyHad)Save.pets.push('mimi');G.awarded='mimi';G.bossPrize=true;
  writeSave();G.clearPhase=1;G.clearT=0;G.hatched=false;G.crackLast=false;setState('clear');
 }
-function setState(s){G.state=s;buildUI();}
+/* menus keep the 640x480 (portrait 480 wide) fit they were laid out for; the tank states get the phone fit (bigger fish) */
+const MENU_ST={title:1,menu:1,map:1,hall:1,options:1,stories:1,pick:1,help:1,crew:1};
+function tankFit(){return !MENU_ST[G.state];}
+function setState(s){const a=tankFit();G.state=s;if(tankFit()!==a&&typeof resize==='function')resize();else buildUI();}
 
 /* ---------- simulation ---------- */
 function spawnCoin(x,y,type,vy,staticT){
@@ -1422,8 +1445,9 @@ function updAliens(dt){
   a.x+=a.vx*dt;a.y+=a.vy*dt;
   if(Math.abs(a.vx)>4)a.face+=((a.vx>0?1:-1)-a.face)*Math.min(1,dt*6);
   clampAlien(a);
+  {const R0=tgt?(G.boss?22:fishR(tgt)):0,near=tgt&&d<a.r*.8+R0*.9+90?1:0;a.reach=(a.reach||0)+(near-(a.reach||0))*Math.min(1,dt*6);}
   if(tgt&&a.biteCd<=0){
-   const R=G.boss?22:fishR(tgt),reach=a.r*.8+R*.9;
+   const R=G.boss?22:fishR(tgt),hw=a.kind==='boss'?0:Math.min(VW/2,alienHW(a)),pin=(a.x<=hw+1&&tgt.x<a.x)||(a.x>=VW-hw-1&&tgt.x>a.x),reach=a.r*.8+R*.9+(pin?Math.max(0,hw-a.r*.8):0);
    if(d<reach)biteTarget(a,tgt);else if(d<reach+50)a.mouth=Math.max(a.mouth,.7);
   }
  }
@@ -1448,7 +1472,16 @@ function updWish(a,dt,sp){
   if(hit){biteTarget(a,f);break;}
  }
 }
-function clampAlien(a){const m=a.kind==='boss'?a.r*1.15:a.r*.8;a.x=clamp(a.x,m,VW-m);a.y=clamp(a.y,a.kind==='boss'?TOP+106:TOP+m*.8,FLOOR-m*.6);}
+/* drawn size: Glorps are drawn 1.75x; on a short tank the alien shrinks toward 50% of the water height */
+const ALW={glorp:110,mama:140,mini:52,hoover:120,bomber:110,orbo:104,moody:110,wish:90,boss:160};
+/* every alien is capped at about 45% of the water height on every screen; its radius (hit box, bite reach, clamp) scales with it.
+   ALH = drawn art height at scale 1 (measured: Glorp 258 units tall at 1.75x). The boss and the two-headed Wishbone keep their size. */
+const ALH={glorp:147,mama:184,mini:66,hoover:98,bomber:100,orbo:92,moody:100};
+function alienK(kind){const h=ALH[kind];if(!h)return 1;return Math.min(1,.45*(FLOOR-TOP)/(h*((kind==='glorp'||kind==='mama')?1.75:1)));}
+function alienVis(a){return((a.kind==='glorp'||a.kind==='mama')?1.75:1)*alienK(a.kind);}
+/* half the drawn width, lean included, so the whole drawn alien stays inside the glass */
+function alienHW(a){return (ALW[a.kind]||100)*.5*alienVis(a);}
+function clampAlien(a){const m=a.kind==='boss'?a.r*1.15:Math.min(VW/2,Math.max(a.r*.8,alienHW(a)));a.x=clamp(a.x,m,VW-m);a.y=clamp(a.y,a.kind==='boss'?TOP+106:TOP+m*.8,FLOOR-m*.6);}
 function petDrift(p,dt,sp){
  const dx=p.tx-p.x,dy=p.ty-p.y,d=Math.sqrt(dx*dx+dy*dy)||1,s=Math.min(sp*spdK,d*2.5);
  p.vx+=(dx/d*s-p.vx)*Math.min(1,dt*3);p.vy+=(dy/d*s-p.vy)*Math.min(1,dt*3);
@@ -1734,7 +1767,7 @@ function toVY(e){return (e.clientY-cssT)/S;}
 function inR(r,x,y,slop){const s=slop||0;return r&&x>=r.x-s&&x<=r.x+r.w+s&&y>=r.y-s&&y<=r.y+r.h+s;}
 function alienAt(x,y){
  let b=null,bd=1e12;
- for(let i=0;i<aliens.n;i++){const a=aliens.a[i];const R=a.r*1.15+14,tall=(a.kind==='glorp'||a.kind==='mama')?a.r*.9:0,yy=y<a.y?Math.min(a.y,y+tall):y;const d=(a.x-x)*(a.x-x)+(a.y-yy)*(a.y-yy);if(d<R*R&&d<bd){bd=d;b=a;}}
+ for(let i=0;i<aliens.n;i++){const a=aliens.a[i];/* taps follow the picture when the glass shifted it */const ax=a.x+(a.vdx||0),ay=a.y+(a.vdy||0);const R=a.r*1.15+14,tall=(a.kind==='glorp'||a.kind==='mama')?a.r*.9:0,yy=y<ay?Math.min(ay,y+tall):y;const d=(ax-x)*(ax-x)+(ay-yy)*(ay-yy);if(d<R*R&&d<bd){bd=d;b=a;}}
  return b;
 }
 function coinAt(x,y){
@@ -1811,8 +1844,9 @@ function resize(){
  cssL=r.left;cssT=r.top;
  const nd=Math.min(window.devicePixelRatio||1,2);
  PORTRAIT=w/h<.85;
- const ns=PORTRAIT?Math.min(w/480,h/400):Math.min(w/640,h/480);
- const nvw=PORTRAIT?w/ns:640,nvh=PORTRAIT?h/ns:480;
+ const TF=tankFit(),PL=TF&&!PORTRAIT&&h<600&&w/h>1.5,pw=TF?clamp(w/1.1,360,480):480;
+ const ns=PORTRAIT?Math.min(w/pw,h/400):PL?h/380:Math.min(w/640,h/480);
+ const nvw=PORTRAIT?w/ns:PL?Math.min(960,w/ns):640,nvh=PORTRAIT?h/ns:PL?380:480;
  const changed=ns!==S||nd!==DPR||nvw!==VW||nvh!==VH;
  S=ns;DPR=nd;
  const oldW=VW,oldF=FLOOR,oldT=TOP;
@@ -1828,7 +1862,7 @@ function resize(){
  const panelW=PORTRAIT?0:120;
  layoutShop();
  if(PORTRAIT){
-  moneyRect={x:4,y:btnH,w:VW*.5,h:strip-4};
+  moneyRect={x:4,y:btnH,w:Math.min(VW*.5,VW-124-80),h:strip-4};
   muteRect={x:VW-124,y:btnH,w:58,h:strip-3};pauseRect={x:VW-62,y:btnH,w:58,h:strip-3};
  }else{
   pauseRect={x:VW-116,y:4,w:78,h:26};muteRect={x:VW-35,y:4,w:32,h:26};
@@ -1837,11 +1871,13 @@ function resize(){
  /* keep everything in the water after a rotate */
  const sx=oldW?VW/oldW:1,sy=(oldF-oldT)?(FLOOR-TOP)/(oldF-oldT):1;
  function mv(o){o.x*=sx;o.y=TOP+(o.y-oldT)*sy;}
+ if(sx!==1||sy!==1||oldT!==TOP){
  for(let i=0;i<fish.n;i++){const f=fish.a[i];mv(f);f.tx=f.x;f.ty=f.y;}
  for(let i=0;i<food.n;i++)mv(food.a[i]);
  for(let i=0;i<coins.n;i++)mv(coins.a[i]);
- for(let i=0;i<aliens.n;i++)mv(aliens.a[i]);
+ for(let i=0;i<aliens.n;i++){mv(aliens.a[i]);aliens.a[i].r=ALIENS[aliens.a[i].kind].r*alienK(aliens.a[i].kind);}
  for(let i=0;i<pets.length;i++)mv(pets[i]);
+ }
  if(changed){SPR.clear();for(let i=0;i<floats.n;i++)floats.a[i].life=0;for(let i=0;i<ghosts.n;i++)ghosts.a[i].t=99;G.bgKey='';}
  buildUI();
 }
@@ -2000,13 +2036,15 @@ function bgCanvas(lv){
   farLayer(g,lv,w,FLOOR-TOP-40,C);
   g.save();g.globalAlpha=.3;g.fillStyle=C.deep;for(let i=0;i<7;i++){const x=w*(.05+i*.15),y=(FLOOR-TOP)*(.32+((i*37)%24)/100),r=24+((i*29)%26);g.beginPath();g.moveTo(x-r,y+r*2.2);g.quadraticCurveTo(x-r*1.1,y,x,y-r);g.quadraticCurveTo(x+r*1.2,y,x+r,y+r*2.2);g.closePath();g.fill();}g.restore();
   g.globalAlpha=.22;g.fillStyle=C.deep;for(let i=0;i<9;i++){const x=i/8*w,r=40+((i*37)%50);ell(g,x,h-120-((i*53)%30),r*1.6,r);g.fill();}g.globalAlpha=1;
+  if(lv===0)midReef(g,w,FLOOR-TOP-14,FLOOR-TOP);
   /* stronger fall-off of light with depth */
   const fo=g.createLinearGradient(0,h*.35,0,h);fo.addColorStop(0,'rgba(0,0,20,0)');fo.addColorStop(1,'rgba(0,0,20,.3)');g.fillStyle=fo;g.fillRect(0,h*.35,w,h*.65);
   /* a bright water line just under the surface */
   g.fillStyle='rgba(220,252,255,.5)';g.fillRect(0,16,w,2);g.fillStyle='rgba(255,255,255,.16)';g.fillRect(0,18,w,5);
   const sy=FLOOR-TOP-18;
-  setPiece2(g,lv,w,sy+12,(FLOOR-TOP)*.4);
-  setPiece(g,lv,w,sy+12,(FLOOR-TOP)*.44);
+  /* set pieces follow the water height, capped by the tank width so a tall phone tank is not filled by them */
+  setPiece2(g,lv,w,sy+12,Math.min((FLOOR-TOP)*.4,w*.33));
+  setPiece(g,lv,w,sy+12,Math.min((FLOOR-TOP)*.44,w*.36));
   coralBed(g,lv,w,sy+8);
   decor(g,lv,w,sy+40,C);
   /* the floor: a lit middle band and a dark front lip where the labels sit */
@@ -2021,6 +2059,20 @@ function bgCanvas(lv){
   g.fillStyle='rgba(255,255,255,.22)';g.fillRect(gw,0,1.5,h);g.fillRect(w-gw-1.5,0,1.5,h);
   g.fillStyle='rgba(0,0,0,.35)';g.fillRect(0,0,w,2);
  });
+}
+/* tank 1 mid-water: a dim, crowded reef of our own behind the set pieces (rock heaps, brain domes, branch and fan corals) */
+function midReef(g,w,base,H){
+ g.save();g.lineJoin='round';g.lineCap='round';const ink='rgba(10,14,40,.45)';
+ const hz=(c,a)=>{g.globalAlpha=a;g.fillStyle=c;};
+ for(let i=0;i<7;i++){const x=w*(.04+i*.155)+((i*37)%17),r=H*(.09+((i*29)%7)/100);hz(['#34406e','#3a3466','#2e4a70'][i%3],.62);
+  for(let j=0;j<3;j++){ell(g,x+(j-1)*r*.7,base-r*(.35+(j%2)*.3),r*(.8-j*.12),r*(.55-j*.06));g.fill();g.strokeStyle=ink;g.lineWidth=2;g.stroke();}}
+ for(let i=0;i<5;i++){const x=w*(.1+i*.2)+((i*53)%23),r=H*(.055+((i*17)%5)/100),y=base-H*(.12+((i*41)%9)/100);hz(['#7a4a74','#6a5a8c','#80506a'][i%3],.55);
+  g.beginPath();g.arc(x,y,r,Math.PI,0);g.closePath();g.fill();g.strokeStyle=ink;g.lineWidth=1.6;g.stroke();
+  g.globalAlpha=.35;g.strokeStyle='#1a1030';g.lineWidth=1.2;for(let k=1;k<4;k++){g.beginPath();g.arc(x,y,r*k/4,Math.PI*1.05,Math.PI*1.95);g.stroke();}}
+ for(let i=0;i<8;i++){const x=w*(.03+i*.125)+((i*31)%19),y=base-H*(.08+((i*23)%10)/100),c=['#a2586c','#b47048','#7a5aa2','#c0607a'][i%4];g.globalAlpha=.5;coral(g,x,y,H*(.07+((i*13)%5)/100),-Math.PI/2+((i%3)-1)*.25,5,c,3);}
+ for(let i=0;i<4;i++){const x=w*(.2+i*.22),y=base-H*.2-((i*19)%12),r=H*.11;hz(['#5a4c8e','#7c4e7c'][i%2],.42);g.beginPath();g.moveTo(x,y+r*.9);g.quadraticCurveTo(x-r*1.2,y-r*.2,x-r*.5,y-r);g.quadraticCurveTo(x,y-r*1.2,x+r*.5,y-r);g.quadraticCurveTo(x+r*1.2,y-r*.2,x,y+r*.9);g.fill();
+  g.globalAlpha=.3;g.strokeStyle='#1a1030';g.lineWidth=1;for(let k=-2;k<=2;k++){g.beginPath();g.moveTo(x,y+r*.85);g.lineTo(x+k*r*.32,y-r*.9);g.stroke();}}
+ g.restore();
 }
 function plant(g,x,base,n,col,col2,hgt){
  for(let i=0;i<n;i++){
@@ -2098,6 +2150,12 @@ function coralBed(g,lv,w,base){
 function decor(g,lv,w,h,C){
  const base=h-34;
  if(lv===0){
+  /* two front clusters at the sand line: rounded stones under short branch corals and a brain dome */
+  for(const[fx,sc,dk]of[[.47,1,0],[.97,.9,0],[.02,.8,0],[.6,1.1,1]]){const x=w*fx;g.lineCap='round';const cc=dk?['#8a2e3a','#a0562a','#6a2a6a']:['#d8504a','#f08a3a','#b2408a'];
+   coral(g,x-14*sc,base-6,22*sc,-Math.PI/2-.3,5*sc,cc[0],3);coral(g,x+10*sc,base-8,26*sc,-Math.PI/2+.25,5*sc,cc[1],3);coral(g,x+24*sc,base-4,16*sc,-Math.PI/2+.5,4*sc,cc[2],2);
+   g.beginPath();g.arc(x-26*sc,base-2,13*sc,Math.PI,0);g.closePath();g.fillStyle='#c06a58';g.fill();g.strokeStyle=BGINK;g.lineWidth=2.4;g.stroke();
+   g.globalAlpha=.4;g.strokeStyle='#5a2418';g.lineWidth=1.3;for(let k=1;k<3;k++){g.beginPath();g.arc(x-26*sc,base-2,13*sc*k/3,Math.PI*1.08,Math.PI*1.92);g.stroke();}g.globalAlpha=1;
+   rock(g,x,base+2,20*sc,'#6f7f98');rock(g,x+22*sc,base+4,13*sc,'#7d8aa0');}
   plant(g,w*.1,base,4,'#3fc06a','#2fa35a',80);plant(g,w*.88,base,5,'#46c774','#2d9b58',96);rock(g,w*.72,base,34,C.rock);
   /* a sandcastle somebody's kid left behind */
   const x=w*.3;g.strokeStyle=BGINK;g.lineWidth=3;g.fillStyle='#ecc873';
@@ -2254,23 +2312,28 @@ function drawShop(){
 }
 function drawMoney(){
  const r=moneyRect,g=ctx,b=G.moneyBump;
- rr(g,r.x,r.y,r.w,r.h,r.h/2);const fr=g.createLinearGradient(0,r.y,0,r.y+r.h);fr.addColorStop(0,'#fbe39a');fr.addColorStop(.5,'#d4a848');fr.addColorStop(1,'#8a5a1a');g.fillStyle=fr;g.fill();g.lineWidth=1.6;g.strokeStyle='#3a2110';g.stroke();
- rr(g,r.x+4,r.y+4,r.w-8,r.h-8,(r.h-8)/2);const lc=g.createLinearGradient(0,r.y+4,0,r.y+r.h-4);lc.addColorStop(0,'#0a7a0a');lc.addColorStop(.7,'#006400');lc.addColorStop(1,'#003a00');g.fillStyle=lc;g.fill();g.lineWidth=1.2;g.strokeStyle='#1e2a08';g.stroke();g.fillStyle='rgba(255,255,255,.12)';rr(g,r.x+10,r.y+5.5,r.w-20,3,1.5);g.fill();
- txt(g,'$',r.x+15,r.y+r.h/2+1,15,'#a8ff8a',null);
+ const pl=bake('mp|'+Math.round(r.w)+'|'+Math.round(r.h),r.w,r.h,(g,w,h)=>{g.translate(-w/2,-h/2);
+  rr(g,0,0,w,h,h/2);const fr=g.createLinearGradient(0,0,0,h);fr.addColorStop(0,'#fbe39a');fr.addColorStop(.5,'#d4a848');fr.addColorStop(1,'#8a5a1a');g.fillStyle=fr;g.fill();g.lineWidth=1.6;g.strokeStyle='#3a2110';g.stroke();
+  rr(g,4,4,w-8,h-8,(h-8)/2);const lc=g.createLinearGradient(0,4,0,h-4);lc.addColorStop(0,'#0a7a0a');lc.addColorStop(.7,'#006400');lc.addColorStop(1,'#003a00');g.fillStyle=lc;g.fill();g.lineWidth=1.2;g.strokeStyle='#1e2a08';g.stroke();g.fillStyle='rgba(255,255,255,.12)';rr(g,10,5.5,w-20,3,1.5);g.fill();
+  txt(g,'$',15,h/2+1,15,'#a8ff8a',null);});
+ g.drawImage(pl,r.x,r.y,r.w,r.h);
  const flash=G.noCashT>0&&((G.tick>>3)&1);
  txt(g,''+Math.round(G.moneyShown),r.x+r.w-9,r.y+r.h/2+1,Math.min(19,r.h*.62)*(1+b*.12),flash?'#ff7a7a':'#a8ff8a',null,'right');
- if(PORTRAIT){txt(g,G.boss?'Boss':G.mode==='challenge'?('Clock '+fmtT(G.t)):('Tank '+curL().t+'-'+curL().n),VW*.5+(VW*.5-128)/2+6,r.y+r.h/2,13,'#ffffff',INK,'center',3);}
+ if(PORTRAIT){const gx=r.x+r.w+4,gw=muteRect.x-gx-4,lb=G.boss?'Boss':G.mode==='challenge'?('Clock '+fmtT(G.t)):('Tank '+curL().t+'-'+curL().n);setFont(g,13);const tw=g.measureText(lb).width;if(gw>30)txt(g,lb,gx+gw/2,r.y+r.h/2,13*Math.min(1,gw/(tw+4)),'#ffffff',INK,'center',3);}
 }
 function drawIconBtn(r,kind){
- const g=ctx;rr(g,r.x+.5,r.y+.5,r.w-1,r.h-1,Math.min(10,r.h/2));const rim=g.createLinearGradient(0,r.y,0,r.y+r.h);rim.addColorStop(0,'#fbe39a');rim.addColorStop(.5,'#d4a848');rim.addColorStop(1,'#8a5a1a');g.fillStyle=rim;g.fill();g.lineWidth=1.4;g.strokeStyle='#3a2110';g.stroke();
- rr(g,r.x+3.5,r.y+3.5,r.w-7,r.h-7,Math.min(8,r.h/2-3));const gr=g.createLinearGradient(0,r.y+3,0,r.y+r.h-3);gr.addColorStop(0,'#9e4a24');gr.addColorStop(.6,'#e1894a');gr.addColorStop(1,'#b05a2c');g.fillStyle=gr;g.fill();g.lineWidth=1;g.strokeStyle='#5a2810';g.stroke();
+ const g=ctx;/* the copper plate is baked once per size (no per-frame gradients) */
+ const pl=bake('ip|'+Math.round(r.w)+'|'+Math.round(r.h),r.w,r.h,(g,w,h)=>{g.translate(-w/2,-h/2);
+  rr(g,.5,.5,w-1,h-1,Math.min(10,h/2));const rim=g.createLinearGradient(0,0,0,h);rim.addColorStop(0,'#fbe39a');rim.addColorStop(.5,'#d4a848');rim.addColorStop(1,'#8a5a1a');g.fillStyle=rim;g.fill();g.lineWidth=1.4;g.strokeStyle='#3a2110';g.stroke();
+  rr(g,3.5,3.5,w-7,h-7,Math.min(8,h/2-3));const gr=g.createLinearGradient(0,3,0,h-3);gr.addColorStop(0,'#9e4a24');gr.addColorStop(.6,'#e1894a');gr.addColorStop(1,'#b05a2c');g.fillStyle=gr;g.fill();g.lineWidth=1;g.strokeStyle='#5a2810';g.stroke();});
+ g.drawImage(pl,r.x,r.y,r.w,r.h);
  const cx=r.x+r.w/2,cy=r.y+r.h/2;
  if(kind===0){
   g.fillStyle='#fff';g.beginPath();g.moveTo(cx-9,cy-3);g.lineTo(cx-5,cy-3);g.lineTo(cx-1,cy-7);g.lineTo(cx-1,cy+7);g.lineTo(cx-5,cy+3);g.lineTo(cx-9,cy+3);g.closePath();g.fill();
   g.strokeStyle=Save.sound===2?'#ff6a6a':'#fff';g.lineWidth=2;
   if(Save.sound===2){g.beginPath();g.moveTo(cx+2,cy-5);g.lineTo(cx+9,cy+5);g.moveTo(cx+9,cy-5);g.lineTo(cx+2,cy+5);g.stroke();}
   else{g.beginPath();g.arc(cx+1,cy,4.5,-.8,.8);g.stroke();if(Save.sound===0){g.beginPath();g.arc(cx+1,cy,8,-.8,.8);g.stroke();}}
- }else txt(g,'MENU',cx,cy+1,13,'#ffe2b0','#5a2410','center',2.4);
+ }else{const k=textSprite('MENU',13,'#ffe2b0','#5a2410');g.drawImage(k,cx-k.w_/2,cy+1-k.h_/2,k.w_,k.h_);}
 }
 function drawFish(f){
  if(f.hidden)return;
@@ -2288,33 +2351,46 @@ function drawFish(f){
   return;}
  ctx.scale(fc*sx,sy);
  const rx=big?R*1.28:gupRX(f.stage),sw=Math.sin(f.wag);
- /* the rear of the body bends with the beat: skew about the head, so the head stays still */
- const bend=big?0:sw*.13;
- if(bend){ctx.translate(rx,0);ctx.transform(1,bend,0,1,0,0);ctx.translate(-rx,0);}
- /* tail swings about its root */
- ctx.save();
- ctx.translate(-rx+3,0);ctx.rotate(sw*(big?.3:.36));if(!big)ctx.scale(.7+.3*Math.abs(Math.cos(f.wag)),1);
- ctx.drawImage(tailC,-tailC.w_,-tailC.h_/2,tailC.w_,tailC.h_);
- ctx.restore();
- if(!big){const pc=pelvicSpr(f);ctx.save();ctx.translate(-rx*.05,gupRY(f.stage)*.92);ctx.rotate(Math.sin(f.wag+1.3)*.65);ctx.drawImage(pc,-pc.w_/2,-pc.h_/2,pc.w_,pc.h_);ctx.restore();}
- ctx.drawImage(c,-c.w_/2,-c.h_/2,c.w_,c.h_);
+ if(big){
+  ctx.save();ctx.translate(-R*[0,40,0,36,42,38,56][f.kind]/KR0[f.kind]+3,0);ctx.rotate(sw*.3);ctx.drawImage(tailC,-tailC.w_,-tailC.h_/2,tailC.w_,tailC.h_);ctx.restore();
+  ctx.drawImage(c,-c.w_/2,-c.h_/2,c.w_,c.h_);
+ }else{
+  /* a travelling wave: the mid piece turns about joint 1, the rear piece about joint 2 a beat later, the tail last.
+     rear third up to about 7.5 deg off the head line, the mid third about half that */
+  const J=gupJoints(f.stage),b1=Math.sin(f.wag+.9)*.07,b2=Math.sin(f.wag+.45)*.075,s0=segSpr(f,0),s1=segSpr(f,1),s2=segSpr(f,2);
+  ctx.save();ctx.translate(J[0],0);ctx.rotate(b1);ctx.translate(-J[0],0);
+  ctx.save();ctx.translate(J[1],0);ctx.rotate(b2);ctx.translate(-J[1],0);
+  ctx.save();ctx.translate(-rx+3,0);ctx.rotate(sw*.36);ctx.scale(.7+.3*Math.abs(Math.cos(f.wag)),1);ctx.drawImage(tailC,-tailC.w_,-tailC.h_/2,tailC.w_,tailC.h_);ctx.restore();
+  ctx.drawImage(s2,-s2.w_/2,-s2.h_/2,s2.w_,s2.h_);
+  ctx.restore();
+  ctx.drawImage(s1,-s1.w_/2,-s1.h_/2,s1.w_,s1.h_);
+  ctx.restore();
+  /* pelvic fin: its root sits inside the belly, behind the front piece; it swings about 22 deg each beat */
+  const pc=pelvicSpr(f);ctx.save();ctx.translate(rx*.34,gupRY(f.stage)*.86);ctx.rotate(Math.sin(f.wag+1.3)*.2);ctx.drawImage(pc,-pc.w_/2,-pc.h_/2,pc.w_,pc.h_);ctx.restore();
+  ctx.drawImage(s0,-s0.w_/2,-s0.h_/2,s0.w_,s0.h_);
+ }
  /* mouth open */
  if(f.mouth>.05){
-  const mx=big?rx*.74:rx*.86,my=big?R*.14:R*.42,mr=R*(big?.3:.5)*f.mouth;
+  const mx=big?rx*.74:rx*.68,my=big?R*.14:gupRY(f.stage)*.6,mr=R*(big?.3:.5)*f.mouth;
   ctx.beginPath();ctx.ellipse(mx,my,mr*.8,mr,0,0,TAU);ctx.fillStyle='#3a0f2e';ctx.fill();ctx.lineWidth=1.3;ctx.strokeStyle='rgba(60,20,10,.8)';ctx.stroke();
  }
  /* eye */
- const ex=big?R*.66:rx*.9,ey=big?-R*.3:-R*.14;
  let er=big?R*.16:(f.stage===0?R*.5:R*.42);
+ const ex=big?R*.66:rx*.9-er*EYEB[f.stage],ey=big?-R*.3:-R*.14;
  if(panic)er*=1.18;
  const blink=f.blink<0;
  if(blink){ctx.lineWidth=1.8;ctx.strokeStyle='rgba(90,40,10,.9)';ctx.beginPath();ctx.moveTo(ex-er,ey);ctx.lineTo(ex+er,ey);ctx.stroke();}
- else{
-  ctx.beginPath();ctx.arc(ex,ey,er,0,TAU);ctx.fillStyle=big?'#fff06a':'#f2e8c8';ctx.fill();ctx.lineWidth=big?1.3:1.1;ctx.strokeStyle=big?'rgba(40,20,10,.75)':'rgba(42,22,8,.8)';ctx.stroke();
+ else if(!big){/* guppy eye baked once per size (white, hairline ring, pupil, catchlight); the gaze moves it a hair */
+  const ec=bake('eye|'+er.toFixed(2),er*2+2,er*2+2,g=>{g.beginPath();g.arc(0,0,er,0,TAU);g.fillStyle='#fbfaf3';g.fill();g.lineWidth=.55;g.strokeStyle='rgba(60,40,20,.55)';g.stroke();
+   const pr=er*.6;g.beginPath();g.arc(er*.26,er*.2,pr,0,TAU);g.fillStyle='#120a08';g.fill();g.beginPath();g.arc(er*.36,-er*.12,pr*.26,0,TAU);g.fillStyle='#fff';g.fill();});
+  ctx.drawImage(ec,ex-ec.w_/2+(f.lookX||0)*er*.05,ey-ec.h_/2+(f.lookY||0)*er*.05,ec.w_,ec.h_);
+  if(f.stage===3){ctx.beginPath();ctx.arc(ex,ey,er+2.4,0,TAU);ctx.lineWidth=2.2;ctx.strokeStyle='#ffd23e';ctx.stroke();}
+ }else{
+  ctx.beginPath();ctx.arc(ex,ey,er,0,TAU);ctx.fillStyle=big?'#fff06a':'#fbfaf3';ctx.fill();ctx.lineWidth=big?1.3:.55;ctx.strokeStyle=big?'rgba(40,20,10,.75)':'rgba(60,40,20,.55)';ctx.stroke();
   const pr=panic?er*.34:(big?er*.52:er*.6);
   const lx=f.lookX||0,ly=f.lookY||0;
   ctx.beginPath();ctx.arc(ex+er*(big?.3:.26)+lx*er*.05,ey+er*(big?0:.2)+ly*er*.05,pr,0,TAU);ctx.fillStyle='#120a08';ctx.fill();
-  if(!panic&&big){ctx.beginPath();ctx.arc(ex+er*.1,ey-er*.3,pr*.34,0,TAU);ctx.fillStyle='#fff';ctx.fill();}
+  if(!panic){ctx.beginPath();ctx.arc(ex+er*(big?.1:.36),ey-er*(big?.3:.12),pr*(big?.34:.26),0,TAU);ctx.fillStyle='#fff';ctx.fill();}
   if(f.stage===3&&!big){ctx.beginPath();ctx.arc(ex,ey,er+2.4,0,TAU);ctx.lineWidth=2.2;ctx.strokeStyle='#ffd23e';ctx.stroke();}
  }
  ctx.restore();
@@ -2323,13 +2399,14 @@ function drawFish(f){
  if(f.shield>0){ctx.beginPath();ctx.arc(f.x,f.y,R+14+Math.sin(G.tick*.3)*2,0,TAU);ctx.fillStyle='rgba(200,245,255,.28)';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle='rgba(255,255,255,.9)';ctx.stroke();}
 }
 function drawAlien(a){
- const open=a.kind==='moody'?a.blue:a.kind==='wish'?a.pointy:a.mouth>.35;
+ const GL0=a.kind==='glorp'||a.kind==='mama'||a.kind==='mini',rc=GL0?Math.max(a.reach||0,a.mouth>.4?a.mouth:0):0;
+ const open=a.kind==='moody'?a.blue:a.kind==='wish'?a.pointy:(a.mouth>.35||rc>.55);
  const c=alienSpr(a.kind,open);
  if(a.kind==='wish')drawWishBody(a);
  let k=1;
  if(a.spawnT>0){const t=1-a.spawnT/a.spawn0;k=t*t*1.15;}
  if(a.kind==='hoover')k*=1+a.fed*.016;
- const VIS=(a.kind==='glorp'||a.kind==='mama')?1.75:1,sx=(1+a.sq*.22)*k*VIS,sy=(1-a.sq*.2)*k*VIS;
+ const VIS=alienVis(a),sx=(1+a.sq*.22)*k*VIS,sy=(1-a.sq*.2)*k*VIS;
  const fc=Math.abs(a.face)<.15?(a.face<0?-.15:.15):a.face;
  /* arrival: a bright cyan ring pulses round the newcomer */
  if(a.spawnT>0){const u=1-a.spawnT/a.spawn0,pr=a.r*(.35+u*u*1.0)+Math.sin(G.tick*.5)*4;ctx.beginPath();ctx.arc(a.x,a.y,pr,0,TAU);ctx.globalAlpha=.45;ctx.lineWidth=16;ctx.strokeStyle='#22e8ff';ctx.stroke();ctx.globalAlpha=1;ctx.lineWidth=4;ctx.strokeStyle='#d8fdff';ctx.stroke();}
@@ -2338,10 +2415,15 @@ function drawAlien(a){
  ctx.translate(a.x,a.y+Math.sin(a.t*2.6)*3-(GL?Math.abs(stp)*3*mv:0));
  if(a.stun>0)ctx.rotate(Math.sin(a.t*16)*.14);
  /* it strides: leans into the walk and squashes on each step */
- if(GL){ctx.rotate(clamp(a.vx/300,-.26,.26));ctx.transform(1,0,Math.sin(a.t*3.4)*.14,1,0,0);if(a.mouth>.4){ctx.translate(14*a.mouth,0);ctx.scale(1+.14*a.mouth,1-.06*a.mouth);}}
+ if(GL){ctx.rotate(clamp(a.vx/300,-.26,.26));ctx.transform(1,0,Math.sin(a.t*3.4)*.14,1,0,0);if(rc>.02){const dir=fc<0?-1:1;ctx.translate(dir*30*rc,-6*rc);ctx.transform(1,0,-dir*.24*rc,1,0,0);ctx.scale(1+.16*rc,1-.07*rc);}}
  ctx.scale(fc*sx*(1+Math.abs(stp)*.04*mv),sy*(1-Math.abs(stp)*.05*mv));
  if(false){const m=1,lc='';
   for(const d of[-1,1]){ctx.save();ctx.translate(d*11*m,38*m);ctx.rotate(stp*d*.5*mv);ctx.beginPath();ctx.moveTo(-5*m,0);ctx.lineTo(-4*m,18*m);ctx.quadraticCurveTo(0,24*m,7*m,20*m);ctx.lineTo(5*m,0);ctx.closePath();ctx.fillStyle=lc;ctx.fill();ctx.lineWidth=2.6*m;ctx.strokeStyle=INK;ctx.stroke();ctx.restore();}}
+ /* keep the whole drawn box (lean, stride and lunge included) inside the glass: shift the picture, never the alien */
+ if(a.kind!=='boss'&&a.kind!=='wish'){const m=ctx.getTransform(),hx=c.w_/2,hy=c.h_/2,k=S*DPR;let x0=1e9,x1=-1e9,y0=1e9;
+  for(const[u,v]of[[-hx,-hy],[hx,-hy],[-hx,hy],[hx,hy]]){const X=m.a*u+m.c*v+m.e,Y=m.b*u+m.d*v+m.f;if(X<x0)x0=X;if(X>x1)x1=X;if(Y<y0)y0=Y;}
+  let dx=0,dy=0;const L=0,R=VW*k;if(x1-x0>=R-L)dx=(L+R)/2-(x0+x1)/2;else if(x0<L)dx=L-x0;else if(x1>R)dx=R-x1;if(y0<TOP*k)dy=TOP*k-y0;
+  a.vdx=dx/k;a.vdy=dy/k;if(dx||dy)ctx.setTransform(m.a,m.b,m.c,m.d,m.e+dx,m.f+dy);}
  ctx.drawImage(c,-c.w_/2,-c.h_/2,c.w_,c.h_);
  /* tracking eyes, so they look right at the fish they want */
  if(false){
@@ -2448,10 +2530,12 @@ function drawBanner(){}
 function drawAlienCard(){}
 function drawHint(){
  const L=curL(),y=VH-20;
- txt(ctx,G.boss?'Boss':(L.mode==='adventure'?('Tank '+L.t+'-'+L.n):L.mode==='trial'?('Time '+fmtT(Math.max(0,L.time-G.t))):L.mode==='challenge'?(L.name+'  '+fmtT(G.t)):L.name),12,y,13,'#e6e6ee','rgba(0,0,0,.4)','left',2.4);
+ if(!PORTRAIT)txt(ctx,G.boss?'Boss':(L.mode==='adventure'?('Tank '+L.t+'-'+L.n):L.mode==='trial'?('Time '+fmtT(Math.max(0,L.time-G.t))):L.mode==='challenge'?(L.name+'  '+fmtT(G.t)):L.name),12,y,13,'#e6e6ee','rgba(0,0,0,.4)','left',2.4);
  let t=G.tipT>0?G.tip:hintText,c=G.tipT>0?G.tipC:'#5dff5d';
  if(G.state==='play'&&inv.phase===1){t=G.alarmText||'ALIENS INBOUND';c=((G.tick>>3)&1)?'#ff2a2a':'#ff6a4a';}
  if(!t)return;
+ if(PORTRAIT){if(!G.tipW||G.tipW.t!==t||G.tipW.vw!==VW){let sz=13,ls=wrapText(ctx,t,sz,VW-20);if(ls.length>2){sz=11.5;ls=wrapText(ctx,t,sz,VW-20);}G.tipW={t,vw:VW,ls,sz};}
+  const W=G.tipW,y0=VH-27-(W.ls.length-1)*8;for(let i=0;i<W.ls.length;i++)txt(ctx,W.ls[i],VW/2,y0+i*16,W.sz,c,'#10230c','center',2.6);return;}
  setFont(ctx,13.5);let sz=13.5;const m=ctx.measureText(t).width,mx=VW-140;if(m>mx)sz=13.5*mx/m;
  txt(ctx,t,VW/2+30,y,sz,c,'#10230c','center',2.6);
 }
